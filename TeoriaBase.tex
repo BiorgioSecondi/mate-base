@@ -1,0 +1,1109 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan} %BLBLBLBLBLBLBLBLBLBLBLB EVANCHEN
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{asymptote}
+\usepackage{amsthm}
+\usepackage{gensymb}
+\usepackage{amsfonts}
+\usepackage[english,italian]{babel}
+\usepackage{quoting}
+\quotingsetup{font=big}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{lmodern}
+
+
+\begin{document}
+	\title{Teoria di Base}
+	\subtitle{a.k.a.\ guida (in)completa per Archimede e EGMOcamp}
+	\date{Ottobre 2024}
+	
+	
+	\maketitle
+	\section*{Introduzione}
+	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento era quello di scrivere un insieme di teoria "quick and dirty" che sarebbe potuta risultare utile per ripassare ciò che si aveva già studiato poco prima di una gara, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari). Nonostante una delle intenzioni fosse anche quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, il lettore alle prime armi non si deve spaventare. Come è già stato detto, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
+	Sapere la teoria è sempre secondario al saper ragionare, e per quanto \textbf{la teoria esposta qui} si possa considerare "di base" \textbf{non va intesa come "la teoria che è indispensabile sapere per poter fare le olimpiadi della matematica"}. Una cosa del genere non esiste e speriamo continui a non esistere ancora a lungo. Questa è unicamente della teoria che può risultare utile, facilmente sostituibile con una sufficiente dose di astuzia e buona volontà. Questa teoria è da considerarsi invece "di base" nel senso che è quella teoria che uno studente veterano, ormai abituato a risolvere problemi di stile olimpico, dovrebbe conoscere (o almeno saper dimostrare essere vera) a grandi linee; non necessariamente perchè l'ha studiata sistematicamente nel passato, anzi, di solito è perchè ha risolto \textbf{problemi che richiedevano di dedurre alcune di queste cose da zero}. Incoraggiamo quindi chiunque si sentisse in vena di esercizio, a dimostrare i lemmi e teoremi qui presentati. \\
+	\\
+	\\
+	\\
+	\\
+	Si ringrazia Evan Chen per il template \LaTeX.
+	\newpage
+	\tableofcontents
+	\newpage
+	\section{Teoria dei numeri}
+	\subsection{Divisibilità}
+	\begin{definition}
+		Divisione euclidea. Siano a e b due interi, con $a \neq 0$. Allora esistono due numeri interi q e r, tali che:\\
+		(i) $b = aq + r$, \\
+		(ii) $ 0 \le r < |a|$.
+		Inoltre q ed r sono unici.
+		\\
+	\end{definition}
+	\begin{definition}
+		Divisore. Se nell'equazione sopra $r = 0$, si dice che a è un divisore di b e scriviamo $a \mid b$.
+	\end{definition}
+	\begin{definition}
+		Massimo comune divisore. Dati $n$ interi positivi $a_1,\dots, a_n$, si dice massimo
+		comun divisore di $a_1,\dots\, a_n$, e si indica con la notazione
+		$\text{MCD}(a_1,\dots\, a_n)$, il più grande intero positivo che divide tutti gli $a_i$. In inglese si indica con GCD (che sta per “greatest common divisor”).
+	\end{definition} 
+	\begin{definition}
+		Dati $n$ interi positivi $a_1,\dots\,a_n$ chiamiamo Minimo Comune Multiplo e scriviamo $\text{mcm}(a_1,\dots\,a_n)$ il minimo numero diviso da tutti gli $a_i$. In inglese si indica con LCM (che sta per "least common multiple").
+	\end{definition}
+	\begin{definition}
+		Definiamo due numeri $a,b \in \NN$ \textit{coprimi} se e solo se $\text{MCD}(a,b)=1$
+	\end{definition}
+	\begin{definition}
+		Definiamo \textit{primo} un numero che ha come divisori solo $1$ e se stesso. Ogni primo è ovviamente coprimo con ogni altro numero minore di se stesso e maggiore di $0$. Definiamo $\PP$ l'insieme che contiene tutti e soli i primi.
+	\end{definition}
+	
+	Un cruciale risultato che di solito si tratta alle medie, è il seguente teorema:
+	\begin{theorem}[Fondamentale dell'Aritmetica]
+		Ogni numero $n\in\NN$ può essere scritto in modo univoco come prodotto di numeri primi, cioè:
+		$$n=p_1^{\alpha_1}p_2^{\alpha_2}p_3^{\alpha_3}\dots p_k^{\alpha_k}$$
+		Dove $k$ è un certo numero intero, $p_i\in \PP$ e $\alpha_i\in \ZZ$ (con $0<i\le k \in \NN$). 
+	\end{theorem}
+	Quando un numero è scritto in quella forma si dice essere "fattorizzato". Fattorizzare i numeri è in generale una buona idea per risolvere equazioni diofantee.
+	
+	Dal teorema prececente deriva il seguente utile lemmino, che facilita spesso i conti:
+	
+	\begin{lemma}[Numero di divisori]
+		Sia $n$ un numero intero fattorizzato usando la notazione del precedente teorema, allora il numero di divisori interi positivi di $n$ è:
+		$$(\alpha_1+1)(\alpha_2+1)(\alpha_3+1)\dots(\alpha_k+1)$$
+	\end{lemma}
+	
+	La dimostrazione di questo fatto è un esercizio di combinatoria molto costruttivo (fondamentalmente un'applicazione di \ref{C:prod}) ed è quindi fortemente consigliato provare a dimostrarlo da soli.
+	\begin{lemma}
+		Se abbiamo un primo $p\in\PP$ e due numeri $a,b\in\NN$, allora se vale 
+		$$p\mid ab$$ 
+		vale anche $p\mid a$ o $p \mid b$ (potenzialmente entrambe).
+	\end{lemma}
+	Questo potrà sembrare un risultato stupido, ma è alla base di molti teoremi e importanti strategie risolutive, si pensi ad esempio alla risoluzione dell'equazione $ab=90$ con $a,b\in\NN$.
+	Parliamo ora un po' delle proprietà di $\mcm$ e $\mcd$:
+	\begin{lemma}
+		Dati due interi $a,b \in \NN$, abbiamo che:
+		$$ab=\text{mcm}(a,b)\text{MCD}(a,b)$$
+	\end{lemma}
+	\begin{lemma}
+		Dati $a,b \in \NN$ abbiamo che:
+		$$\text{MCD}(a,b)=\text{MCD}(a-kb,b)$$
+		Per un arbitrario $k\in \ZZ$. 
+	\end{lemma}
+	Il lemma precedente giustifica il prossimo importante risultato
+	\begin{algorithm}[di Euclide]
+		Supponiamo di voler calcolare l'MCD tra $a,b \in \NN$. Allora possiamo dividere $a$ per $b$ e ottenere:
+		\begin{gather}
+			\notag a=bq_1+r_1 \iff a-bq_1=r_1  \qquad \mcd(a,b)=\mcd(b,r_1) \\
+			\notag b=r_1q_2+r_2 \iff b-r_1q_2=r_2 \qquad \mcd(b,r_1)=\mcd(r_1,r_2) \\
+			\notag \vdots \\
+			\notag r_k=q_{k+2}r_{k+1} \iff r_k-q_{k+2}r_{k+1}=0 \qquad \mcd(r_{k+1},r_k)=\mcd(r_{k+1},0)=r_{k+1}
+		\end{gather}
+		Cioè ci basta continuare a dividere i resti tra di loro, finchè non arriviamo a $0$, a quel punto l'MCD sarà l'ultimo resto non $0$ della catena di divisioni.
+	\end{algorithm}
+	"Riavvolgendo al contrario" il precedente algoritmo possiamo facilmente arrivare al seguente risultato:
+	\begin{theorem}[Bez\'out]
+		Siano $a,b \in \NN$, allora è sempre possibile trovare due numeri $m_0,n_0\in \ZZ$ tali che:
+		$$m_0a+n_0b=\mcd(a,b)$$
+	\end{theorem}
+	Finiamo questa sezione con un breve approfondimento sulle basi di numerazione:
+\begin{definition}
+	La scrittura: $n=\overline{a_ka_{k-1}a_{k-2}a_{k-3}\dots a_0}$ significa che il numero $n$ è formato dalle cifre $a_0$, $a_1$, $a_2$ \dots $a_k$ in quell'ordine (ovviamente in base $10$ gli $a_i$ sono compresi tra $0$ e $9$ inclusi). Per esempio per $n=456$, $a_2=4$, $a_1=5$, $a_0=6$.
+\end{definition}
+	Ora, il nostro sistema di numerazione usuale è la base $10$, il che significa che ci sono $10$ cifre, e che scrivere un numero con le cifre $a_0$, $a_1$, $a_2$, \dots $a_k$ significa:
+	$$n=\overline{a_ka_{k-1}a_{k-2}\dots a_0}=a_0+10a_1+10^2a_2+10^3a_3+\dots+10^ka_k$$
+	Non è raro tuttavia incontrare problemi che chiedano di utilizzare basi di numerazione diverse dal $10$, quindi la seguente definizione.
+	\begin{definition}
+		Un numero $n$ è rappresentato in base $b$ dalle cifre $a_0$, $a_1$, $a_2$, \dots $a_k$ (con $0\le a_i<b$ per ogni $i$ compreso tra $0$ e $k$ inclusi) se e solo se:
+		$$n=(\overline{a_ka_{k-1}a_{k-2}a_{k-3}\dots a_0})_b=a_0+ba_1+b^2a_2+b^3a_3+b^4a_4+\dots +b^ka_k$$
+	\end{definition}
+	Utilizzare la definizione sopra di solito basta per avviarsi alla risoluzione di tutti i quesiti che coinvolgono le basi di numerazione. 
+	\subsection{Aritmetica modulare}
+	\begin{definition}
+		Si dice che due interi $a,b$ sono congrui modulo (più semplicemente mod.) $m$, e si scrive $a \equiv b \,\, (m)$, se $a$ e $b$, divisi per $m$, danno lo stesso resto.
+		L'insieme di tutti gli interi congruenti a due a due mod. m forma una classe di congruenza, che viene indicata con il più piccolo intero maggiore o uguale a 0 nella classe.
+	\end{definition}
+	\begin{remark}
+		Utilizzando la divisione euclidea come definita al paragrafo precedente possiamo dimostrare che le seguenti tre proposizioni sono logicamente equivalenti:
+		\begin{itemize}
+			\item $a \equiv b \pmod{n}$
+			\item $n \mid a-b$
+			\item $a$ e $b$ hanno lo stesso resto nella divisione per $n$.
+		\end{itemize}
+	\end{remark}
+	Questa relazione è fondamentale per la risoluzione di molti problemi di teoria dei numeri. Per esempio nelle equazioni diofantee è spesso molto utile invocare la proprietà per cui $a \equiv b \pmod{n} \iff n \mid a-b$; infatti se $a=b$ allora $a-b=0$, e grazie al fatto che $n\mid0$ possiamo dimostrare il seguente fatto:
+	\begin{fact}
+		Date due espressioni intere $a$ e $b$, abbiamo sempre:
+		$$a=b \implies a \equiv b \pmod{n}$$
+	\end{fact}
+	E quindi spesso utile "analizzare mod $n$" un'equazione diofantea per trovare contraddizioni o condizioni interessanti grazie alle semplificazioni che di solito è molto facile fare mod $n$.
+	Vediamo ora come si possono fare queste fantomatiche semplificazioni:
+	\begin{lemma}[Principi di Equivalenza$\mod{n}$]
+		\label{equiv:cong}
+		Siano $a,b,c,d,n \in \ZZ$, allora se valgono:
+		\begin{gather}
+			\notag a \equiv c \pmod{n} \\
+			\notag b \equiv d \pmod{n}
+		\end{gather}
+		Valgono anche le seguenti:
+		\begin{gather}
+			\notag a\cdot b \equiv c \cdot d \pmod{n} \\
+			\notag a \pm b \equiv c \pm d \pmod{n}
+		\end{gather}
+	\end{lemma}
+	\begin{lemma}[Divisione$\mod n$]
+		Siano $a,b,c,n\in \ZZ$, allora se vale:
+		$$ac\equiv bc \pmod{n}$$
+		Vale anche:
+		$$a \equiv b \pmod{\frac{n}{\text{MCD}(n,c)}}$$
+	\end{lemma}
+	\begin{corollary}[Inverso$\mod p$]
+		Da sopra si evince che, dato che un primo è sempre coprimo con tutti gli altri numeri minori di se stesso e maggiori di $0$, preso un primo $p\in \PP$ esiste sempre l'inverso mod $p$. Ovvero per ogni intero $a \not \equiv 0 \pmod{p}$ esiste sempre un intero $a^{-1}$ tale che:
+		$$a\cdot a^{-1} \equiv 1 \pmod{p}$$
+		Inoltre si può dimostrare che un tale $a^{-1}$ è sempre unico, una volta scelto $a$.
+	\end{corollary}
+	"I primi sono belli" come affermò un noto Ex-Studente del Volta.\footnote{Edoardo Balistri}
+	I precedenti tre risultati, permettono di semplificare grandemente espressioni numeriche e non. Infatti grazie al lemma~\ref{equiv:cong} abbiamo:
+	\begin{fact}
+		
+		Se $a \equiv b \pmod{n}$ allora $a-nk \equiv b-0 \equiv b \pmod{n}$ per un arbitrario $k \in \ZZ$.
+	\end{fact}
+	Fantastico, adesso abbiamo un modo per liberarci velocemente di somme e prodotti.\\
+	E con gli esponenti? E con cose più esotiche? Come facciamo?\\
+	Esistono alcuni utili teoremi che permettono di semplificare gli esponenti e i fattoriali modulo $p$ primo. Bisogna dire però che \textbf{raramente questi sono utili nel contesto di una gara di Archimede, una gara di Febbraio o un Test di ammissione EGMOcamp}. A Cesenatico possono risultare utili per gli ultimi problemi, ma rimangono comunque \textbf{teoremi molto avanzati, le cui dimostrazioni risultano particolarmente più difficili} rispetto a tutti gli altri qui trattati. Li includiamo qui per completezza, ma tenete presente che probabilmente il concorrente medio di Cesenatico non li conosce e non li sa dimostrare. Traetene le vostre conclusioni.
+	\begin{theorem}[Piccolo Teorema di Fermat]
+		Sia $p\in\PP$ e $a\in\NN$, allora vale sempre:
+		$$a^p \equiv a \pmod{p}$$
+	\end{theorem}
+	\begin{theorem}[Wilson]
+		Sia $p\in\PP$, allora vale sempre:
+		$$(p-1)! \equiv -1 \pmod{p}$$
+		per la definizione di $!$ si rimanda a \ref{factorial}.
+	\end{theorem}
+	Ma questo ancora non basta, che ne è dei numeri che non sono primi? Come facciamo a semplificare espressioni in modulo arbitrario? \\
+	Spesso in teoria dei numeri accade che i problemi si prestino a risolversi prima per i numeri primi (o per le potenze di numeri primi), e poi siano facilmente generalizzabili "mettendo insieme" i risultati e ottenendo numeri composti. Detta così questa strategia ci dice poco, il prossimo teorema però, ne è un esempio lampante:
+	\begin{theorem}[Teorema Cinese del Resto/Chinese Remainder Theorem/CRT/TCR]
+		Siano, $a,b,n,p,q\in\NN$ e siano $pq=n$ con $p$, $q$ coprimi. Si vede facilmente allora come la congruenza $a \equiv b \pmod{n}$ sia equivalente al seguente sistema di congruenze:
+		\begin{equation}\notag
+			\begin{cases}
+				&a \equiv b \pmod{p} \\
+				&a \equiv b \pmod{q}
+			\end{cases}
+		\end{equation}
+		cioè, la congruenza $a \equiv b \pmod{n}$ è vera se e solo se è sono soddisfatte contemporaneamente tutte le congruenze del sistema sopra.
+	\end{theorem}
+	Questo significa che in un modo o nell'altro, possiamo sempre ricondurci al caso $n$ primo, o al $n$ limite potenza di un primo.
+	Generalizziamo ulteriormente alcuni risultati visti sopra:
+	\begin{lemma}[Inverso$\mod n$]
+		Se $n\in\NN$ è un generico numero naturale, e $a\le n\in\NN$, allora esiste sempre ed è unico un numero $a^{-1}\le n\in\NN$ tale che 
+		$$a\cdot a^{-1} \equiv 1 \pmod{n}$$
+		solo se $a$ è coprimo con $n$. 
+	\end{lemma}
+	Per il prossimo teorema vale l'avvertimento dato sopra, se possibile ancora più rimarcato per la sua difficoltà e relativa inutilità.
+	\begin{theorem}[Eulero-Fermat]
+		Sia $n\in\NN$, e sia $\varphi(n)$ la funzione che denota il numero di interi minori o uguali a $n$ e coprimi con $n$. Per ogni $a\in\NN$ coprimo con $n$ vale la seguente relazione:
+		$$a^{\varphi(n)}\equiv 1 \pmod{n}$$
+	\end{theorem}
+	
+	\newpage
+	\section{Geometria}
+	\begin{quote}
+		\emph{La geometria non è un reato}
+	\end{quote}
+	Renato Zero, il triangolo.
+	\subsection{Fatti di angoli noti}
+	Segue uno spam di fatti di geometria presumibilmente noti:
+	\begin{fact}
+		Due angoli opposti al vertice sono congruenti.
+	\end{fact}
+	\begin{fact}
+		Due angoli adiacenti sono supplementari (la loro somma è sempre $180 \degree$).
+	\end{fact}
+	\begin{fact}
+		La somma degli angoli interni di un triangolo sul piano è $180 \degree$.
+	\end{fact}
+	\begin{fact}
+		La somma degli angoli interni di un poligono a $n$ lati è sempre uguale a $180(n-2)$ gradi.
+	\end{fact}
+	\begin{fact}
+		La somma degli angoli esterni di un poligono è sempre uguale a $180 \degree$.
+	\end{fact}
+	\begin{fact}
+		Presa una retta $r$ e un punto $P$ esiste sempre ed è unica una retta passante per $P$ e parallela a $r$.
+	\end{fact}
+	\begin{fact}
+		Presa una retta $r$ e un punto $P$ esiste sempre ed è unica una retta passante per $P$ e perpendicolare a $r$.
+	\end{fact}
+	\begin{fact}
+		Se due angoli di un triangolo sono uguali allora anche i lati a loro opposti lo sono.
+	\end{fact}
+	\begin{fact}
+		L'angolo esterno in un triangolo è uguale alla somma dei due angoli a lui non adiacenti.
+	\end{fact}
+	\begin{fact}
+		Prese due rette parallele tagliate da una trasversale come in figura, gli angoli colorati dello stesso colore in figura sono uguali:
+		\begin{center}
+			\begin{asy}
+				import graph; size(8cm); 
+				real labelscalefactor = 0.5; 
+				pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); 
+				pen dotstyle = black; 
+				real xmin = -17.86, xmax = 24.46, ymin = -11.56, ymax = 13.04;  
+				pen qqwuqq = rgb(0,0.39215686274509803,0); pen fuqqzz = rgb(0.9568627450980393,0,0.6); 
+				draw(arc((-1.4,-6),0.6,61.92751306414704,180)--(-1.4,-6)--cycle, linewidth(1) + qqwuqq); 
+				draw(arc((3.4,3),0.6,-118.07248693585296,0)--(3.4,3)--cycle, linewidth(1) + qqwuqq); 
+				draw(arc((3.4,3),0.6,61.92751306414704,180)--(3.4,3)--cycle, linewidth(1) + qqwuqq); 
+				draw(arc((-1.4,-6),0.6,-118.07248693585296,0)--(-1.4,-6)--cycle, linewidth(1) + qqwuqq); 
+				draw(arc((-1.4,-6),0.6,0,61.92751306414704)--(-1.4,-6)--cycle, linewidth(1) + fuqqzz); 
+				draw(arc((-1.4,-6),0.6,180,241.92751306414704)--(-1.4,-6)--cycle, linewidth(1) + fuqqzz); 
+				draw(arc((3.4,3),0.6,180,241.92751306414704)--(3.4,3)--cycle, linewidth(1) + fuqqzz); 
+				draw(arc((3.4,3),0.6,0,61.927513064147035)--(3.4,3)--cycle, linewidth(1) + fuqqzz); 
+				draw((-8,3)--(10,3), linewidth(1)); 
+				draw((-8,-6)--(10,-6), linewidth(1)); 
+				draw((5,6)--(-3,-9), linewidth(1));
+				clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+			\end{asy}
+		\end{center}
+		Inoltre questa cosa si può invertire (se due angoli non opposti al vertice tra quelli sono uguali, allora le rette sono parallele).
+	\end{fact}
+	\subsection{Circonferenze e "Angle Chasing"}
+	Prendiamo una circonferenza e due punti $A$ e $B$ su di essa
+	
+	\begin{center}
+		\begin{asy}
+		import graph; size(8cm); 
+		real labelscalefactor = 0.5; /* changes label-to-point distance */
+		pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+		pen dotstyle = black; /* point style */ 
+		real xmin = -19.12, xmax = 23.2, ymin = -12.1, ymax = 12.5;  /* image dimensions */
+		
+		/* draw figures */
+		draw(circle((-0.74,1.42), 7.650908442792921), linewidth(1)); 
+		draw((-8.371837095064636,0.8801272794488032)--(-2.778440505133518,-5.954358297983019), linewidth(1)); 
+		draw((-8.371837095064636,0.8801272794488032)--(4.68,-3.98), linewidth(1)); 
+		draw((4.490154201729871,7.004074410869484)--(-2.778440505133518,-5.954358297983019), linewidth(1)); 
+		draw((4.490154201729871,7.004074410869484)--(4.68,-3.98), linewidth(1)); 
+		draw((-0.74,1.42)--(-2.778440505133518,-5.954358297983019), linewidth(1) + linetype("4 4")); 
+		draw((-0.74,1.42)--(4.68,-3.98), linewidth(1) + linetype("4 4")); 
+		/* dots and labels */
+		dot((-0.74,1.42),dotstyle); 
+		label("$O$", (-0.66,1.62), NE * labelscalefactor); 
+		dot((4.68,-3.98),dotstyle); 
+		label("$B$", (4.76,-4.78), NE * labelscalefactor); 
+		dot((-2.778440505133518,-5.954358297983019),dotstyle); 
+		label("$A$", (-3.18,-6.84), NE * labelscalefactor); 
+		dot((4.490154201729871,7.004074410869484),dotstyle); 
+		label("$P$", (4.58,7.2), NE * labelscalefactor); 
+		dot((-8.371837095064636,0.8801272794488032),dotstyle); 
+		label("$P'$", (-8.3,1.08), NE * labelscalefactor); 
+		clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+		\end{asy}
+	\end{center}
+	
+	Questi due punti dividono la circonferenza in due archi.
+	
+	\begin{definition}
+		Presi due punti $P$ e $P'$ su uno dei due archi prima definiti, diciamo che gli angoli $\angle BPA$ e $\angle BP'A$ sono angoli \textit{alla circonferenza} che \textit{insistono} sullo stesso arco (l'arco $AB$ per la precisione). Inoltre si dimostra che due angoli alla circonferenza che insistono sullo stesso arco sono sempre uguali, cioè $\angle BPA = \angle BP'A$ per ogni scelta di $P$ e $P'$ su uno stesso arco.
+	\end{definition}
+	
+	\begin{remark}
+		Il fatto enunciato sopra funziona anche se il punto $P$ coincide con uno dei due punti $A$ oppure $B$. Se infatti $P \equiv A$ ($P$ coincide con $A$) l'angolo che insiste sull'arco $AB$ sarà quello avente come lati la retta $AB$ e la retta passante per $A$ e tangente alla circonferenza.
+	\end{remark}
+	
+	Un'altra importante proprietà degli angoli che insistono su un arco $AB$ è che, chiamato $O$ il centro della circonferenza abbiamo:
+	
+	\begin{definition}
+		Diciamo che l'angolo \textit{al centro} $\angle AOB$ convesso \textit{insiste} sull'arco minore delineato da $AB$. Si dimostra che preso uno stesso arco, l'angolo al centro che insiste su di esso è sempre il doppio dell'angolo alla circonferenza che insiste su di esso, cioè $\angle BAO = 2 \times \angle BPA$.
+	\end{definition}
+	
+	\begin{definition}
+		Diciamo che un quadrilatero $ABCD$ è ciclico, e scriviamo $ABCD\,cyc$ quando esiste una circonferenza che passa per tutti i suoi quattro vertici, come in figura.
+		\begin{center}
+			\begin{asy}
+			import graph; size(10cm); 
+			real labelscalefactor = 0.5; /* changes label-to-point distance */
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+			pen dotstyle = black; /* point style */ 
+			real xmin = -19.12, xmax = 23.2, ymin = -12.1, ymax = 12.5;  /* image dimensions */
+			
+			/* draw figures */
+			draw(circle((-1.5456579648375055,2.9893127330847094), 5.760945731745218), linewidth(1.0) + dotted); 
+			draw((-4.28,8.06)--(-6.76,0.54), linewidth(1.0)); 
+			draw((-6.76,0.54)--(-0.64,-2.7), linewidth(1.0)); 
+			draw((-0.64,-2.7)--(4.078560165264434,1.7416484556662646), linewidth(1.0)); 
+			draw((4.078560165264434,1.7416484556662646)--(-4.28,8.06), linewidth(1.0));
+			draw((-4.28,8.06)--(-0.64,-2.7), linewidth(1.0) + linetype("4 4"));
+			draw((-6.76,0.54)--(4.078560165264434,1.7416484556662646), linewidth(1.0) + linetype("4 4")); 
+			/* dots and labels */
+			dot((-4.28,8.06),dotstyle); 
+			label("$A$", (-4.7,8.26), NE * labelscalefactor); 
+			dot((-6.76,0.54),dotstyle); 
+			label("$B$", (-6.98,0.74), W * labelscalefactor); 
+			dot((-0.64,-2.7),dotstyle); 
+			label("$C$", (-0.56,-3.5), NE * labelscalefactor); 
+			dot((4.078560165264434,1.7416484556662646),dotstyle); 
+			label("$D$", (4.16,1.94), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+			/* end of picture */
+			\end{asy}
+		\end{center}
+	\end{definition}
+	
+	\begin{remark}
+		Per quanto detto prima sugli angoli al centro e alla circonferenza, le seguenti informazioni e l'informazione $ABCD\,cyc$ sono tutte equivalenti:
+		\begin{itemize}
+			\item $\angle CAB = \angle CDB$ 
+			\item $\angle BCA = \angle BDA$ 
+			\item $\angle ABD = \angle ACD$ 
+			\item $\angle DAC = \angle DBC$ 
+			\item $\angle DAB + \angle BCD = 180 \degree$ 
+			\item $\angle ABC + \angle CDA = 180 \degree$ 
+		\end{itemize}
+	\end{remark}
+	
+	Sapendo tutto cio che è stato illustrato in questa sezione e in quella precedente è possibile fare il cosiddetto "Angle Chasing" ("Andar per Angoli"/"Inseguire gli Angoli"), cioè calcolare il valore di alcuni angoli del problema in funzione di altri angoli per dimostrare proprietà utili alla risoluzione del problema. Questa tecnica unita all'analogo "Length Chasing" permette di risolvere la stragrande maggioranza dei problemi di geometria, dagli archimede più semplici ai Cese5/6 fino ai primi problemi delle shortlist delle IMO. Dunque è essenziale dominare questa strategia risolutiva per diventare bravi in Geometria (Olimpica).
+	
+	\subsection{Punti Notevoli e configurazioni}
+	Il grosso della teoria di geometria oltre un certo punto consiste in configurazioni geometriche da "imparare a memoria". Qui vogliamo riassumere le prime e più semplici che si imparano risolvendo problemi di geometria.\\
+	Sia per quanto riguarda il circocentro che per l'incentro e l'ortocentro, trovare le espressioni di tutti gli angoli nella figura in funzione di $\angle CAB$, $\angle ABC$ e $\angle BCA$ è molto semplice, e per questo incoraggiamo caldamente i lettori a cimentarsi nell'impresa. \\
+	Cogliamo anche l'occasione per introdurre un po' di "notazione standard" per i triangoli:
+	\begin{itemize}
+		\item Di solito il punto in alto è $A$, e si procede a dare i nomi agli altri due in senso antiorario.
+		\item Di solito gli angoli del triangolo si indicano con le seguenti lettere greche: \\
+		$\angle CAB=\alpha$, $\angle ABC = \beta$, $\angle BCA = \gamma$
+		\item Di solito i lati del triangolo sono chiamati: $BC=a$, $AC=b$, $AB=c$.
+		\item Di solito il raggio della circonferenza circoscritta è indicato come $R$, quello della circonferenza inscritta invece come $r$.
+	\end{itemize}
+	\subsubsection{Baricentro}
+	
+	\begin{center}
+		\begin{asy}
+			import graph; size(9cm); 
+			real labelscalefactor = 0.5;
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps);
+			pen dotstyle = black; /* point style */ 
+			real xmin = -9.308093138169987, xmax = 16.002626000299237, ymin = -9.089147466033143, ymax = 6.140798147372383;  /* image dimensions */
+			
+			/* draw figures */
+			draw((-3,5)--(-5,-3), linewidth(1)); 
+			draw((-5,-3)--(5,-3), linewidth(1)); 
+			draw((5,-3)--(-3,5), linewidth(1)); 
+			draw((-3,5)--(0,-3), linewidth(1)); 
+			draw((-5,-3)--(1,1), linewidth(1)); 
+			draw((5,-3)--(-4,1), linewidth(1)); 
+			draw((-5,-3)--(0,-3), linewidth(1)); 
+			draw((-2.572523550540026,-2.9129717393519696)--(-2.572523550540026,-3.0870282606480326), linewidth(1)); 
+			draw((-2.5,-2.9129717393519696)--(-2.5,-3.0870282606480326), linewidth(1)); 
+			draw((-2.4274764494599728,-2.9129717393519696)--(-2.4274764494599728,-3.0870282606480326), linewidth(1)); 
+			draw((-4,1)--(-5,-3), linewidth(1)); 
+			draw((-4.415570185631619,-1.0211074535920956)--(-4.584429814368381,-0.9788925464079057), linewidth(1)); 
+			draw((-4,1)--(-3,5), linewidth(1)); 
+			draw((-3.584429814368381,3.021107453592095)--(-3.415570185631619,2.9788925464079044), linewidth(1)); 
+			draw((-3,5)--(1,1), linewidth(1)); 
+			draw((-0.9641026739321941,3.0871792204503827)--(-1.0871792204503823,2.9641026739321954), linewidth(1)); 
+			draw((-0.9128207795496173,3.035897326067804)--(-1.0358973260678055,2.9128207795496173), linewidth(1)); 
+			draw((1,1)--(5,-3), linewidth(1)); 
+			draw((3.035897326067805,-0.9128207795496184)--(2.912820779549617,-1.0358973260678046), linewidth(1)); 
+			draw((3.087179220450382,-0.9641026739321966)--(2.9641026739321936,-1.087179220450383), linewidth(1)); 
+			draw((0,-3)--(5,-3), linewidth(1)); 
+			draw((2.4274764494599728,-2.9129717393519696)--(2.4274764494599728,-3.0870282606480326), linewidth(1)); 
+			draw((2.5,-2.9129717393519696)--(2.5,-3.0870282606480326), linewidth(1)); 
+			draw((2.572523550540026,-2.9129717393519696)--(2.572523550540026,-3.0870282606480326), linewidth(1)); 
+			/* dots and labels */
+			dot((-3,5),dotstyle); 
+			label("$A$", (-2.9405254007556656,5.13997314992002), NE * labelscalefactor); 
+			dot((-5,-3),dotstyle); 
+			label("$B$", (-5.602175395660395,-3.0521221195908804), NE * labelscalefactor); 
+			dot((5,-3),dotstyle); 
+			label("$C$", (5.051569868755247,-2.8521221195908804), NE * labelscalefactor); 
+			dot((0,-3),linewidth(4pt) + dotstyle); 
+			label("$M$", (0.0619495916014285,-2.8811315398068906), NE * labelscalefactor); 
+			dot((1,1),linewidth(4pt) + dotstyle); 
+			label("$N$", (1.0627745890537932,1.122168450002562), NE * labelscalefactor); 
+			dot((-4,1),linewidth(4pt) + dotstyle); 
+			label("$L$", (-3.9413503982080305,1.122168450002562), NE * labelscalefactor); 
+			dot((-1,-0.33333333333333326),linewidth(4pt) + dotstyle); 
+			label("$G$", (-1.0388754058509362,-0.11226487993392226), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+			/* end of picture */
+		\end{asy}
+	\end{center}
+	
+	\begin{definition}
+		Chiamiamo $A$-Mediana di un triangolo la retta passante per il vertice $A$ e per il punto medio del lato opposto $BC$. Analogamente definiamo la $B$-Mediana e la $C$-Mediana
+	\end{definition}
+	In figura abbiamo chiamato $M$, $N$, $L$ i punti medi dei lati $BC$, $AC$, $AB$.
+	\begin{definition}
+		Chiamiamo Baricentro di un triangolo l'intersezione delle sue mediane. Si può dimostrare che il baricentro esiste sempre ed è unico.
+	\end{definition}
+	Il baricentro di un triangolo ha numerose proprietà interessanti, ne elenchiamo alcune:
+	\begin{lemma}[Centro di massa]
+		Se ipotizziamo di costruire un triangolo di massa uniforme come quello in figura, di vertici $A$, $B$ e $C$, il centro di massa di questo oggetto risulta essere proprio il baricentro del triangolo $ABC$.
+	\end{lemma}
+	\begin{lemma}[Teorema del Baricentro]
+		Il baricentro taglia le mediane in segmenti in rapporto $2:1$, ovvero usando la notazione della figura abbiamo $AG=2GM$, $CG=2GL$ e $BG=2GN$.
+	\end{lemma}
+	\begin{lemma}[Teorema dei punti medi]
+		Usando la notazione della figura abbiamo $LN || BC$, $MN || AB$ e $ML || AC$. Questo segue facilmente da \ref{talete}.
+	\end{lemma}
+	\subsubsection{Circocentro}
+	\begin{center}
+		\begin{asy}
+			import graph; size(9cm); 
+			real labelscalefactor = 1; /* changes label-to-point distance */
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+			pen dotstyle = black; /* point style */ 
+			real xmin = -9.308093138169987, xmax = 16.002626000299237, ymin = -9.089147466033143, ymax = 6.140798147372383;  /* image dimensions */
+			
+			
+			draw((-3.7014955286289815,0.9253738821572454)--(-3.626869410786227,1.2238783535282638)--(-3.9253738821572455,1.2985044713710183)--(-4,1)--cycle, linewidth(1)); 
+			draw((0.7824293483799203,0.7824293483799207)--(1,0.5648586967598413)--(1.2175706516200788,0.7824293483799207)--(1,1)--cycle, linewidth(1)); 
+			draw((0,-2.692308633704532)--(-0.3076913662954684,-2.692308633704532)--(-0.3076913662954684,-3)--(0,-3)--cycle, linewidth(1)); 
+
+			draw(circle((0,0), 5.8309518948453), linewidth(1)); 
+			draw((-3,5)--(-5,-3), linewidth(1)); 
+			draw((-5,-3)--(5,-3), linewidth(1)); 
+			draw((5,-3)--(-3,5), linewidth(1)); 
+			draw((-5,-3)--(0,-3), linewidth(1)); 
+			draw((-2.572523550540026,-2.9129717393519696)--(-2.572523550540026,-3.0870282606480326), linewidth(1)); 
+			draw((-2.5,-2.9129717393519696)--(-2.5,-3.0870282606480326), linewidth(1)); 
+			draw((-2.4274764494599728,-2.9129717393519696)--(-2.4274764494599728,-3.0870282606480326), linewidth(1)); 
+			draw((-4,1)--(-5,-3), linewidth(1)); 
+			draw((-4.415570185631619,-1.0211074535920956)--(-4.584429814368381,-0.9788925464079057), linewidth(1)); 
+			draw((-4,1)--(-3,5), linewidth(1)); 
+			draw((-3.584429814368381,3.021107453592095)--(-3.415570185631619,2.9788925464079044), linewidth(1)); 
+			draw((-3,5)--(1,1), linewidth(1)); 
+			draw((-0.9641026739321941,3.0871792204503827)--(-1.0871792204503823,2.9641026739321954), linewidth(1)); 
+			draw((-0.9128207795496173,3.035897326067804)--(-1.0358973260678055,2.9128207795496173), linewidth(1)); 
+			draw((1,1)--(5,-3), linewidth(1)); 
+			draw((3.035897326067805,-0.9128207795496184)--(2.912820779549617,-1.0358973260678046), linewidth(1)); 
+			draw((3.087179220450382,-0.9641026739321966)--(2.9641026739321936,-1.087179220450383), linewidth(1)); 
+			draw((0,-3)--(5,-3), linewidth(1)); 
+			draw((2.4274764494599728,-2.9129717393519696)--(2.4274764494599728,-3.0870282606480326), linewidth(1)); 
+			draw((2.5,-2.9129717393519696)--(2.5,-3.0870282606480326), linewidth(1)); 
+			draw((2.572523550540026,-2.9129717393519696)--(2.572523550540026,-3.0870282606480326), linewidth(1)); 
+			draw((-4,1)--(0,0), linewidth(1)); 
+			draw((0,0)--(0,-3), linewidth(1)); 
+			draw((0,0)--(1,1), linewidth(1)); 
+			draw((0,0)--(-5,-3), linewidth(1)); 
+			draw((-2.5932826473034423,-1.5559695883820668)--(-2.567163506058478,-1.3880608232358698), linewidth(1)); 
+			draw((-2.5932826473034423,-1.5559695883820668)--(-2.43283649394152,-1.6119391767641331), linewidth(1)); 
+			draw((-2.4067173526965564,-1.4440304116179343)--(-2.3805982114515922,-1.2761216464717364), linewidth(1)); 
+			draw((-2.4067173526965564,-1.4440304116179343)--(-2.2462711993346343,-1.5), linewidth(1)); 
+			draw((-2.7798479419103286,-1.6679087651461977)--(-2.7537288006653644,-1.5), linewidth(1)); 
+			draw((-2.7798479419103286,-1.6679087651461977)--(-2.6194017885484064,-1.723878353528264), linewidth(1)); 
+			draw((0,0)--(-3,5), linewidth(1)); 
+			draw((-1.555969588382066,2.593282647303443)--(-1.3880608232358687,2.567163506058479), linewidth(1)); 
+			draw((-1.555969588382066,2.593282647303443)--(-1.6119391767641325,2.432836493941521), linewidth(1)); 
+			draw((-1.4440304116179332,2.406717352696557)--(-1.2761216464717358,2.3805982114515927), linewidth(1)); 
+			draw((-1.4440304116179332,2.406717352696557)--(-1.5,2.2462711993346347), linewidth(1)); 
+			draw((-1.667908765146197,2.7798479419103295)--(-1.5,2.7537288006653653), linewidth(1)); 
+			draw((-1.667908765146197,2.7798479419103295)--(-1.7238783535282634,2.6194017885484073), linewidth(1)); 
+			draw((0,0)--(5,-3), linewidth(1)); 
+			draw((2.5932826473034423,-1.5559695883820668)--(2.4328364939415192,-1.6119391767641331), linewidth(1)); 
+			draw((2.5932826473034423,-1.5559695883820668)--(2.567163506058478,-1.3880608232358698), linewidth(1)); 
+			draw((2.4067173526965564,-1.4440304116179343)--(2.2462711993346334,-1.5), linewidth(1)); 
+			draw((2.4067173526965564,-1.4440304116179343)--(2.3805982114515922,-1.276121646471737), linewidth(1)); 
+			draw((2.7798479419103295,-1.6679087651461977)--(2.6194017885484064,-1.723878353528264), linewidth(1)); 
+			draw((2.7798479419103295,-1.6679087651461977)--(2.7537288006653653,-1.5), linewidth(1)); 
+			/* dots and labels */
+			dot((0,0),linewidth(4pt) + dotstyle); 
+			label("$O$", (-0.125078669046603212,0.19386700309022512), NE * labelscalefactor); 
+			dot((-3,5),dotstyle); 
+			label("$A$", (-3.2306196029157714,5.154477860028025), NE * labelscalefactor); 
+			dot((-5,-3),dotstyle); 
+			label("$B$", (-5.433802568576538,-3.5406833509949487), NE * labelscalefactor); 
+			dot((5,-3),dotstyle); 
+			label("$C$", (5.153102839511284,-3.0261786408869433), NE * labelscalefactor); 
+			dot((0,-3),linewidth(4pt) + dotstyle); 
+			label("$M$", (0.0619495916014285,-2.8811315398068906), NE * labelscalefactor); 
+			dot((1,1),linewidth(4pt) + dotstyle); 
+			label("$N$", (1.0627745890537932,1.122168450002562), NE * labelscalefactor); 
+			dot((-4,1),linewidth(4pt) + dotstyle); 
+			label("$L$", (-4.460454020584147,1.0496448994625356), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+		\end{asy}
+	\end{center}
+	\begin{definition}
+		Chiamiamo \emph{asse} di un segmento la retta perpendicolare a questo e passante per il suo punto medio. Si può dimostrare che l'asse di un segmento è formato da tutti e soli i punti equidistanti dai suoi estremi (nel gergo si dice che l'asse è il luogo dei punti equidistanti dai due punti che sono estremi del segmento).
+	\end{definition}
+	\begin{definition}
+		Diciamo \emph{circocentro} di un triangolo $ABC$ il centro della circonferenza passante per $A$, $B$, $C$.
+	\end{definition}
+	\begin{corollary}
+		Gli assi dei lati $AB$, $BC$, $CA$ di un triangolo $ABC$ concorrono in un punto che coincide con il circocentro del triangolo, che quindi esiste sempre ed è unico. 
+	\end{corollary}
+
+	\subsubsection{Incentro}
+	\begin{definition}
+		
+		
+		Chiamiamo $A$-bisettrice di un triangolo $ABC$, la retta $r$ passante per il segmento $BC$ tale che gli angoli aventi lati $r$-$AB$ e $r$-$AC$ siano uguali.
+	\end{definition}
+	\begin{definition}
+		Chiamiamo \emph{incentro} di un triangolo $ABC$, di solito denotato con $I$, il centro della circonferenza tangente a tutti e tre i lati del triangolo. 
+	\end{definition}
+	Su questa configurazione c'è davvero tanto da dire, noi ci limiteremo a esporre alcuni fatti essenziali:
+	\begin{lemma}
+		Preso un angolo generico e la sua retta bisettrice $r$, i punti appartenenti ad $r$ sono tutti e soli i punti equidistanti dai due lati dell'angolo (nel gergo si dice che la retta $r$ è il luogo dei punti equidistanti dalle due rette che sono i lati del triangolo).
+	\end{lemma}
+	Non è difficile vedere come il prossimo lemma sia una diretta conseguenza del \mbox{precedente}:
+	\begin{corollary}
+		Dato un triangolo $ABC$, le tre bisettrici concorrono sempre in un punto, e questo punto coincide con l'incentro del triangolo.
+	\end{corollary}
+	Infine ecco un importante teorema sulle bisettrici:
+	\begin{theorem}[Teorema della bisettrice]
+		Se in un triangolo $ABC$ tracciamo la bisettrice passante per $A$, e denotiamo con $D$ il punto in cui questa interseca il segmento $BC$, allora vale sempre la seguente relazione:
+		$$\frac{AB}{AC}=\frac{BD}{DC}$$
+		Questo ovviamente funziona anche con la $B$-bisettrice e con la $C$-bisettrice. Inoltre notiamo che il risultato vale anche se la retta passa per $A$ e biseca l'angolo esterno del triangolo con vertice in $A$ (lo stesso si può dire di $B$ e $C$).
+	\end{theorem}
+	\subsubsection{Ortocentro}
+	
+	\subsection{Lunghezze e Aree}
+	Segue uno spam di fatti di teoria su lunghezze e aree:
+	\begin{theorem}[Pitagora]
+		Dato un triangolo rettangolo di lati $a$, $b$ e $c$ dove $c$ è l'ipotenusa, vale la seguente relazione:
+		$$a^2+b^2=c^2$$
+	\end{theorem}
+	\begin{theorem}[Euclide]
+		Dato un triangolo rettangolo di lati $a$, $b$ e $c$ dove $c$ è l'ipotenusa, se $h$ è l'altezza relativa all'ipotenusa e $a'$ e $b'$ sono rispettivamente la proiezione di $a$ su $c$ e la proiezione di $b$ su $c$, sussistono le seguenti relazioni:
+		$$h^2=a'b'$$
+		$$a^2=a'c$$
+		$$b^2=b'c$$
+	\end{theorem}
+	\begin{theorem}[Erone]
+		Dato un triangolo qualsiasi di lati $a$, $b$ e $c$, se $p$ è il suo semiperimetro (cioè, $p=\frac{a+b+c}{2}$) e $A$ la sua area, sussiste la seguente relazione:
+		$$A=\sqrt{p(p-a)(p-b)(p-c)}$$
+	\end{theorem}
+	\begin{theorem}[Circumraggio]
+		Dato un triangolo qualsiasi di lati $a$, $b$ e $c$, se $R$ è il raggio della sua circonferenza circoscritta (la circonferenza passante per tutti i suoi tre vertici) e $A$ la sua area, sussiste sempre la seguente relazione:
+		$$R=\frac{abc}{4A}$$
+	\end{theorem}
+	\begin{theorem}[Inraggio]
+		Dato un triangolo qualsiasi di semiperimetro $p$ e area $A$, se $r$ è il raggio della sua circonferenza inscritta (la circonferenza tangente a tutti i suoi lati), sussiste la seguente relazione:
+		$$r=\frac{A}{p}$$
+	\end{theorem}
+	\begin{theorem}[Viviani]
+		Preso un triangolo equilatero $ABC$, e preso un punto $P$ interno ad esso, la somma delle distanze tra il punto $P$ e i lati è uguale all'altezza del triangolo.
+	\end{theorem}
+	\begin{theorem}[Triangolo da $45$-$45$]
+		In un triangolo rettangolo i cui angoli misurano rispettivamente $90$, $45$ e $45$ gradi, il rapporto tra l'ipotenusa e uno dei due cateti (ipotenusa/cateto) vale sempre $\sqrt{2}$.
+	\end{theorem}
+	\begin{theorem}[Triangolo da $30$-$60$]
+		In un triangolo i cui angoli misurano rispettivamente $30$, $60$ e $90$ gradi, sussistono le seguenti relazioni:
+		$$\frac{\text{Ipotenusa}}{\text{Cateto Minore}}=2$$
+		$$\frac{\text{Ipotenusa}}{\text{Cateto Maggiore}}=\frac{2}{\sqrt{3}}$$
+		$$\frac{\text{Cateto Maggiore}}{\text{Cateto Minore}}=\sqrt{3}$$
+	\end{theorem}
+	\begin{definition}[Similitudine]
+		Diciamo simili e scriviamo $ABC \sim A'B'C'$ due triangoli $ABC$ e $A'B'C'$ che hanno tutti gli angoli uguali a due a due.
+	\end{definition}
+	\begin{theorem}[Criteri di Similitudine]
+		I seguenti tre fatti sono equivalenti tra loro, e sono equivalenti a $ABC \sim A'B'C'$:
+		\begin{itemize}
+			\item Gli angoli di $ABC$ e $A'B'C'$ sono uguali a due a due.
+			\item I triangoli hanno due lati in proporzione (il rapporto tra i due lati in questione di $ABC$ è uguale a quello dei due lati di $A'B'C'$) e l'angolo compreso uguale tra loro.
+			\item I triangoli hanno tutti e tre i lati in proporzione (cioè se $a$, $b$, $c$ sono i lati di $ABC$ e $a'$, $b'$, $c'$ i lati di $A'B'C'$, abbiamo che esiste un certo numero reale $k$ tale che $a=ka'$, $b=kb'$ e $c=kc'$.
+		\end{itemize}
+	\end{theorem}
+	\begin{theorem}[Talete]
+		\label{talete}
+		Nella figura sotto se le due rette $AB$ ed $EF$ sono parallele, sussiste la seguente doppia implicazione logica:
+		$CD$ è parallelo ad $AB$ e ad $EF$ se e solo se $\frac{GK}{KH}=\frac{IL}{LJ}$.
+		\begin{center}
+			\begin{asy}
+			/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+			import graph; size(8cm); 
+			real labelscalefactor = 0.5; /* changes label-to-point distance */
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+			pen dotstyle = black; /* point style */ 
+			real xmin = -16.152710153148043, xmax = 22.25455019852526, ymin = -10.836351673284168, ymax = 11.489229722064659;  /* image dimensions */
+			
+			/* draw figures */
+			draw((-8,8)--(14,8), linewidth(1)); 
+			draw((-11,3)--(16,3), linewidth(1)); 
+			draw((-12,-8)--(18,-8), linewidth(1)); 
+			draw((-2.3580419739081058,8)--(-6,-8), linewidth(1)); 
+			draw((4.866007941009651,8)--(16.827437322745336,-8.022965399886552), linewidth(1)); 
+			/* dots and labels */
+			dot((-8,8),dotstyle); 
+			label("$A$", (-7.930361883153712,8.18576971072036), NE * labelscalefactor); 
+			dot((14,8),dotstyle); 
+			label("$B$", (14.068503686897348,8.18576971072036), NE * labelscalefactor); 
+			dot((-11,3),dotstyle); 
+			label("$C$", (-10.925256948383435,3.1761270561542823), NE * labelscalefactor); 
+			dot((16,3),dotstyle); 
+			label("$D$", (16.065100397050497,3.1761270561542823), NE * labelscalefactor); 
+			dot((-12,-8),dotstyle); 
+			label("$E$", (-11.92355530346001,-7.823305728871237), NE * labelscalefactor); 
+			dot((18,-8),dotstyle); 
+			label("$F$", (18.079847986386856,-7.823305728871237), NE * labelscalefactor); 
+			dot((-2.3580419739081058,8),dotstyle); 
+			label("$G$", (-2.285438457175264,8.18576971072036), NE * labelscalefactor); 
+			dot((-6,-8),dotstyle); 
+			label("$H$", (-5.933765173000563,-7.823305728871237), NE * labelscalefactor); 
+			dot((4.866007941009651,8),dotstyle); 
+			label("$I$", (4.9386114577424935,8.18576971072036), NE * labelscalefactor); 
+			dot((16.827437322745336,-8.022965399886552),dotstyle); 
+			label("$J$", (16.900040839478176,-7.841456608054448), NE * labelscalefactor); 
+			dot((-3.4961538570618234,3),linewidth(4pt) + dotstyle); 
+			label("$K$", (-3.4289438457175216,3.1398252977878616), NE * labelscalefactor); 
+			dot((8.598597097639916,3),linewidth(4pt) + dotstyle); 
+			label("$L$", (8.677692569483845,3.1398252977878616), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+			/* end of picture */
+			\end{asy}
+		\end{center}
+	\end{theorem}
+	\begin{theorem}[Tolomeo]
+		Se $ABCD$ è un quadrilatero non intrecciato e $AB$, $BC$, $CD$ e $DA$ sono i suoi lati, allora $ABCD \, cyc$ se e solo se la seguente relazione sussiste tra i lati e le diagonali $AC$ e $BD$:
+		$$AB\cdot CD+ BC \cdot DA = AC \cdot BD$$ 
+	\end{theorem}
+	\newpage
+	\section{Algebra}
+	
+	
+	\subsection{Polinomi}
+	Che cos'è un polinomio? Definiamo prima la nozione di monomio:
+	\begin{definition}
+		Un monomio è un'espressione letterale, come ad esempio, $4x^2yz$, formata dal prodotto di una o più variabili distinte, ciascuna elevata ad una potenza naturale (\textbf{NB} naturale significa possibilmente $0$), moltiplicate per un coefficiente numerico.
+	\end{definition}
+	Ok, una volta capito questo possiamo definire la nozione di polinomio in una variabile. In questa sezione ci occuperemo solo di quest'ultimo tipo di polinomi.
+	\begin{definition}
+		\label{polinomio}
+		Diciamo $P$ polinomio nella variabile $x$, e scriviamo $P(x)$, una somma di uno o più monomi nella cui parte letterale compare solo la variabile $x$ elevata ad una potenza naturale. Un esempio di ciò è:
+		$$P(x)=3x^4+2x+1$$
+		In generale, un polinomio in una variabile generico si scrive come:
+		$$P(X)=a_nX^n  + a_{n-1}X^{n-1} +\cdots + a_1 X+ a_0$$
+		dove gli $a_i$ sono coefficienti, e $X$ è la variabile.
+		
+	\end{definition}
+	\begin{definition}
+		Definiamo grado di un polinomio $P(x)$ e scriviamo $\text{deg}(P(x))$ l'esponente massimo con cui compare la $x$ nella scrittura di $P(x)$. Per esempio:
+		$$\text{deg}(3x^5+2x^2)=5$$
+		$$\text{deg}(98x^{420}+42x^5+69x^2+104)=420$$
+	\end{definition}
+	\begin{theorem}
+		Per operazioni tra polinomi $P(x)$ e $Q(x)$ di grado rispettivamente $p>0$ e $q>0$ valgono le seguenti:
+		\begin{gather}
+			\notag \text{deg}(P(x) \pm Q(x)) \le \text{max}(p,q) \\
+			\notag \text{deg}(P(x)Q(x)) = p + q
+		\end{gather}
+	\end{theorem}
+	\begin{definition}
+		Si dice che valutiamo il polinomio $P(x)$ nel numero $a$, e scriviamo $P(a)$, quando sostituiamo nell'espressione di $P(x)$ ad ogni $x$ il numero $a$ e svolgiamo le rispettive somme e prodotti. Per esempio, se $P(x)=x^3-2x-4$:
+		\begin{gather} \notag
+			P(1)=1^3-2\cdot1-4=-5 \\ \notag
+			P(2)=2^3-2\cdot2-4=0 \\ \notag
+			P(3)=3^3-2\cdot3-4=17  \notag
+		\end{gather}
+	\end{definition}
+	\begin{definition}
+		Definiamo \textit{zero} o \textit{radice} di un polinomio $P(x)$ un numero $a$ tale che $P(a)=0$. Per esempio $2$ è radice di $P(x)=x^3-2x-4$ perchè $P(2)=0$.
+	\end{definition}
+	\begin{definition}
+		Chiamiamo coefficiente direttore di un polinomio il coefficiente del monomio di grado massimo che forma il polinomio, diciamo che un polinomio è monico se il suo coefficiente direttore è $1$. Chiamiamo inoltre termine noto di un polinomio il coefficiente del termine d grado $0$ del polinomio (possibilmente il termine noto può essere $0$ se non vi è monomio di grado $0$ nella scrittura del polinomio).
+	\end{definition}
+	Enunciamo ora un importantissimo teorema che viene di solito trattato il primo anno:
+	\begin{theorem}[Divisione tra polinomi]
+		Dati due Polinomi $A(x)$ e $B(x)$ esistono sempre due polinomi $Q(x)$ e $R(x)$ tali che:
+		\begin{gather}
+			\notag A(x)=Q(x)B(x)+R(x) \\
+			\notag 0\le \text{deg}(R(x))<\text{deg}(B(x))
+		\end{gather}
+	\end{theorem}
+	\begin{definition}
+		Diciamo che $B(x)$ divide $A(x)$, e scriviamo $B(x) \mid A(x)$ se $R(x)=0$.
+	\end{definition}
+	\begin{theorem}[Ruffini]
+		se $P(x)$ è un polinomio, e $a$ un suo zero, allora $x-a$ divide sempre $P(x)$ cioè esiste un polinomio $Q(x)$ tale che:
+		$$P(x)=(x-a)Q(x)$$
+		Inoltre è vero anche il contrario, cioè se $x-a$ divide $P(x)$ allora $P(a)=0$.
+	\end{theorem}
+	Da questo teorema discendono risultati altrettanto enormi e famosi, ne elenchiamo alcuni importanti:
+	\begin{theorem}[Teorema Fondamentale dell'Algebra]
+		Un polinomio di grado $n$ ha al più $n$ radici reali (numeri reali che sono sue radici), e esattamente $n$ radici complesse (radici che sono numeri complessi).
+	\end{theorem}
+	\begin{theorem}[Principio di uguaglianza dei polinomi]
+		Due polinomi si dicono uguali quando si possono scrivere allo stesso modo tramite manipolazioni algebriche, o quando sono uguali se valutati in ogni valore. Inoltre si dimostra che due polinomi di grado $n$ sono uguali se sono uguali quando valutati in almeno $n+1$ valori.
+	\end{theorem}
+	\begin{theorem}[Fattorizzazione unica]
+		Dato un polinomio $P(x)$ di grado $n$, avente radici $\lambda_1,\lambda_2,\dots\lambda_k$ con $k\le n$ possiamo "fattorizzarlo" cioè scriverlo unicamente come prodotto di polinomi, nel seguente modo:
+		$$P(x)=a(x-\lambda_1)(x-\lambda_2)\dots(x-\lambda_k)Q(x)$$
+		Dove $a$ è il coefficiente direttore del polinomio, $Q(x)$ è un polinomio di grado $n-k$ privo di radici reali, che è $Q(x)=1$ se e solo se $k=n$.
+		Inoltre si dimostra che questa fattorizzazione è l'unica che minimizza i gradi di ciascun polinomio coinvolto nel prodotto.
+	\end{theorem}
+	Da questo teorema discendono le cosiddette formule di Vieté e quelle di Newton-Girard, che sono cruciali per risolvere i problemi di algebra delle olimpiadi di matematica:
+	
+	\begin{theorem}[Viète] 
+		Facendo riferimento alla notazione della definizione~\ref{polinomio}, e chiamando $x_1$, $x_2$, \dots, $x_n$ tutte le radici complesse del polinomio $P$ di grado $n$: 
+		$$\sum_{1\le i_1 < i_2 < \cdots < i_k\le n} x_{i_1}x_{i_2}\cdots x_{i_k}=(-1)^k\frac{a_{n-k}}{a_n}$$
+		\\ Ovvero, la somma di tutti i possibili prodotti ottenibili prendendo $k$ radici del polinomio $P(x)$ prese con le rispettive molteplicità è uguale a $-\frac{a_{n-k}}{a_n}$ se $k$ è dispari, e $\frac{a_{n-k}}{a_n}$ se $k$ è pari.
+		
+	\end{theorem}
+	\begin{theorem}[Newton-Girard] 
+		Usando la stessa notazione di sopra, se definiamo $S_a$, con $a\in\NN$, la somma delle radici elevate alla $a$ del polinomio, ovvero:
+		$$S_a=x_1^a+x_2^a+x_3^a+\dots+x_n^a$$
+		Abbiamo la seguente elegante identità:
+		$$0=a_0k+a_1S_1+a_2S_2+a_3S_3+\dots+a_kS_k$$
+		Per ogni $1\le k \le n$.
+		Questo permette più o meno agevolmente di calcolare \textit{ricorsivamente} tutte le somme $S_k$ in funzione dei coefficienti del polinomio.
+		\\
+		Inoltre possiamo generalizzare questo con le seguente formula:
+		$$0=a_0S_k+a_1S_{k+1}+a_2S_{k+2}+\dots+a_nS_{k+n}$$
+		Per ogni $k \in \ZZ$. Questo è ulteriormente generalizzabile a $k \in \RR$ o addirittura $k \in \CC$, purchè imponiamo delle ragionevoli condizioni sul segno delle radici, o accettiamo che gli $S_k$ possano essere complessi.
+	\end{theorem}
+	Infine vediamo alcuni fatti di teoria utilissimi, slegati dal resto:
+	\begin{definition}
+		Diciamo che un polinomio $P(x)$ ha come insieme di coefficienti $A$ e scriviamo $P \in A[x]$ se i coefficienti dei termini che lo formano appartengono tutti ad $A$.
+	\end{definition}
+	\begin{theorem}
+		se $P \in \ZZ[x]$ allora per ogni $a,b\in\ZZ$ abbiamo:
+		$$a-b \mid P(a)-P(b)$$
+	\end{theorem}
+	\begin{theorem}[RRT/Teorema delle Radici Razionali]
+		Preso un polinomio $A \in \ZZ[x]$ le sue radici che appartengono all'insieme dei numeri razionali sono della forma $\pm\frac{p}{q}$ dove $p$ è un divisore del termine noto, e $q$ un divisore del coefficiente direttore.
+	\end{theorem}
+	
+	
+	\subsection{Identità note}
+	Segue uno spam di identità che potete dare per note:
+	
+	\begin{theorem}[Binomio di Newton]
+		\label{ident:newton}
+		La segente identità è vera per ogni $a,b\,\in\RR$ e per ogni $n\in\NN$:
+		$$(a+b)^n=a^n+\binom{n}{1}a^{n-1}b+\binom{n}{2}a^{n-2}b^2+\binom{n}{3}a^{n-3}b^3\dots+\binom{n}{n-1}ab^{n-1}+b^n$$
+		In particolare si ricordano i casi specifici per $n=2$ e per $n=3$:
+		$$(a+b)^2=a^2+2ab+b^2$$
+		$$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$
+		(Se non si ricordasse il significato di quelle espressioni in parentesi, si rimanda alla Definizione~\ref{binomial})
+	\end{theorem}
+	\begin{theorem}
+		La seguente identità vale per ogni $a,b \in \RR$ e per ogni $n \in \NN$:
+		$$a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+a^{n-3}b^2+\dots+ab^{n-2}+b^{n-1})$$
+		In particolare si ricorda il caso specifico per $n=1$:
+		$$a^2-b^2=(a-b)(a+b)$$
+	\end{theorem}
+	\begin{theorem}
+		La seguente identità vale per ogni $a,b \in \RR$ e per ogni $n \in \NN$ dispari:
+		$$a^n+b^n=(a+b)(a^{n-1}-a^{n-2}b+a^{n-3}b^2-\dots-ab^{n-2}+b^{n-1})$$
+	\end{theorem}
+	\begin{theorem}[Gauss]
+		\label{sum:1}
+		La segente identità è vera per ogni $n \in \NN$:
+		$$1+2+3+\dots+n=\frac{n(n+1)}{2}$$
+	\end{theorem}
+	\begin{theorem}[Somma dei quadrati]
+		\label{sum:2}
+		Per ogni $n\in\NN$ vale la seguente identità:
+		$$1^2+2^2+3^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}$$
+	\end{theorem}
+	\begin{theorem}[Nicomaco]
+		\label{sum:3}
+		La seguente identità è vera per ogni $n \in \NN$:
+		$$1^3+2^3+3^3+\dots+n^3=(1+2+3+\dots+n)^2=\frac{n^2(n+1)^2}{4}$$
+	\end{theorem}
+	\begin{theorem}[Serie Geometrica]
+		\label{sum:g}
+		La seguente identità è vera per ogni $n \in \NN$ e per ogni $x\ne 1 \in \RR$:
+		$$1+x+x^2+x^3+x^4+\dots+x^{n-1}+x^n=\frac{x^{n+1}-1}{x-1}$$
+	\end{theorem}
+	\begin{theorem}[Formula Quadratica]
+		\label{quadFormula}
+		l'equazione nell'incognita $x$ e con parametri $a\ne0,b,c \in \RR$
+		$$ax^2+bx+c=0$$
+		detto $k$ il numero di soluzioni reali, e definito $\Delta:=b^2-4ac$, abbiamo:
+		\begin{equation}\notag
+			k=
+			\begin{cases}
+				0 & \text{se}\quad \Delta<0 \\
+				1 & \text{se}\quad \Delta=0 \\
+				2 & \text{se}\quad \Delta>0
+			\end{cases}
+		\end{equation}
+		e le soluzioni reali, se esistono, sono date dalla seguente formula:
+		$$x_{1,2}=\frac{-b\pm\sqrt{\Delta}}{2a}$$
+	\end{theorem}
+	
+	\newpage
+	
+	\subsection{Ricorsione}
+	Questa sezione tratta tecniche risolutive che non sono esclusive dell'algebra, e che anzi trovano applicazione principalmente in informatica, o nella cugina combinatoria.
+	La ricorsione è una tecnica di risoluzione dei problemi che consiste nell'identificare una versione identica del problema che stiamo cercando di risolvere all'interno dello stesso. Come per tutte le tecniche risolutive, un esempio vale più di mille parole.
+	\begin{example}
+		Supponiamo di voler trovare il valore della seguente onirica espressione
+		$$\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\dots}}}}$$
+		che prosegue \textbf{all'infinito}. Come possiamo fare? Beh, chiamiamo questo numero $x$ per comodità. Notiamo una proprietà molto interessante di $x$, e cioè che:
+		$$x=\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\dots}}}}=\sqrt{1+x}$$
+		Incredibile vero? $x$ è uguale alla radice di uno più se stesso! Cioè il problema che volevamo risolvere (trovare il valore di $x$) contiene una versione di se stesso al suo interno.\\
+		Quindi come troviamo $x$? Beh $x$ è un numero positivo molto particolare, infatti soddisfa la seguente equazione:
+		$$x=\sqrt{x+1} \iff x^2=x+1 \iff x^2-x-1=0$$
+		Questa è un'equzione di secondo grado molto famosa, e possiamo risolverla con \ref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
+		$$\frac{1+\sqrt{5}}{2}$$
+		Che è il famoso \emph{rapporto aureo} e si indica di solito con il simbolo $\varphi$ (la lettera greca Phi, che si legge "fi").
+	\end{example}
+	\begin{example}
+		Supponiamo di voler trovare il valore della seconda seguente onirica espressione:
+		$$\frac{1}{1+\frac{1}{1+\frac{1}{1+\frac{1}{1+\dots}}}}$$
+		che come prima prosegue \textbf{all'infinito}. Come prima chiamiamo questo numero $x$. Possiamo identificare di nuovo $x$ dentro alla definizione di $x$? Certo che sì. $x$ è infatti definito nel seguente modo:
+		$$x=\frac{1}{1+\frac{1}{1+\frac{1}{1+\frac{1}{1+\dots}}}}=\frac{1}{1+x}$$
+		Di nuovo $x$ compare nella sua stessa definizione! Come prima risolviamo l'equazione di secondo grado che troviamo in questo modo:
+		$$x=\frac{1}{1+x}\iff x(x+1)=1 \iff x^2+x=1 \iff x^2+x-1=0$$
+		Che svolgendo i calcoli con \ref{quadFormula} scopriamo avere soluzioni $\varphi-1$ e $-\varphi$, quindi dato che $x$ deve essere positivo abbiamo che $x=\varphi-1$.
+	\end{example}
+	\newpage
+	\section{Combinatoria}
+	
+	\subsection{Conteggi}
+	Molte volte nella vita vi capiterà di imbattervi in un insieme di elementi, e di chiedervi: "Quanti sono?"
+	\\
+	La combinatoria (almeno nella sua accezione meno olimpica) è la branca della matematica dedita a rispondere a questa domanda, e in questa sezione vedremo la teoria fondamentale della materia.
+	
+	\subsubsection{Somma e Prodotto}
+	\begin{definition}
+		Se $A$ è un insieme, denotiamo con $|A|$ il numero di elementi contenuti nell'insieme $A$ e lo chiamiamo \textit{cardinalità}.
+	\end{definition}
+	Se dobbiamo scegliere due elementi rispettivamente uno da un insieme $A$ e l'altro da un'insieme $B$, diamo le seguenti definizioni:
+	\begin{definition}
+		Due scelte come descritte sopra si dicono indipendenti \\ quando $A \, \cap \, B = \emptyset$ (formalmente l'insieme di tutti gli esiti di queste scelte sarebbe il prodotto cartesiano tra i due insiemi $A$ e $B$, denotato con $A \times B$, se conoscete già questa operazione e ci siete abituati, bene; altrimenti un'intuizione come descritta prima è più che sufficiente).
+	\end{definition}
+	Valgono i seguenti importanti teoremi:
+	\begin{theorem}[Prodotto Logico]
+		\label{C:prod}
+		Il numero possibile di scelte indipendeti di due elementi, uno dall'insieme $A$, e l'altro dall'insieme $B$, di cardinalità $a$ e $b$ è $a \cdot b$ (riprendendo quanto è stato detto prima, questo risultato formalmente sarebbe l'identità per gli insiemi finiti $A$ e $B$: $|A\times B|=|A|\cdot|B|$).
+	\end{theorem}
+	Ricordiamo il seguente fatto di teoria degli insiemi\footnote{finiti}:
+	\begin{theorem}[Somma Logica]
+		Se abbiamo gli insiemi $A$, $B$ disgiunti (cioè con intersezione nulla, ovvero $A\cap B = \emptyset$) e dobbiamo scegliere un singolo elemento appartenente a uno dei due insiemi, il numero di possibilità che abbiamo è:
+		$$|A\cup B|=|A|+|B|$$
+	\end{theorem}
+	Tutte le formule di combinatoria si possono essenzialmente ridurre ad un'applicazione iterata di queste due operazioni, che è bene sapere.\\
+	Un a terza importante operazione è quella che ci permette di avere a che fare (anche se in modo relativamente caotico) con le intersezioni:
+	\begin{lemma}[Principio di Inclusione-Esclusione]
+		Dati due insiemi $A$ e $B$, la cardinalità della loro unione vale:
+		$$|A \cup B| = |A|+|B|-|A \cap B|$$
+		Questo fatto si può generalizzare, ad una espressione complicata quando gli insiemi considerati non sono due ma $n$. Sinteticamente per $n$ insiemi $A_1$, $A_2$, $A_3$, \dots, $A_n$ vale: 
+		\begin{equation}\notag
+			\begin{split}
+				|A_1 \cup A_2 \cup A_3 \cup A_4 \dots A_n| = &  |A_1|+|A_2|+|A_3|+\dots +|A_n|\\
+				& -(|A_1 \cap A_2| + |A_1 \cap A_3| \dots +|A_n \cap A_{n-1}|)\\
+				& +|A_1 \cap A_2 \cap A_3| + |A_1 \cap A_2 \cap A_4| \dots
+			\end{split}
+		\end{equation}
+		Cioè, l'unione è uguale alla somma delle cardinalità degli insiemi, meno le cardinalità di tutte le intersezioni tra due insiemi distinti, più le cardinalità delle intersezioni fra tre insiemi distinti, meno le cardinalità delle intersezioni fra quattro insiemi distinti\dots e così via fino a che non si considerano le intersezioni fra $n$ insiemi distinti.
+	\end{lemma}
+	Come si intuisce da sopra, lavorare con le intersezioni \emph{fa schifo}, quindi cercate sempre di trovare strade più furbe di applicare alla lettera il principio sopra quando non potete ricondurvi al caso con soli due insiemi.
+	\subsubsection{Anagrammi}
+	\begin{definition}
+		Chiamiamo \textit{anagramma} di una parola, una parola formata dallo stesso numero di lettere e dello stesso tipo, disposte in un certo ordine, possibilmente diverso da quello della parola di partenza (\textbf{ATTENZIONE}: qui per anagrammi intendiamo anche parole prive di significato).
+	\end{definition}
+	\begin{definition}
+		\label{factorial}
+		Dato $n\in\NN_0$ definiamo il suo \textit{fattoriale} e scriviamo $n!$ come:
+		$$n!=1\cdot2\cdot3\cdot\dots\cdot(n-1)\cdot n$$
+		Precisiamo che questa definizione non vale per $n=0$, per cui vale invece $0!=1$.
+	\end{definition}
+	Chiediamoci allora: "Quanti sono gli anagrammi di una certa parola data?\\
+	Approfondiamo la questione in questa sottosezione.
+	
+	\begin{theorem}[Anagrammi senza ripetizioni]
+		\label{anag:1}
+		Una parola formata da $n$ lettere distinte ha esattamente $n!$ anagrammi.
+	\end{theorem}
+	\begin{theorem}[Anagrammi con una Ripetizione]
+		\label{anag:2}
+		Una parola formata da $n$ lettere distinte e da $k$ lettere uguali ha esattamente
+		$$\frac{(n+k)!}{k!}$$
+		anagrammi.
+	\end{theorem}
+	E da qui è facile generalizzare per una parola arbitraria:
+	\begin{theorem}[Anagrammi con Ripezioni]
+		\label{anag:3}
+		Se una parola formata da $n$ lettere ha $k$ insiemi di lettere uguali, ciascuno rispettivamente di cardinalità $a_1$, $a_2$, \dots $a_k$, il numero dei suoi anagrammi è esattamente:
+		$$\frac{n!}{a_1!a_2!a_3!\dots a_k!}$$
+	\end{theorem}
+	Gli anagrammi sono degli strumenti sorprendentemente versatili, che trovano applicazioni inusuali ad una enorme moltitudine di problemi olimpici. Per esempio, tra i più famosi abbiamo il numero di percorsi di lunghezza $n+m$ in una tabella $m\times n$ che partono da un angolo e arrivano a quello opposto, che possono essere visti come gli anagrammi della parola DDD\dots\,DSSS\dots\,S formata da $m$ lettere D e $n$ lettere S, ognuna di queste rappresenta una possibile mossa verso destra (D) o verso su (S) nella tabella. 
+	\\
+	In generale quando vi rendete conto che il problema che state cercando di risolvere può essere messo in relazione con gli anagrammi di qualche parola costruita \textit{ad-hoc}, dovreste sempre essere molto felici di approfondire quella strada e utilizzare le formule sopra per chiudere il problema.
+	
+	\subsubsection{Binomiali}
+	
+	Un particolare tipo di anagramma è quello che ci permette di calcolare il numero di modi in cui possiamo scegliere $k$ elementi distinti da un insieme di $n$, a meno dell'ordine.
+	\begin{definition}
+		\label{binomial}
+		Se $n,k\in\NN$ e $n\ge k$ chiamiamo coefficiente binomiale una scrittura come quella che segue, e la definiamo in questo modo:
+		$$\binom{n}{k}:=\frac{n!}{k!(n-k)!}$$
+		La scrittura a sinistra dell'uguaglianza si legge spesso come "$n$ scelto $k$", oppure come "$n$ choose $k$" oppure come "$n$ su $k$". Inoltre se $n<k$ definiamo il coefficiente binomiale come:
+		$$\binom{n}{k}:=0$$
+	\end{definition}
+	Dunque vale il seguente teorema
+	
+	\begin{lemma}
+		\label{combinazioni}
+		Il numero di modi per scegliere $k$ elementi da un insieme di cardinalità $n$ è precisamente
+		$\binom{n}{k}$.
+	\end{lemma}
+	Questo si può dimostrare anagrammando la parola 0000\dots00111\dots11 formata da $n$ caratteri, di cui $k$ caratteri 1.
+	I coefficienti binomiali sono certo utili per risolvere problemi di combinatoria riguardanti conteggi, ma sono anche fondamentali per risolvere problemi di algebra, tramite le seguenti identità, che potete dare per note:
+	\begin{lemma}
+		\label{binomial:identity:1}
+		La seguente identità vale per ogni $n > k\in\NN$:
+		$$\binom{n}{k}+\binom{n}{k+1}=\binom{n+1}{k+1}$$
+	\end{lemma}
+	\begin{lemma}
+		\label{binomial:identity:2}
+		La seguente identità vale per ogni $n\in\NN$:
+		$$\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\dots+\binom{n}{n-1}+\binom{n}{n}=2^n$$
+		Si noti che questa identità puo seguire da~\ref{ident:newton}.
+	\end{lemma}
+	\begin{lemma}
+		\label{binomial:identity:3}
+		La seguente identità vale per ogni $n\ge k \in \NN$:
+		$$\binom{n}{k}=\binom{n}{n-k}$$
+		In particolare ricordiamo le seguenti identità per valori notevoli di $k$:
+		\begin{gather}
+			\notag \binom{n}{0}=\binom{n}{n}=1 \\
+			\notag \binom{n}{1}=\binom{n}{n-1}=n
+		\end{gather}
+	\end{lemma}
+	\begin{lemma}[Mazza da Hockey]
+		\label{binomial:identity:4}
+		Dati $n,k \in \NN$ vale sempre la seguente identità:
+		$$\binom{1}{k}+\binom{2}{k}+\binom{3}{k}+\dots+\binom{n-1}{k}+\binom{n}{k}=\binom{n+1}{k+1}$$
+	\end{lemma}
+	\begin{lemma}[Vandermonde]
+		\label{binomial:identity:5}
+		La seguente identità vale per ogni $m,\,n,\,a \in \NN$:
+		$$\binom{m+n}{a}=\binom{m}{0}\binom{n}{a}+\binom{m}{1}\binom{n}{a-1}+\binom{m}{2}\binom{n}{a-2}+\dots+\binom{m}{a}\binom{n}{0}$$
+	\end{lemma}
+	
+	\subsection{Tecniche Dimostrative}
+	Come disse un saggio\footnote{di cui gli autori non ricordano il nome, purtroppo.}, la C che di solito si trova ad indicare la quarta materia della matematica olimpica sta per "combinatoria", ma anche per "cose a caso". \\
+	Questo significa che di solito vanno sotto la definizione di combinatoria (a livello olimpico) anche molti problemi dimostrativi che vengono percepiti come \mbox{"puro ragionamento"} oppure come teoria dei giochi base. L'obbiettivo di questa sezione è introdurre le principali strategie risolutive di problemi di questo tipo, tenendo presente che l'unico modo per capirle e saperle applicare in contesti originali è fare molta pratica risolvendo problemi (questo è vero in generale per la matematica olimpica, specialmente per i problemi dimostrativi, ancora di più per i problemi dimostrativi di combinatoria).
+	
+	\subsubsection{Induzione}
+	La prima importante strategia per risolvere problemi dimostrativi, sia di combinatoria che non, è l'induzione.
+	Come funziona l'induzione? a livello formale il principio di induzione è un assioma, ed è formulato così:
+	\begin{proposition}[Induzione]
+		Sia $P$ una proposizione\footnote{Una affermazione per la quale si può dire oggettivamente se è vera o falsa, per esempio "due è uguale a due" oppure "In questo momento sta piovendo".} il cui valore di verità (cioè il fatto che sia vera o falsa) dipende dalla variabile $n\in\NN$\footnote{Nel gergo della logica matematica questo viene detto "Enunciato Aperto", perché non gli si può assegnare un valore di verità prima di aver assegnato il valore della variabile $n$ e rimane quindi "aperto".}, scriviamo $P(n)$ per questo particolare tipo di proposizioni. Se $P(0)$ è vera e se il fatto che $P(k)$ sia vera implica il fatto che $P(k+1)$ sia a sua volta vera, abbiamo che $P(n)$ è vera per ogni $n\in\NN$, in simboli per ogni $n\in\NN$ vale:
+		$$P(0) \land (P(k)\implies P(k+1)) \qquad \implies \qquad P(n) $$
+	\end{proposition}
+	Molto bene. Cosa diamine significa? \\
+	Possiamo vederlo intuitivamente come un modo per costruire infinite dimostrazioni del fatto che la proposizione $P$ sia vera. Facciamo un esempio dimostrando il teorema~\ref{sum:1}.
+	\begin{proof}[\textbf{Dimostrazione}]
+		Vogliamo dimostrare che il seguente fatto vale per ogni $n\in\NN$:
+		$$1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$
+		Per prima cosa verifichiamo che $P(0)$ sia vera, cioè che sostituendo a $n$ il valore $0$ l'espressione risultante sia vera:
+		$$0=1+2+3+\dots+0=1+2+3+\dots+n=\frac{n(n+1)}{2}=\frac{0\cdot(0+1)}{2}=0$$
+		Quindi sostituendo a $n$ il numero $0$ otteniamo $0=0$, che è certamente vera. Dunque abbiamo che $P(0)$ è vera.
+		Ora come facciamo a dimostrare che $P(n)$ è vera per tutti gli altri numeri senza dover fare infinite sostituzioni? Beh, possiamo notare che se la proposizione vale per un certo numero $k$, allora abbiamo:
+		$$1+2+3+\dots+k=\frac{k(k+1)}{2}$$
+		Questo è chiaro, è semplicemente il nostro enunciato. Ma cosa succede se sommiamo da entrambi i lati $k+1$? sicuramente il lato sinistro rimane uguale a quello destro, quindi otteniamo di nuovo una proposizione vera, in particolare abbiamo:
+		\begin{equation}\notag
+			\begin{split}
+				1+2+3+\dots+k+(k+1) & = \frac{k(k+1)}{2}+(k+1) \\
+				& = (k+1)\bigg(\frac{k}{2}+1\bigg) \\
+				& = (k+1)\frac{k+2}{2} \\
+				& = \frac{(k+1)(k+2)}{2}
+			\end{split}
+		\end{equation}
+		Che, miracolo, scopriamo essere $P(k+1)$! cioè l'espressione che si trova sostituendo alla $n$ il numero $k+1$ nella nostra espressione di partenza. Abbiamo quindi dimostrato che $P(k+1)$ è vera. Ecco, questo ora è il fulcro del principio di induzione: noi sappiamo che preso un generico numero $k$, se la tesi è vera per $k$ lo è anche per $k+1$, ma noi sappiamo che $P(0)$ è vera, quindi sicuramente anche $P(1)$ è vera. Ma ora sappiamo che $P(1)$ è vera, quindi (sempre perchè se $P(k)$ è vero allora lo è anche $P(k+1)$) anche $P(2)$ è vera. Per lo stesso motivo $P(3)$ sarà vera, e così anche $P(4)$, $P(5)$\dots
+		\\
+		Insomma, possiamo andare avanti all'infinito, per ogni numero naturale $n$ possiamo verificare che $P(n)$ sia vero in un numero finito di passaggi, ci basta passare da $P(0)$ a $P(1)$ a $P(2)$\dots fino a $P(n-1)$ e poi finalmente a $P(n)$.\\
+		Ecco il principio di induzione serve proprio a formalizzare questo strano passaggio logico, quando troviamo una proposizione che soddisfa la proprietà chiave $P(k)\implies P(k+1)$ e riusciamo a dimostrare che un certo $P(a)$ è vero, allora $P(n)$ sarà vera per ogni $n\in\NN$ tale che $n\ge a$.
+		Questo modo di risolvere i problemi è straordinariamente potente, ma per evitare di incorrere in spiacevoli inconvenienti è bene imparare a scrivere bene le dimostrazioni per induzione. Di solito seguono uno schema di questo tipo.
+		\\
+		\\
+		Dobbiamo dimostrare che:
+		$$1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$
+		Per ogni $n\in\NN$.\\
+		\textbf{Procediamo per induzione}:
+		\begin{itemize}
+			\item \textbf{Passo base} $P(0)$ è vera perchè sostituendo da ambo i lati $0$ otteniamo $0=0$ che è evidentemente vera.
+			\item \textbf{Passo induttivo, supponiamo che la tesi valga per un certo $k\in\NN$} allora abbiamo:
+			\begin{equation}\notag
+				\begin{split}
+					1+2+3+\dots+k & = \frac{k(k+1)}{2} \\
+					1+2+3+\dots+k+(k+1) & = \frac{k(k+1)}{2}+(k+1) \\
+					& = (k+1)\bigg(\frac{k}{2}+1\bigg) \\
+					& = (k+1)\frac{k+2}{2} \\
+					& = \frac{(k+1)(k+2)}{2}
+				\end{split}
+			\end{equation}
+			quindi la tesi vale anche per $k+1$.
+		\end{itemize}
+		Quindi \textbf{per induzione} abbiamo dimostrato la tesi.
+	\end{proof}
+	Come già detto, questa tecnica è cruciale per un incredibile numero di problemi di combinatoria, di teoria dei numeri e di algebra (anche se non molti di geometria). In generale le parole evidenziate in grassetto nella dimostrazione sopra sono quelle che non dovrebbero mai mancare in una vostra dimostrazione per induzione, quindi cercate di seguire quello schema, almeno finchè non vi sarete ben abituati. Se si vuole fare esercizio, dimostrare i teoremi \ref{sum:2}, \ref{sum:3} e \ref{sum:g} è un ottimo modo per iniziare.
+	\\
+	Esiste una formulazione alternativa e più forte del principio di induzione, il ragionamento che c'è dietro è esattamente lo stesso e quindi non ci ripeteremo.
+	\begin{proposition}[Induzione estesa/Induzione forte]
+		Dato un enunciato aperto $P(n)$ con $n\in\NN$, se abbiamo che $P(n)$ vera per ogni $n\le k$ implica $P(k+1)$ vera, e abbiamo che $P(0)$, $P(1)$, $P(2)$\dots $P(k)$ sono veri, allora $P(n)$ è vera per ogni $n\in\NN$.
+	\end{proposition}
+	Con l'induzione estesa il passo induttivo diventa:\\
+	"supponiamo che la tesi valga per ogni $k\le n$\dots \, allora la tesi vale per $k+1$". Fate solo attenzione a verificare la seconda condizione, se per dimostrare che $P(k)$ è vero avete bisogno che $P(k-1)$ e $P(k-2)$ siano veri, il passo base consiste nel dimostrare che sia $P(0)$ sia $P(1)$ (\textbf{!!!}) sono vere.
+	
+	\subsubsection{Double counting}
+	"Double counting", come il nome suggerisce, è una tecnica che consiste nel contare in due modi una stessa quantità. I vantaggi di questo approccio sono evidenti nei seguenti esempi.
+	
+	\begin{example}
+		Supponiamo di voler trovare una dimostrazione alternativa al risultato visto nel capitolo precedente, che affermava che per qualunque $n\in\NN$:
+		$$1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$
+	\end{example}
+	\[
+	\begin{array}{|l|l|l|l|l|l|l|}
+		\toprule
+		1 & 2 & 3 & 4 & \dots & n-1 & n\\
+		\midrule
+		n & n-1 & n-2 & n-3 & \dots & 2 & 1 \\
+		\bottomrule
+	\end{array}
+	\]
+	\\
+	Notiamo che abbiamo due modi per calcolare la somma delle celle della tabella sopra, il primo è sommare riga per riga, e il secondo colonna per colonna. Il punto del double counting è che l'espressione che troviamo in un caso \textbf{deve} essere uguale a quella che troviamo nell'altro caso, perchè \textbf{stiamo contando la stessa quantità}. In questo caso la somma di una riga risulta essere:
+	$$1+2+3+4+\dots+n$$
+	Quindi la somma delle righe è:
+	\begin{equation}\notag
+		\label{double:1}
+		2(1+2+3+4+\dots+n)
+	\end{equation}
+	Vogliamo ora trovare la somma colonna per colonna. L'osservazione chiave è che, sommando a coppie il primo numero con l'ultimo, il secondo con il penultimo, e così via, la somma sembrerebbe rimanere costante ed uguale a $n+1$.
+	Ciò è evidente se si nota che nella $i$-esima colonna la somma trovata è data da:
+	$$(n+1-i)+i=n+1$$
+	Quindi la somma totale è $n+1$ moltiplicata per $n$, che è il numero delle colonne.
+	Da ciò la seguente uguaglianza:$$2(1+2+3+4+\dots+n)=n(n+1) \implies
+	1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$ 
+	\\
+	Il double counting di solito trova più facilmente applicazione nella dimostrazione di identità combinatoriche, per esempio se vogliamo dimostrare la \ref{binomial:identity:3} con un double counting possiamo procedere in questo modo:
+	\begin{example}
+		Vogliamo dimostrare che $$\binom{n}{k}=\binom{n}{n-k}$$ per ogni $n\ge k \in \NN$. Per fare ciò consideriamo un insieme $A$ di $n$ elementi e supponiamo di volerne scegliere $k$ da questo. per il lemma \ref{combinazioni} ci sono due modi per farlo, il primo è scegliere direttamente i $k$ elementi, e questo lo posso fare in
+		$$\binom{n}{k}$$
+		modi. Il secondo è scegliere prima gli $n-k$ elementi che \textbf{non} vogliamo scegliere, e questo determinerà univocamente quali saranno gli elementi scelti. In quanti modi lo posso fare? Beh, sto scegliendo $n-k$ elementi da un insieme di $n$, quindi abbiamo
+		$$\binom{n}{n-k}$$
+		modi per farlo. Abbiamo contato la stessa quantità in due modi, quindi queste due espressioni devono essere uguali, da qui la tesi:
+		$$\binom{n}{k}=\binom{n}{n-k}$$
+	\end{example}
+	Quindi di solito per dimostrare identità con double counting dobbiamo "interpretare" ciascun lato dell'identità (nell'esempio prima, un lato corrisponde a scegliere $k$ elementi, e l'altro a scegliere gli $n-k$ elementi da scartare) dal punto di vista combinatorico, per poi concludere invocando il double counting (bisogna sempre scrivere ciò che si sta facendo). \\
+	Se si volesse fare esercizio su questo argomento, dimostrare i lemmi \ref{binomial:identity:1} e \ref{binomial:identity:2} è un ottimo modo per cominciare.
+	
+	\subsubsection{Invarianti}
+	"Invariante" è un termine che presenta una definizione molto vaga. Il modo più semplice per spiegarlo è definirlo come una quantità che non varia, oppure che varia ma in maniera controllata; ma il modo più semplice per capirlo è attraverso degli esempi.
+	
+	\begin{example}
+		Suppongo di avere un numero $n$ scritto su una lavagna. Ad ogni mossa, posso permutare\footnote{permutazione è un altro termine per indicare un anagramma (teoremi \ref{anag:1}, \ref{anag:2} e \ref{anag:3}), quindi permutare qualcosa significa scriverne un particolare anagramma.} le cifre della sua rappresentazione decimale. Allora la somma delle cifre del numero dopo ogni mossa non varia, dunque è un'\textbf{invariante}.
+	\end{example}
+	\begin{example}
+		Suppongo di avere il numero $2$ scritto su una lavagna. Ad ogni mossa, posso scegliere se sommare $5$ o $3$ al numero scritto, e sostituire il numero sulla lavagna con il valore, che chiamo $n$,  della somma. Noto che così facendo, la parità di $n$ cambia ad ogni mossa; in particolare, essendo che il numero di partenza era pari, $n$ sarà pari dopo che effettuo un numero pari di mosse, e dispari dopo un numero dispari di mosse. Quindi questa parità varia in modo controllato, dunque è un'\textbf{invariante}.
+	\end{example}
+	
+	\subsubsection{Pigeonhole}
+	Il pigeonhole, o principio dei cassetti, formalizza un concetto molto semplice e logico: 
+	\begin{proposition}[Pigeonhole]
+		Se ho $n$ cassetti, e $n+1$ oggetti che voglio disporre all'interno di questi, allora esisterà almeno un cassetto con più di un oggetto al suo interno.
+	\end{proposition}
+	
+\end{document}
