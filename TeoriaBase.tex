@@ -24,8 +24,8 @@
 	
 	
 	\maketitle
-	\section*{Introduzione}
-	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento era quello di scrivere un insieme di teoria "quick and dirty" che sarebbe potuta risultare utile per ripassare ciò che si aveva già studiato poco prima di una gara, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari). Nonostante una delle intenzioni fosse anche quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, il lettore alle prime armi non si deve spaventare. Come è già stato detto, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
+	\section*{Premessa}
+	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento era quello di scrivere un insieme di teoria "quick and dirty" che sarebbe potuta risultare di utile consultazione poco prima di una gara per ripassare ciò che si aveva già studiato, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari) ancora sconosciuti. Una delle intenzioni era anche quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, e perciò il lettore alle prime armi non si deve spaventare di fronte all'apparente mole di teoria, o alle formule lunghe e complicate. Inoltre, come è già stato detto in altre sedi, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
 	Sapere la teoria è sempre secondario al saper ragionare, e per quanto \textbf{la teoria esposta qui} si possa considerare "di base" \textbf{non va intesa come "la teoria che è indispensabile sapere per poter fare le olimpiadi della matematica"}. Una cosa del genere non esiste e speriamo continui a non esistere ancora a lungo. Questa è unicamente della teoria che può risultare utile, facilmente sostituibile con una sufficiente dose di astuzia e buona volontà. Questa teoria è da considerarsi invece "di base" nel senso che è quella teoria che uno studente veterano, ormai abituato a risolvere problemi di stile olimpico, dovrebbe conoscere (o almeno saper dimostrare essere vera) a grandi linee; non necessariamente perchè l'ha studiata sistematicamente nel passato, anzi, di solito è perchè ha risolto \textbf{problemi che richiedevano di dedurre alcune di queste cose da zero}. Incoraggiamo quindi chiunque si sentisse in vena di esercizio, a dimostrare i lemmi e teoremi qui presentati. \\
 	\\
 	\\
@@ -223,6 +223,16 @@
 	\begin{fact}
 		Due angoli adiacenti sono supplementari (la loro somma è sempre $180 \degree$).
 	\end{fact}
+	
+	\begin{fact}
+		Due triangoli $ABC$ e $A'B'C'$ si dicono congruenti se hanno ordinatamente congruenti lati e  angoli, inoltre le tre seguenti condizioni sono equivalenti ad $ABC$ congruente ad $A'B'C'$:
+		\begin{itemize}
+			\item[\textbf{LAL:}] I triangoli $ABC$ e $A'B'C'$ hanno ordinatamente congruenti due lati e l'angolo fra loro compreso.
+			\item[\textbf{ALA:}] I triangoli $ABC$ e $A'B'C'$ hanno ordinatamente congruenti due angoli e un lato.
+			\item[\textbf{LLL:}] I triangoli $ABC$ e $A'B'C'$ hanno ordinatamente congruenti tutti i lati.
+		\end{itemize}
+	\end{fact}
+	
 	\begin{fact}
 		La somma degli angoli interni di un triangolo sul piano è $180 \degree$.
 	\end{fact}
@@ -245,7 +255,7 @@
 		L'angolo esterno in un triangolo è uguale alla somma dei due angoli a lui non adiacenti.
 	\end{fact}
 	\begin{fact}
-		Prese due rette parallele tagliate da una trasversale come in figura, gli angoli colorati dello stesso colore in figura sono uguali:
+		Prese due rette parallele tagliate da una trasversale, gli angoli colorati dello stesso colore (in riferimento alla figura) sono uguali:
 		\begin{center}
 			\begin{asy}
 				import graph; size(8cm); 
@@ -270,6 +280,17 @@
 		\end{center}
 		Inoltre questa cosa si può invertire (se due angoli non opposti al vertice tra quelli sono uguali, allora le rette sono parallele).
 	\end{fact}
+	
+	\begin{fact}
+		Un quadrilatero $ABCD$ non intrecciato viene detto parallelogramma se i lati opposti $AB$, $CD$ e $AD$, $BC$ sono paralleli. Inoltre le seguenti quattro condizioni sono equivalenti ad $ABCD$ parallelogramma:
+		\begin{itemize}
+			\item $AB||CD$ e $BC||AD$.
+			\item Una coppia di lati opposti è formata da segmenti sia paralleli che congruenti. 
+			\item I punti medi dei segmenti $AC$ e $BD$ coincidono.
+			\item $AB=CD$ e $BC=AD$.
+		\end{itemize}
+	\end{fact}
+	
 	\subsection{Circonferenze e "Angle Chasing"}
 	Prendiamo una circonferenza e due punti $A$ e $B$ su di essa
 	
@@ -537,11 +558,73 @@
 	\begin{corollary}
 		Gli assi dei lati $AB$, $BC$, $CA$ di un triangolo $ABC$ concorrono in un punto che coincide con il circocentro del triangolo, che quindi esiste sempre ed è unico. 
 	\end{corollary}
-
+	Il fatto più utile legato al circocentro è probabilmente il seguente: 
+	\begin{lemma}
+		Un triangolo $ABC$ è rettangolo se e solo se il suo circocentro coincide con il punto medio di uno dei suoi lati.
+	\end{lemma}
 	\subsubsection{Incentro}
+	
+	\begin{center}
+		\begin{asy}
+			import graph; size(10cm); 
+			real labelscalefactor = 0.5; /* changes label-to-point distance */
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+			pen dotstyle = black; /* point style */ 
+			real xmin = -10.293442854563349, xmax = 14.703567919563243, ymin = -8.541677070151277, ymax = 6.49950419794772;  /* image dimensions */
+			
+			
+			draw(arc((-3,5),0.42974803623140273,-104.03624346792648,-74.51812173396324)--(-3,5)--cycle, linewidth(0.8)); 
+			draw(arc((-3,5),0.42974803623140273,-74.51812173396324,-45)--(-3,5)--cycle, linewidth(0.8)); 
+			draw(arc((5,-3),0.42974803623140273,135,157.5)--(5,-3)--cycle, linewidth(0.8)); 
+			draw(arc((5,-3),0.42974803623140273,157.5,180)--(5,-3)--cycle, linewidth(0.8)); 
+			draw(arc((-5,-3),0.42974803623140273,0,37.98187826603676)--(-5,-3)--cycle, linewidth(0.8)); 
+			draw(arc((-5,-3),0.42974803623140273,37.98187826603676,75.96375653207352)--(-5,-3)--cycle, linewidth(0.8)); 
+			/* draw figures */
+			draw((-3,5)--(-5,-3), linewidth(0.8)); 
+			draw((-5,-3)--(5,-3), linewidth(0.8)); 
+			draw((5,-3)--(-3,5), linewidth(0.8)); 
+			draw((-4.061636786439457,0.7534528542421726)--(5,-3), linewidth(0.8)); 
+			draw((-5,-3)--(0.6155281280883029,1.3844718719116968), linewidth(0.8)); 
+			draw((-3,5)--(-0.7841282804125324,-3), linewidth(0.8)); 
+			draw(arc((-3,5),0.42974803623140273,-104.03624346792648,-74.51812173396324), linewidth(0.8)); 
+			draw((-2.99512077488319,4.6132575448382935)--(-2.9940365026350104,4.527314777024581), linewidth(0.8)); 
+			draw(arc((-3,5),0.42974803623140273,-74.51812173396324,-45), linewidth(0.8)); 
+			draw((-2.8052065493963054,4.665860740013763)--(-2.7619191159288166,4.591607571127932), linewidth(0.8)); 
+			draw(arc((5,-3),0.42974803623140273,135,157.5), linewidth(0.8)); 
+			draw((4.678409810234204,-2.785120305034084)--(4.606945323619584,-2.7373692617083254), linewidth(0.8)); 
+			draw((4.68934082659393,-2.7695994543389695)--(4.620305454725912,-2.7183993330809613), linewidth(0.8)); 
+			draw((4.6682535328096035,-2.8011588197356105)--(4.594532095656181,-2.7569718907879683), linewidth(0.8)); 
+			draw(arc((5,-3),0.42974803623140273,157.5,180), linewidth(0.8)); 
+			draw((4.62065850660384,-2.9245442855032353)--(4.5363603969602515,-2.907776348948399), linewidth(0.8)); 
+			draw((4.624817876470901,-2.9060217703590783)--(4.541444071242215,-2.8851377193277616), linewidth(0.8)); 
+			draw((4.617413003620763,-2.943248580072757)--(4.532393671092043,-2.9306371534222575), linewidth(0.8)); 
+			draw(arc((-5,-3),0.42974803623140273,0,37.98187826603676), linewidth(0.8)); 
+			draw((-4.643419572352858,-2.8501870096379274)--(-4.5641794773201605,-2.816895234001911), linewidth(0.8)); 
+			draw((-4.626744624442473,-2.898639464880778)--(-4.54379898542969,-2.8761149015209515), linewidth(0.8)); 
+			draw(arc((-5,-3),0.42974803623140273,37.98187826603676,75.96375653207352), linewidth(0.8)); 
+			draw((-4.811138111234353,-2.6624726375030954)--(-4.769168802619765,-2.587466556948227), linewidth(0.8)); 
+			draw((-4.768176594080766,-2.690401159675539)--(-4.71666028165427,-2.621601417381215), linewidth(0.8)); 
+			draw(circle((-1.5337486238747193,-0.293632706854545), 2.7063672931454548), linewidth(0.8)); 
+			/* dots and labels */
+			dot((-3,5),dotstyle); 
+			label("$A$", (-2.9405254007556656,5.13997314992002), NE * labelscalefactor); 
+			dot((-5,-3),dotstyle); 
+			label("$B$", (-5.602175395660395,-3.0521221195908804), NE * labelscalefactor); 
+			dot((5,-3),dotstyle); 
+			label("$C$", (5.051569868755247,-2.8521221195908804), NE * labelscalefactor);
+			dot((-1.5337486238747193,-0.293632706854545),linewidth(4pt) + dotstyle); 
+			label("$I$", (-1.5122579809016858,-0.11861556001583844), NE * labelscalefactor); 
+			dot((-0.7841282804125324,-3),linewidth(4pt) + dotstyle); 
+			label("$D$", (-0.7243865811441142,-3.3833279264378446), NE * labelscalefactor); 
+			dot((0.6155281280883029,1.3844718719116968),linewidth(4pt) + dotstyle); 
+			label("$E$", (0.6794570038784679,1.5001020431224348), NE * labelscalefactor); 
+			dot((-4.061636786439457,0.7534528542421726),linewidth(4pt) + dotstyle); 
+			label("$F$", (-4.504796591043822,0.8698049233163815), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+		\end{asy}
+	\end{center}
+	
 	\begin{definition}
-		
-		
 		Chiamiamo $A$-bisettrice di un triangolo $ABC$, la retta $r$ passante per il segmento $BC$ tale che gli angoli aventi lati $r$-$AB$ e $r$-$AC$ siano uguali.
 	\end{definition}
 	\begin{definition}
@@ -562,7 +645,92 @@
 		Questo ovviamente funziona anche con la $B$-bisettrice e con la $C$-bisettrice. Inoltre notiamo che il risultato vale anche se la retta passa per $A$ e biseca l'angolo esterno del triangolo con vertice in $A$ (lo stesso si può dire di $B$ e $C$).
 	\end{theorem}
 	\subsubsection{Ortocentro}
-	
+	\begin{center}
+		\begin{asy}
+			import graph; size(10cm); 
+			real labelscalefactor = 1.5; /* changes label-to-point distance */
+			pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+			pen dotstyle = black; /* point style */ 
+			real xmin = -15.29369398668136, xmax = 16.087003116184217, ymin = -11.454266052182685, ymax = 7.428101832062945;  /* image dimensions */
+			
+			
+			draw((-2.618518560691164,-3)--(-2.618518560691164,-2.6185185606911636)--(-3,-2.6185185606911636)--(-3,-3)--cycle, linewidth(0.8)); 
+			draw((-4.041673348592239,-0.7395816628519404)--(-3.949150509269711,-0.3694903055618266)--(-4.319241866559825,-0.2769674662392982)--(-4.411764705882353,-0.647058823529412)--cycle, linewidth(0.8)); 
+			draw((-0.2697481126320819,2.2697481126320818)--(-0.5394962252641643,2)--(-0.26974811263208204,1.7302518873679171)--(0,2)--cycle, linewidth(0.8)); 
+			/* draw figures */
+			draw(circle((0,0), 5.8309518948453), linewidth(0.8)); 
+			draw((-3,5)--(-5,-3), linewidth(0.8)); 
+			draw((-5,-3)--(5,-3), linewidth(0.8)); 
+			draw((5,-3)--(-3,5), linewidth(0.8)); 
+			draw((-3,5)--(-3,-3), linewidth(0.8)); 
+			draw((-4.411764705882353,-0.647058823529412)--(5,-3), linewidth(0.8)); 
+			draw((-5,-3)--(0,2), linewidth(0.8)); 
+			draw((-4.411764705882353,-0.647058823529412)--(-5.823529411764708,-0.29411764705882393), linewidth(0.8) + dotted); 
+			draw((-3,-1)--(-5,3), linewidth(0.8) + dotted); 
+			draw((0,2)--(3,5), linewidth(0.8) + dotted); 
+			draw((-3,-1)--(5,3), linewidth(0.8) + dotted); 
+			draw((-3,-3)--(-3,-5), linewidth(0.8) + dotted); 
+			draw((-3,-1)--(3,-5), linewidth(0.8) + dotted); 
+			/* dots and labels */
+			dot((-3,5),dotstyle); 
+			label("$A$", (-3.2809113707992954,5.19818410097108), NE * labelscalefactor); 
+			dot((-5,-3),dotstyle); 
+			label("$B$", (-5.720913064347149,-3.1561081455705823), NE * labelscalefactor); 
+			dot((5,-3),dotstyle); 
+			label("$C$", (5.18917936584809,-3.038124938061777), NE * labelscalefactor); 
+			dot((0,-3),linewidth(4pt) + dotstyle); 
+			label("$M$", (0.06396522583852535,-2.858292862973723), NE * labelscalefactor); 
+			dot((1,1),linewidth(4pt) + dotstyle); 
+			label("$N$", (0.9091759787523833,1.259861656542705), NE * labelscalefactor); 
+			dot((-4,1),linewidth(4pt) + dotstyle); 
+			label("$L$", (-4.623937406310014,0.7620463739458461), NE * labelscalefactor); 
+			dot((-3,-1),linewidth(4pt) + dotstyle); 
+			label("$H$", (-3.134860993325712,-0.6082072069699118), NE * labelscalefactor); 
+			dot((-3,-3),linewidth(4pt) + dotstyle); 
+			label("$H_A$", (-3.9607434458873505,-3.789889843185052), NE * labelscalefactor); 
+			dot((0,2),linewidth(4pt) + dotstyle); 
+			label("$H_B$", (-0.24174930181116794,2.374820522088638), NE * labelscalefactor); 
+			dot((-4.411764705882353,-0.647058823529412),linewidth(4pt) + dotstyle); 
+			label("$H_C$", (-5.335366461609401,-1.2161064520227439), NE * labelscalefactor); 
+			dot((-5,3),linewidth(4pt) + dotstyle); 
+			label("$H_L$", (-5.610829101891176,3.2020480674936844), NE * labelscalefactor); 
+			dot((5,3),linewidth(4pt) + dotstyle); 
+			label("$H_N$", (5.063296913286451,3.1480984449672684), NE * labelscalefactor); 
+			dot((3,-5),linewidth(4pt) + dotstyle); 
+			label("$H_M$", (3.111026539879486,-5.396109839118421), NE * labelscalefactor); 
+			dot((3,5),linewidth(4pt) + dotstyle); 
+			label("$H_{AC}$", (3.067160879809042,5.144234478444663), NE * labelscalefactor); 
+			dot((-5.823529411764708,-0.29411764705882393),linewidth(4pt) + dotstyle); 
+			label("$H_{AB}$", (-6.989821552419505,-0.2687109817057508), NE * labelscalefactor); 
+			dot((-3,-5),linewidth(4pt) + dotstyle); 
+			label("$H_{BC}$", (-3.334860993325712,-5.911908329224085), NE * labelscalefactor); 
+			clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+		\end{asy}
+	\end{center}
+	\begin{definition}
+		Dato un triangolo $ABC$ chiamiamo ortocentro l'intersezione delle tre altezze. Si può dimostrare che l'ortocentro esiste sempre ed è unico.
+	\end{definition}
+	La configurazione dell'ortocentro è probabilmente la più interessante e ricca di tutte, e si presta molto ad essere approfondita utilizzando strumenti di teoria più avanzati. Purtroppo non c'è lo spazio o la ragione di parlare qui ed ora di tali proprietà, e quindi esponiamo solo le principali.
+	\begin{lemma}[riflessi dell'ortocentro]
+		Preso un triangolo $ABC$ di ortocentro $H$, punti medi dei lati $M$, $N$, $L$ e piedi delle altezze $H_A$, $H_B$ e $H_C$ (come in figura), chiamiamo:
+		\begin{itemize}
+			\item $H_{BC}$, $H_{AC}$, $H_{AB}$ i punti simmetrici rispetto ad $H_A$, $H_B$, $H_C$ \mbox{dell'ortocentro $H$}.
+			\item $H_M$, $H_N$, $H_L$ i punti simmetrici rispetto ad $M$, $N$, $L$ dell'ortocentro $H$.
+		\end{itemize}
+		Si dimostra a questo punto che i punti $H_{BC}$, $H_{AC}$, $H_{AB}$, $H_M$, $H_N$ e $H_L$ appartengono alla circonferenza circoscritta al triangolo $ABC$.
+	\end{lemma}
+	\begin{remark}[Ciclicità ]
+		Notiamo che la configurazione dell'ortocentro dà vita ad una miriade di ciclicità, infatti i quadrilateri: 
+		\begin{itemize}
+			\item $H_BH_CBC$
+			\item $H_AH_CAC$
+			\item $H_BH_ABA$
+			\item $HH_BAH_C$
+			\item $HH_CBH_A$
+			\item $HH_ACH_B$
+		\end{itemize}
+		Sono tutti ciclici! Questo ci fa capire almeno in parte perché la configurazione dell'ortocentro sia così interessante.
+	\end{remark}
 	\subsection{Lunghezze e Aree}
 	Segue uno spam di fatti di teoria su lunghezze e aree:
 	\begin{theorem}[Pitagora]
@@ -837,12 +1005,17 @@
 	\begin{example}
 		Supponiamo di voler trovare il valore della seguente onirica espressione
 		$$\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\dots}}}}$$
-		che prosegue \textbf{all'infinito}. Come possiamo fare? Beh, chiamiamo questo numero $x$ per comodità. Notiamo una proprietà molto interessante di $x$, e cioè che:
-		$$x=\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\dots}}}}=\sqrt{1+x}$$
-		Incredibile vero? $x$ è uguale alla radice di uno più se stesso! Cioè il problema che volevamo risolvere (trovare il valore di $x$) contiene una versione di se stesso al suo interno.\\
-		Quindi come troviamo $x$? Beh $x$ è un numero positivo molto particolare, infatti soddisfa la seguente equazione:
-		$$x=\sqrt{x+1} \iff x^2=x+1 \iff x^2-x-1=0$$
-		Questa è un'equzione di secondo grado molto famosa, e possiamo risolverla con \ref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
+		che prosegue \textbf{all'infinito}. Come possiamo fare? Beh, chiamiamo questo numero $x$ per comodità. Ora notiamo una proprietà molto interessante di $x$: proviamo a elevare entrambi i membri al quadrato e vedere cosa succede:
+		\begin{align}\notag
+			x     & = \sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\dots}}}} \\ \notag
+			x^2   & = 1 + \sqrt{1+\sqrt{1+\sqrt{1+\dots}}} \\ \notag
+			x^2-1 & = \sqrt{1+\sqrt{1+\sqrt{1+\dots}}}\notag
+		\end{align}
+		Ma il lato destro non vi ricorda qualcosa? \'E proprio come abbiamo definito $x$! \\
+		Questo si intende per ricorsione: chiedendoci che valore avesse $x$ abbiamo trovato che $x$ è esattamente uguale al numero che otteniamo elevando \textbf{se stesso} al quadrato e sottranendo $1$.\\
+		Ok, e adesso? Beh semplicemente:
+		$$x^2-x-1=0$$ 
+		Questa è un'equazione di secondo grado molto famosa, e possiamo risolverla con \ref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
 		$$\frac{1+\sqrt{5}}{2}$$
 		Che è il famoso \emph{rapporto aureo} e si indica di solito con il simbolo $\varphi$ (la lettera greca Phi, che si legge "fi").
 	\end{example}
@@ -853,14 +1026,13 @@
 		$$x=\frac{1}{1+\frac{1}{1+\frac{1}{1+\frac{1}{1+\dots}}}}=\frac{1}{1+x}$$
 		Di nuovo $x$ compare nella sua stessa definizione! Come prima risolviamo l'equazione di secondo grado che troviamo in questo modo:
 		$$x=\frac{1}{1+x}\iff x(x+1)=1 \iff x^2+x=1 \iff x^2+x-1=0$$
-		Che svolgendo i calcoli con \ref{quadFormula} scopriamo avere soluzioni $\varphi-1$ e $-\varphi$, quindi dato che $x$ deve essere positivo abbiamo che $x=\varphi-1$.
+		Che svolgendo i calcoli con \ref{quadFormula} scopriamo avere soluzioni $\varphi-1$ e $-\varphi$, quindi dato che $x$ deve essere positivo abbiamo che $x=\varphi-1$. Per una proprietà di $\varphi$ inoltre abbiamo che $\varphi-1=\frac{1}{\varphi}$, quindi $x=\frac{1}{\varphi}$.
 	\end{example}
 	\newpage
 	\section{Combinatoria}
 	
 	\subsection{Conteggi}
-	Molte volte nella vita vi capiterà di imbattervi in un insieme di elementi, e di chiedervi: "Quanti sono?"
-	\\
+	Molte volte nella vita vi capiterà di imbattervi in un insieme di elementi, e di chiedervi: "Quanti sono?".\\
 	La combinatoria (almeno nella sua accezione meno olimpica) è la branca della matematica dedita a rispondere a questa domanda, e in questa sezione vedremo la teoria fondamentale della materia.
 	
 	\subsubsection{Somma e Prodotto}
@@ -896,7 +1068,7 @@
 		\end{equation}
 		Cioè, l'unione è uguale alla somma delle cardinalità degli insiemi, meno le cardinalità di tutte le intersezioni tra due insiemi distinti, più le cardinalità delle intersezioni fra tre insiemi distinti, meno le cardinalità delle intersezioni fra quattro insiemi distinti\dots e così via fino a che non si considerano le intersezioni fra $n$ insiemi distinti.
 	\end{lemma}
-	Come si intuisce da sopra, lavorare con le intersezioni \emph{fa schifo}, quindi cercate sempre di trovare strade più furbe di applicare alla lettera il principio sopra quando non potete ricondurvi al caso con soli due insiemi.
+	Come si intuisce da sopra, lavorare con le intersezioni \emph{fa schifo}, quindi cercate sempre di trovare strade più furbe dell'applicare alla lettera il principio sopra quando non potete ricondurvi al caso con soli due insiemi.
 	\subsubsection{Anagrammi}
 	\begin{definition}
 		Chiamiamo \textit{anagramma} di una parola, una parola formata dallo stesso numero di lettere e dello stesso tipo, disposte in un certo ordine, possibilmente diverso da quello della parola di partenza (\textbf{ATTENZIONE}: qui per anagrammi intendiamo anche parole prive di significato).
