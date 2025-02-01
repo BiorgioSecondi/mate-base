@@ -20,13 +20,13 @@
 \begin{document}
 	\title{Teoria di Base}
 	\subtitle{a.k.a.\ guida (in)completa per Archimede e EGMOcamp}
-	\date{Ottobre 2024}
+	\date{Novembre 2024}
 	
 	
 	\maketitle
 	\section*{Premessa}
 	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento era quello di scrivere un insieme di teoria "quick and dirty" che sarebbe potuta risultare di utile consultazione poco prima di una gara per ripassare ciò che si aveva già studiato, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari) ancora sconosciuti. Una delle intenzioni era anche quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, e perciò il lettore alle prime armi non si deve spaventare di fronte all'apparente mole di teoria, o alle formule lunghe e complicate. Inoltre, come è già stato detto in altre sedi, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
-	Sapere la teoria è sempre secondario al saper ragionare, e per quanto \textbf{la teoria esposta qui} si possa considerare "di base" \textbf{non va intesa come "la teoria che è indispensabile sapere per poter fare le olimpiadi della matematica"}. Una cosa del genere non esiste e speriamo continui a non esistere ancora a lungo. Questa è unicamente della teoria che può risultare utile, facilmente sostituibile con una sufficiente dose di astuzia e buona volontà. Questa teoria è da considerarsi invece "di base" nel senso che è quella teoria che uno studente veterano, ormai abituato a risolvere problemi di stile olimpico, dovrebbe conoscere (o almeno saper dimostrare essere vera) a grandi linee; non necessariamente perchè l'ha studiata sistematicamente nel passato, anzi, di solito è perchè ha risolto \textbf{problemi che richiedevano di dedurre alcune di queste cose da zero}. Incoraggiamo quindi chiunque si sentisse in vena di esercizio, a dimostrare i lemmi e teoremi qui presentati. \\
+	Sapere la teoria è sempre secondario al saper ragionare, e per quanto \textbf{la teoria esposta qui} si possa considerare "di base" \textbf{non va intesa come "la teoria che è indispensabile sapere per poter fare le olimpiadi della matematica"}. Una cosa del genere non esiste e speriamo continui a non esistere ancora a lungo. Questa è unicamente della teoria che può risultare utile, facilmente sostituibile con una sufficiente dose di astuzia e buona volontà. Questa teoria è da considerarsi invece "di base" nel senso che è quella teoria che uno studente veterano, ormai abituato a risolvere problemi di stile olimpico, dovrebbe conoscere (o almeno saper dimostrare essere vera) a grandi linee; non necessariamente perché l'ha studiata sistematicamente nel passato, anzi, di solito è perché ha risolto \textbf{problemi che richiedevano di dedurre alcune di queste cose da zero}. Incoraggiamo quindi chiunque si sentisse in vena di esercizio, a dimostrare i lemmi e teoremi qui presentati. \\
 	\\
 	\\
 	\\
@@ -40,7 +40,7 @@
 	\begin{definition}
 		Divisione euclidea. Siano a e b due interi, con $a \neq 0$. Allora esistono due numeri interi q e r, tali che:\\
 		(i) $b = aq + r$, \\
-		(ii) $ 0 \le r < |a|$.
+		(ii) $ 0 \le r < |a|$. \\
 		Inoltre q ed r sono unici.
 		\\
 	\end{definition}
@@ -70,20 +70,33 @@
 	\end{theorem}
 	Quando un numero è scritto in quella forma si dice essere "fattorizzato". Fattorizzare i numeri è in generale una buona idea per risolvere equazioni diofantee.
 	
-	Dal teorema prececente deriva il seguente utile lemmino, che facilita spesso i conti:
+	Dal teorema precedente deriva il seguente utile lemmino, che facilita spesso i conti:
 	
 	\begin{lemma}[Numero di divisori]
-		Sia $n$ un numero intero fattorizzato usando la notazione del precedente teorema, allora il numero di divisori interi positivi di $n$ è:
-		$$(\alpha_1+1)(\alpha_2+1)(\alpha_3+1)\dots(\alpha_k+1)$$
+		Sia $n$ un numero intero fattorizzato usando la notazione del precedente teorema, allora il numero di divisori interi positivi di $n$, che d'ora in poi denoteremo con $d(n)$, è:
+		$$d(n)=(\alpha_1+1)(\alpha_2+1)(\alpha_3+1)\dots(\alpha_k+1)$$
 	\end{lemma}
 	
-	La dimostrazione di questo fatto è un esercizio di combinatoria molto costruttivo (fondamentalmente un'applicazione di \ref{C:prod}) ed è quindi fortemente consigliato provare a dimostrarlo da soli.
+	La dimostrazione di questo fatto è un esercizio di combinatoria molto istruttivo (fondamentalmente un'applicazione di \ref{C:prod}) ed è quindi fortemente consigliato provare a dimostrarlo da soli.
+	
+	\begin{definition}
+		Si dice \textit{quadrato perfetto} un numero $n\in\NN$ tale che esista $a\in\NN$ in modo che esso soddisfi $n=a^2$.
+		Si può dimostrare facilmente che $n$ è un quadrato perfetto se e solo se quando fattorizzato con la notazione sopra, tutti gli $\alpha_i$ sono pari. \\ 
+		Analogamente possiamo dire che $n\in\NN$ è una potenza $k$-esima (con $k\in\NN$) se esiste $a\in\NN$ tale che $n=a^k$. Si dimostra che $n$ è potenza $k$-esima se e solo se tutti gli $\alpha_i$ sono divisibili per $k$.
+	\end{definition}
+	Esprimiamo quanto detto sopra in un lemma:
 	\begin{lemma}
+		Se un numero $n\in\NN$ è una potenza $k$-esima allora:
+		$$k \mid d(n)-1$$
+		In particolare per $k=2$ è vero anche il contrario, cioè $n$ è un quadrato perfetto se e solo se quella relazione è soddisfatta.
+	\end{lemma}
+	
+	\begin{lemma}[Euclide]
 		Se abbiamo un primo $p\in\PP$ e due numeri $a,b\in\NN$, allora se vale 
 		$$p\mid ab$$ 
 		vale anche $p\mid a$ o $p \mid b$ (potenzialmente entrambe).
 	\end{lemma}
-	Questo potrà sembrare un risultato stupido, ma è alla base di molti teoremi e importanti strategie risolutive, si pensi ad esempio alla risoluzione dell'equazione $ab=90$ con $a,b\in\NN$.
+	Questo potrà sembrare un risultato stupido, ma è alla base di molti importanti teoremi e strategie risolutive, si pensi ad esempio alla risoluzione dell'equazione $ab=90$ con $a,b\in\NN$.
 	Parliamo ora un po' delle proprietà di $\mcm$ e $\mcd$:
 	\begin{lemma}
 		Dati due interi $a,b \in \NN$, abbiamo che:
@@ -94,7 +107,9 @@
 		$$\text{MCD}(a,b)=\text{MCD}(a-kb,b)$$
 		Per un arbitrario $k\in \ZZ$. 
 	\end{lemma}
+	\newpage
 	Il lemma precedente giustifica il prossimo importante risultato
+	
 	\begin{algorithm}[di Euclide]
 		Supponiamo di voler calcolare l'MCD tra $a,b \in \NN$. Allora possiamo dividere $a$ per $b$ e ottenere:
 		\begin{gather}
@@ -103,9 +118,9 @@
 			\notag \vdots \\
 			\notag r_k=q_{k+2}r_{k+1} \iff r_k-q_{k+2}r_{k+1}=0 \qquad \mcd(r_{k+1},r_k)=\mcd(r_{k+1},0)=r_{k+1}
 		\end{gather}
-		Cioè ci basta continuare a dividere i resti tra di loro, finchè non arriviamo a $0$, a quel punto l'MCD sarà l'ultimo resto non $0$ della catena di divisioni.
+		Cioè ci basta continuare a dividere i resti tra di loro, finché non arriviamo a $0$, a quel punto l'MCD sarà l'ultimo resto non $0$ della catena di divisioni.
 	\end{algorithm}
-	"Riavvolgendo al contrario" il precedente algoritmo possiamo facilmente arrivare al seguente risultato:
+	"Riavvolgendo al contrario" il precedente algoritmo possiamo facilmente arrivare al seguente teorema:
 	\begin{theorem}[Bez\'out]
 		Siano $a,b \in \NN$, allora è sempre possibile trovare due numeri $m_0,n_0\in \ZZ$ tali che:
 		$$m_0a+n_0b=\mcd(a,b)$$
@@ -116,12 +131,16 @@
 \end{definition}
 	Ora, il nostro sistema di numerazione usuale è la base $10$, il che significa che ci sono $10$ cifre, e che scrivere un numero con le cifre $a_0$, $a_1$, $a_2$, \dots $a_k$ significa:
 	$$n=\overline{a_ka_{k-1}a_{k-2}\dots a_0}=a_0+10a_1+10^2a_2+10^3a_3+\dots+10^ka_k$$
-	Non è raro tuttavia incontrare problemi che chiedano di utilizzare basi di numerazione diverse dal $10$, quindi la seguente definizione.
+	Non è raro tuttavia incontrare problemi che chiedano di utilizzare basi di numerazione diverse dal $10$, diamo quindi la seguente definizione:
 	\begin{definition}
 		Un numero $n$ è rappresentato in base $b$ dalle cifre $a_0$, $a_1$, $a_2$, \dots $a_k$ (con $0\le a_i<b$ per ogni $i$ compreso tra $0$ e $k$ inclusi) se e solo se:
 		$$n=(\overline{a_ka_{k-1}a_{k-2}a_{k-3}\dots a_0})_b=a_0+ba_1+b^2a_2+b^3a_3+b^4a_4+\dots +b^ka_k$$
 	\end{definition}
-	Utilizzare la definizione sopra di solito basta per avviarsi alla risoluzione di tutti i quesiti che coinvolgono le basi di numerazione. 
+	Utilizzare la definizione sopra di solito basta per avviarsi alla risoluzione di tutti i quesiti che coinvolgono le basi di numerazione. \\
+	Facciamo qualche esempio per chiarire i dubbi:
+	$$576_{16}=5\cdot16^2+7\cdot16+6=1398_{10}$$
+	$$1221_3=1\cdot3^3+2\cdot3^2+2\cdot3+1=52_{10}$$
+	$$1010101110_2=2^9+2^7+2^5+2^3+2^2+2=686_{10}$$
 	\subsection{Aritmetica modulare}
 	\begin{definition}
 		Si dice che due interi $a,b$ sono congrui modulo (più semplicemente mod.) $m$, e si scrive $a \equiv b \,\, (m)$, se $a$ e $b$, divisi per $m$, danno lo stesso resto.
@@ -249,7 +268,7 @@
 		Presa una retta $r$ e un punto $P$ esiste sempre ed è unica una retta passante per $P$ e perpendicolare a $r$.
 	\end{fact}
 	\begin{fact}
-		Se due angoli di un triangolo sono uguali allora anche i lati a loro opposti lo sono.
+		Se due angoli di un triangolo sono uguali allora anche i lati a loro opposti lo sono, e viceversa. Allo stesso modo se un angolo è più grande di un altro, anche i lati opposti saranno nella stessa disuguaglianza.
 	\end{fact}
 	\begin{fact}
 		L'angolo esterno in un triangolo è uguale alla somma dei due angoli a lui non adiacenti.
@@ -827,10 +846,15 @@
 			\end{asy}
 		\end{center}
 	\end{theorem}
+	\begin{theorem}[Pitot]
+		Sia $ABCD$ un quadrilatero non intrecciato. Allora esiste una circonferenza inscritta ad $ABCD$ se e solo se sussiste la seguente relazione:
+		$$AB+CD=AD+BC$$
+	\end{theorem}
 	\begin{theorem}[Tolomeo]
 		Se $ABCD$ è un quadrilatero non intrecciato e $AB$, $BC$, $CD$ e $DA$ sono i suoi lati, allora $ABCD \, cyc$ se e solo se la seguente relazione sussiste tra i lati e le diagonali $AC$ e $BD$:
 		$$AB\cdot CD+ BC \cdot DA = AC \cdot BD$$ 
 	\end{theorem}
+
 	\newpage
 	\section{Algebra}
 	
@@ -871,10 +895,10 @@
 		\end{gather}
 	\end{definition}
 	\begin{definition}
-		Definiamo \textit{zero} o \textit{radice} di un polinomio $P(x)$ un numero $a$ tale che $P(a)=0$. Per esempio $2$ è radice di $P(x)=x^3-2x-4$ perchè $P(2)=0$.
+		Definiamo \textit{zero} o \textit{radice} di un polinomio $P(x)$ un numero $a$ tale che $P(a)=0$. Per esempio $2$ è radice di $P(x)=x^3-2x-4$ perché $P(2)=0$.
 	\end{definition}
 	\begin{definition}
-		Chiamiamo coefficiente direttore di un polinomio il coefficiente del monomio di grado massimo che forma il polinomio, diciamo che un polinomio è monico se il suo coefficiente direttore è $1$. Chiamiamo inoltre termine noto di un polinomio il coefficiente del termine d grado $0$ del polinomio (possibilmente il termine noto può essere $0$ se non vi è monomio di grado $0$ nella scrittura del polinomio).
+		Chiamiamo \textit{coefficiente direttore} di un polinomio il coefficiente del monomio di grado massimo che forma il polinomio, diciamo che un polinomio è \textit{monico} se il suo coefficiente direttore è $1$. Chiamiamo inoltre \textit{termine noto} di un polinomio il coefficiente del termine d grado $0$ del polinomio (possibilmente il termine noto può essere $0$ se non vi è monomio di grado $0$ nella scrittura del polinomio).
 	\end{definition}
 	Enunciamo ora un importantissimo teorema che viene di solito trattato il primo anno:
 	\begin{theorem}[Divisione tra polinomi]
@@ -905,7 +929,7 @@
 		Dove $a$ è il coefficiente direttore del polinomio, $Q(x)$ è un polinomio di grado $n-k$ privo di radici reali, che è $Q(x)=1$ se e solo se $k=n$.
 		Inoltre si dimostra che questa fattorizzazione è l'unica che minimizza i gradi di ciascun polinomio coinvolto nel prodotto.
 	\end{theorem}
-	Da questo teorema discendono le cosiddette formule di Vieté e quelle di Newton-Girard, che sono cruciali per risolvere i problemi di algebra delle olimpiadi di matematica:
+	Da questo teorema discendono le cosiddette formule di Viète e quelle di Newton-Girard, che sono cruciali per risolvere i problemi di algebra delle olimpiadi di matematica:
 	
 	\begin{theorem}[Viète] 
 		Facendo riferimento alla notazione della definizione~\ref{polinomio}, e chiamando $x_1$, $x_2$, \dots, $x_n$ tutte le radici complesse del polinomio $P$ di grado $n$: 
@@ -915,7 +939,7 @@
 	\end{theorem}
 	\begin{theorem}[Newton-Girard] 
 		Usando la stessa notazione di sopra, se definiamo $S_a$, con $a\in\NN$, la somma delle radici elevate alla $a$ del polinomio, ovvero:
-		$$S_a=x_1^a+x_2^a+x_3^a+\dots+x_n^a$$
+		$$S_a:=x_1^a+x_2^a+x_3^a+\dots+x_n^a$$
 		Abbiamo la seguente elegante identità:
 		$$0=a_0k+a_1S_1+a_2S_2+a_3S_3+\dots+a_kS_k$$
 		Per ogni $1\le k \le n$.
@@ -923,14 +947,14 @@
 		\\
 		Inoltre possiamo generalizzare questo con le seguente formula:
 		$$0=a_0S_k+a_1S_{k+1}+a_2S_{k+2}+\dots+a_nS_{k+n}$$
-		Per ogni $k \in \ZZ$. Questo è ulteriormente generalizzabile a $k \in \RR$ o addirittura $k \in \CC$, purchè imponiamo delle ragionevoli condizioni sul segno delle radici, o accettiamo che gli $S_k$ possano essere complessi.
+		Per ogni $k \in \ZZ$. Questo è ulteriormente generalizzabile a $k \in \RR$ o addirittura $k \in \CC$, purché imponiamo delle ragionevoli condizioni sul segno delle radici, o accettiamo che gli $S_k$ possano essere complessi.
 	\end{theorem}
 	Infine vediamo alcuni fatti di teoria utilissimi, slegati dal resto:
 	\begin{definition}
 		Diciamo che un polinomio $P(x)$ ha come insieme di coefficienti $A$ e scriviamo $P \in A[x]$ se i coefficienti dei termini che lo formano appartengono tutti ad $A$.
 	\end{definition}
 	\begin{theorem}
-		se $P \in \ZZ[x]$ allora per ogni $a,b\in\ZZ$ abbiamo:
+		Se $P \in \ZZ[x]$ allora per ogni $a,b\in\ZZ$ abbiamo:
 		$$a-b \mid P(a)-P(b)$$
 	\end{theorem}
 	\begin{theorem}[RRT/Teorema delle Radici Razionali]
@@ -1012,7 +1036,7 @@
 			x^2-1 & = \sqrt{1+\sqrt{1+\sqrt{1+\dots}}}\notag
 		\end{align}
 		Ma il lato destro non vi ricorda qualcosa? \'E proprio come abbiamo definito $x$! \\
-		Questo si intende per ricorsione: chiedendoci che valore avesse $x$ abbiamo trovato che $x$ è esattamente uguale al numero che otteniamo elevando \textbf{se stesso} al quadrato e sottranendo $1$.\\
+		Questo si intende per ricorsione: chiedendoci che valore avesse $x$ abbiamo trovato che $x$ è esattamente uguale al numero che otteniamo elevando \textbf{se stesso} al quadrato e sottraendo $1$.\\
 		Ok, e adesso? Beh semplicemente:
 		$$x^2-x-1=0$$ 
 		Questa è un'equazione di secondo grado molto famosa, e possiamo risolverla con \ref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
@@ -1041,14 +1065,15 @@
 	\end{definition}
 	Se dobbiamo scegliere due elementi rispettivamente uno da un insieme $A$ e l'altro da un'insieme $B$, diamo le seguenti definizioni:
 	\begin{definition}
-		Due scelte come descritte sopra si dicono indipendenti \\ quando $A \, \cap \, B = \emptyset$ (formalmente l'insieme di tutti gli esiti di queste scelte sarebbe il prodotto cartesiano tra i due insiemi $A$ e $B$, denotato con $A \times B$, se conoscete già questa operazione e ci siete abituati, bene; altrimenti un'intuizione come descritta prima è più che sufficiente).
+		Chiamiamo scelta di un elemento da un certo insieme $A$ il processo intuitivo di scegliere un singolo elemento appartenente all'insieme $A$. Due scelte si dicono diverse quando gli oggetti scelti sono diversi. È evidente che il numero di scelte distinte di un elemento dall'insieme $A$ è $|A|$.\\
+		Se dobbiamo scegliere contemporaneamente due elementi da due insiemi $A$ e $B$ diciamo la scelta indipendente quando $A \cap B = \emptyset$ (formalmente l'insieme di tutti gli esiti di queste scelte sarebbe il prodotto cartesiano tra i due insiemi $A$ e $B$, denotato con $A \times B$, se conoscete già questa operazione e ci siete abituati, bene; altrimenti un'intuizione come descritta prima è più che sufficiente).
 	\end{definition}
 	Valgono i seguenti importanti teoremi:
 	\begin{theorem}[Prodotto Logico]
 		\label{C:prod}
-		Il numero possibile di scelte indipendeti di due elementi, uno dall'insieme $A$, e l'altro dall'insieme $B$, di cardinalità $a$ e $b$ è $a \cdot b$ (riprendendo quanto è stato detto prima, questo risultato formalmente sarebbe l'identità per gli insiemi finiti $A$ e $B$: $|A\times B|=|A|\cdot|B|$).
+		Il numero possibile di scelte indipendenti di due elementi, uno dall'insieme $A$, e l'altro dall'insieme $B$, di cardinalità $a$ e $b$ è $a \cdot b$ (riprendendo quanto è stato detto prima, questo risultato formalmente sarebbe l'identità per gli insiemi finiti $A$ e $B$: $|A\times B|=|A|\cdot|B|$).
 	\end{theorem}
-	Ricordiamo il seguente fatto di teoria degli insiemi\footnote{finiti}:
+	Ricordiamo il seguente fatto di teoria degli insiemi\footnote{Questo, come tutti risultati illustrati in questa sezione, vale solo quando le cardinalità dei due insiemi sono finite.}:
 	\begin{theorem}[Somma Logica]
 		Se abbiamo gli insiemi $A$, $B$ disgiunti (cioè con intersezione nulla, ovvero $A\cap B = \emptyset$) e dobbiamo scegliere un singolo elemento appartenente a uno dei due insiemi, il numero di possibilità che abbiamo è:
 		$$|A\cup B|=|A|+|B|$$
@@ -1058,7 +1083,7 @@
 	\begin{lemma}[Principio di Inclusione-Esclusione]
 		Dati due insiemi $A$ e $B$, la cardinalità della loro unione vale:
 		$$|A \cup B| = |A|+|B|-|A \cap B|$$
-		Questo fatto si può generalizzare, ad una espressione complicata quando gli insiemi considerati non sono due ma $n$. Sinteticamente per $n$ insiemi $A_1$, $A_2$, $A_3$, \dots, $A_n$ vale: 
+		Questo fatto si può generalizzare tramite un'espressione molto complicata al caso in cui gli insiemi considerati non sono due ma $n$. Sinteticamente per $n$ insiemi $A_1$, $A_2$, $A_3$, \dots, $A_n$ vale: 
 		\begin{equation}\notag
 			\begin{split}
 				|A_1 \cup A_2 \cup A_3 \cup A_4 \dots A_n| = &  |A_1|+|A_2|+|A_3|+\dots +|A_n|\\
@@ -1093,7 +1118,7 @@
 		anagrammi.
 	\end{theorem}
 	E da qui è facile generalizzare per una parola arbitraria:
-	\begin{theorem}[Anagrammi con Ripezioni]
+	\begin{theorem}[Anagrammi con Ripetizioni]
 		\label{anag:3}
 		Se una parola formata da $n$ lettere ha $k$ insiemi di lettere uguali, ciascuno rispettivamente di cardinalità $a_1$, $a_2$, \dots $a_k$, il numero dei suoi anagrammi è esattamente:
 		$$\frac{n!}{a_1!a_2!a_3!\dots a_k!}$$
@@ -1112,15 +1137,25 @@
 		La scrittura a sinistra dell'uguaglianza si legge spesso come "$n$ scelto $k$", oppure come "$n$ choose $k$" oppure come "$n$ su $k$". Inoltre se $n<k$ definiamo il coefficiente binomiale come:
 		$$\binom{n}{k}:=0$$
 	\end{definition}
-	Dunque vale il seguente teorema
+	Il principale uso combinatorico dei coefficienti binomiali risiede nel seguente teorema:
 	
-	\begin{lemma}
+	\begin{theorem}
 		\label{combinazioni}
 		Il numero di modi per scegliere $k$ elementi da un insieme di cardinalità $n$ è precisamente
 		$\binom{n}{k}$.
-	\end{lemma}
-	Questo si può dimostrare anagrammando la parola 0000\dots00111\dots11 formata da $n$ caratteri, di cui $k$ caratteri 1.
-	I coefficienti binomiali sono certo utili per risolvere problemi di combinatoria riguardanti conteggi, ma sono anche fondamentali per risolvere problemi di algebra, tramite le seguenti identità, che potete dare per note:
+	\end{theorem}
+	Questo si può dimostrare anagrammando la parola 0000\dots00111\dots11 formata da $n$ caratteri, di cui $k$ caratteri 1. \\
+	Un'altra fondamentale applicazione dei coefficienti binomiali è il cosiddetto metodo "stars and bars"\footnote{Questo nome è nato in america, in riferimento alla bandiera americana formata da stelle e strisce.} oppure delle caramelle e dei bambini, che si può riassumere nella seguente proposizione:
+	\begin{proposition}[Stars and Bars]
+		Abbiamo $k$ bambini e $n$ caramelle che vogliamo distribuire loro in modo arbitrario. Il numero di possibili distribuzioni (a meno dell'ordine in cui diamo le caramelle, cioè consideriamo due distribuzioni diverse se e solo se esiste un bambino che in un caso ha ricevuto un numero di caramelle diverso dall'altro) è esattamente uguale a:
+		$$\binom{n+k-1}{k-1}$$
+	\end{proposition}
+	\begin{proof}
+		Possiamo anagrammare una parola opportunamente scelta per giustificare la proposizione sopra. Prendiamo la parola formata da $n$ lettere C, che rappresentano le nostre $n$ caramelle, e ci aggiungiamo $k-1$ simboli "|". Così facendo le sbarrette verticali identificano nella parola $k$ gruppi di lettere C, (per esempio per $k=3$ e $n=5$ una parola può essere CC|CCC| dove vediamo che il primo gruppo è formato da $2$ caramelle, il secondo da $3$ e il terzo da $0$) numerando sia i bambini che i gruppi cosi formatisi da $1$ a $k$, le caramelle date al bambino numero $i$ saranno esattamente quelle nel gruppo $i$-esimo. Allora il problema si è ridotto a trovare il numero di parole formate come sopra, ovvero il numero di anagrammi della parola formata da $n$ lettere C e $k-1$ lettere |. Questo per quanto visto prima è uguale a:
+		$$\frac{(n+k-1)!}{n!(k-1)!}=\binom{n+k-1}{k-1}$$ 
+	\end{proof}
+	
+	I coefficienti binomiali sono certo utili per risolvere problemi di combinatoria riguardanti conteggi, ma sono anche fondamentali per risolvere problemi di algebra. A questo fine sono utili le seguenti identità, che potete dare per note:
 	\begin{lemma}
 		\label{binomial:identity:1}
 		La seguente identità vale per ogni $n > k\in\NN$:
@@ -1130,7 +1165,7 @@
 		\label{binomial:identity:2}
 		La seguente identità vale per ogni $n\in\NN$:
 		$$\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\dots+\binom{n}{n-1}+\binom{n}{n}=2^n$$
-		Si noti che questa identità puo seguire da~\ref{ident:newton}.
+		Si noti che questa identità può seguire da~\ref{ident:newton}.
 	\end{lemma}
 	\begin{lemma}
 		\label{binomial:identity:3}
@@ -1150,8 +1185,27 @@
 	\begin{lemma}[Vandermonde]
 		\label{binomial:identity:5}
 		La seguente identità vale per ogni $m,\,n,\,a \in \NN$:
-		$$\binom{m+n}{a}=\binom{m}{0}\binom{n}{a}+\binom{m}{1}\binom{n}{a-1}+\binom{m}{2}\binom{n}{a-2}+\dots+\binom{m}{a}\binom{n}{0}$$
+		$$\binom{m}{0}\binom{n}{a}+\binom{m}{1}\binom{n}{a-1}+\binom{m}{2}\binom{n}{a-2}+\dots+\binom{m}{a}\binom{n}{0}=\binom{m+n}{a}$$
 	\end{lemma}
+	Esiste un modo molto chiaro per visualizzare i coefficienti binomiali e molte delle identità che abbiamo visto sopra (tutte tranne la \ref{binomial:identity:5}). Questo è il cosiddetto triangolo di Tartaglia, che di solito si fa a scuola quando si parla di potenze di binomi (e in effetti ne possiamo vedere l'applicazione grazie a \ref{ident:newton}). Il triangolo di Tartaglia (gli inglesi lo chiamano triangolo di Pascal) è formato da $n$ righe, ognuna con $n$ numeri. Alla riga $n$ in posizione $k$ è posizionato $\binom{n}{k}$, considerando la prima riga come riga $0$. Grazie a \ref{binomial:identity:1} 
+	notiamo che ogni elemento di indice $k$ (eccetto gli $1$ alle estremità di ogni riga) è ottenuto sommando tra loro i due elementi di indice $k$ e $k-1$ nella riga superiore, riuscite a vedere come le altre $3$ identità siano giustificate da questo magico diagramma?
+	\begin{center}
+		\setlength{\tabcolsep}{5pt}
+		\begin{tabular}{ccccccccccccccccccc}
+			  &  &  &  &  &  &  &  &   &1 &   &  &  &  &  &  &  &  &  \\
+			  &  &  &  &  &  &  &  &1  &  &1  &  &  &  &  &  &  &  &  \\
+			  &  &  &  &  &  &  &1 &   &2 &   &1 &  &  &  &  &  &  &  \\
+			  &  &  &  &  &  &1 &  &3  &  &3  &  &1 &  &  &  &  &  &  \\
+			  &  &  &  &  &1 &  &4 &   &6 &   &4 &  &1 &  &  &  &  &  \\
+			  &  &  &  &1 &  &5 &  &10 &  &10 &  &5 &  &1 &  &  &  &  \\
+			  &  &  &1 &  &6 &  &15&   &20&   &15&  &6 &  &1 &  &  &  \\
+			  &  &1 &  &7 &  &21&  &35 &  &35 &  &21&  &7 &  &1 &  &  \\
+			  &1 &  &8 &  &28&  &56&   &70&   &56&  &28&  &8 &  &1 &  \\
+			 1&  &9 &  &36&  &84&  &126&  &126&  &84&  &36&  &9 &  &1 \\
+		\end{tabular}
+	\end{center}
+
+	\newpage
 	
 	\subsection{Tecniche Dimostrative}
 	Come disse un saggio\footnote{di cui gli autori non ricordano il nome, purtroppo.}, la C che di solito si trova ad indicare la quarta materia della matematica olimpica sta per "combinatoria", ma anche per "cose a caso". \\
@@ -1159,7 +1213,7 @@
 	
 	\subsubsection{Induzione}
 	La prima importante strategia per risolvere problemi dimostrativi, sia di combinatoria che non, è l'induzione.
-	Come funziona l'induzione? a livello formale il principio di induzione è un assioma, ed è formulato così:
+	Come funziona l'induzione? a livello formale il principio di induzione è un assioma,\footnote{Dipende da che sistema assiomatico state utilizzando. Per esempio il principio di induzione fa parte degli assiomi di Peano, ma non di quelli di Zermelo-Fraenkel. Per quanto riguarda le olimpiadi non vi dovete preoccupare di queste cose, e potete invocare il principio di induzione semplicemente come fatto di teoria noto.} ed è formulato così:
 	\begin{proposition}[Induzione]
 		Sia $P$ una proposizione\footnote{Una affermazione per la quale si può dire oggettivamente se è vera o falsa, per esempio "due è uguale a due" oppure "In questo momento sta piovendo".} il cui valore di verità (cioè il fatto che sia vera o falsa) dipende dalla variabile $n\in\NN$\footnote{Nel gergo della logica matematica questo viene detto "Enunciato Aperto", perché non gli si può assegnare un valore di verità prima di aver assegnato il valore della variabile $n$ e rimane quindi "aperto".}, scriviamo $P(n)$ per questo particolare tipo di proposizioni. Se $P(0)$ è vera e se il fatto che $P(k)$ sia vera implica il fatto che $P(k+1)$ sia a sua volta vera, abbiamo che $P(n)$ è vera per ogni $n\in\NN$, in simboli per ogni $n\in\NN$ vale:
 		$$P(0) \land (P(k)\implies P(k+1)) \qquad \implies \qquad P(n) $$
@@ -1183,11 +1237,11 @@
 				& = \frac{(k+1)(k+2)}{2}
 			\end{split}
 		\end{equation}
-		Che, miracolo, scopriamo essere $P(k+1)$! cioè l'espressione che si trova sostituendo alla $n$ il numero $k+1$ nella nostra espressione di partenza. Abbiamo quindi dimostrato che $P(k+1)$ è vera. Ecco, questo ora è il fulcro del principio di induzione: noi sappiamo che preso un generico numero $k$, se la tesi è vera per $k$ lo è anche per $k+1$, ma noi sappiamo che $P(0)$ è vera, quindi sicuramente anche $P(1)$ è vera. Ma ora sappiamo che $P(1)$ è vera, quindi (sempre perchè se $P(k)$ è vero allora lo è anche $P(k+1)$) anche $P(2)$ è vera. Per lo stesso motivo $P(3)$ sarà vera, e così anche $P(4)$, $P(5)$\dots
+		Che, miracolo, scopriamo essere $P(k+1)$! cioè l'espressione che si trova sostituendo alla $n$ il numero $k+1$ nella nostra espressione di partenza. Abbiamo quindi dimostrato che $P(k+1)$ è vera. Ecco, questo ora è il fulcro del principio di induzione: noi sappiamo che preso un generico numero $k$, se la tesi è vera per $k$ lo è anche per $k+1$, ma noi sappiamo che $P(0)$ è vera, quindi sicuramente anche $P(1)$ è vera. Ma ora sappiamo che $P(1)$ è vera, quindi (sempre perché se $P(k)$ è vero allora lo è anche $P(k+1)$) anche $P(2)$ è vera. Per lo stesso motivo $P(3)$ sarà vera, e così anche $P(4)$, $P(5)$\dots
 		\\
-		Insomma, possiamo andare avanti all'infinito, per ogni numero naturale $n$ possiamo verificare che $P(n)$ sia vero in un numero finito di passaggi, ci basta passare da $P(0)$ a $P(1)$ a $P(2)$\dots fino a $P(n-1)$ e poi finalmente a $P(n)$.\\
-		Ecco il principio di induzione serve proprio a formalizzare questo strano passaggio logico, quando troviamo una proposizione che soddisfa la proprietà chiave $P(k)\implies P(k+1)$ e riusciamo a dimostrare che un certo $P(a)$ è vero, allora $P(n)$ sarà vera per ogni $n\in\NN$ tale che $n\ge a$.
-		Questo modo di risolvere i problemi è straordinariamente potente, ma per evitare di incorrere in spiacevoli inconvenienti è bene imparare a scrivere bene le dimostrazioni per induzione. Di solito seguono uno schema di questo tipo.
+		Insomma, possiamo andare avanti all'infinito, per ogni numero naturale $n$ possiamo verificare che $P(n)$ sia vera in un numero finito di passaggi, ci basta passare da $P(0)$ a $P(1)$ a $P(2)$\dots fino a $P(n-1)$ e poi finalmente a $P(n)$.\\
+		Il principio di induzione serve proprio a formalizzare questo strano passaggio logico, quando troviamo una proposizione che soddisfa la proprietà chiave $P(k)\implies P(k+1)$ e riusciamo a dimostrare che un certo $P(a)$ è vero, allora $P(n)$ sarà vera per ogni $n\in\NN$ tale che $n\ge a$.
+		Questo modo di risolvere i problemi è straordinariamente potente, ma per evitare di incorrere in spiacevoli inconvenienti è bene imparare a scrivere bene le dimostrazioni per induzione. Di solito seguono uno schema di questo tipo:
 		\\
 		\\
 		Dobbiamo dimostrare che:
@@ -1195,7 +1249,7 @@
 		Per ogni $n\in\NN$.\\
 		\textbf{Procediamo per induzione}:
 		\begin{itemize}
-			\item \textbf{Passo base} $P(0)$ è vera perchè sostituendo da ambo i lati $0$ otteniamo $0=0$ che è evidentemente vera.
+			\item \textbf{Passo base} $P(0)$ è vera perché sostituendo da ambo i lati $0$ otteniamo $0=0$ che è evidentemente vera.
 			\item \textbf{Passo induttivo, supponiamo che la tesi valga per un certo $k\in\NN$} allora abbiamo:
 			\begin{equation}\notag
 				\begin{split}
@@ -1210,14 +1264,14 @@
 		\end{itemize}
 		Quindi \textbf{per induzione} abbiamo dimostrato la tesi.
 	\end{proof}
-	Come già detto, questa tecnica è cruciale per un incredibile numero di problemi di combinatoria, di teoria dei numeri e di algebra (anche se non molti di geometria). In generale le parole evidenziate in grassetto nella dimostrazione sopra sono quelle che non dovrebbero mai mancare in una vostra dimostrazione per induzione, quindi cercate di seguire quello schema, almeno finchè non vi sarete ben abituati. Se si vuole fare esercizio, dimostrare i teoremi \ref{sum:2}, \ref{sum:3} e \ref{sum:g} è un ottimo modo per iniziare.
+	Come già detto, questa tecnica è cruciale per un incredibile numero di problemi di combinatoria, di teoria dei numeri e di algebra (anche se non molti di geometria). In generale le parole evidenziate in grassetto nella dimostrazione sopra sono quelle che non dovrebbero mai mancare in una vostra dimostrazione per induzione, quindi cercate di seguire quello schema, almeno finché non vi sarete ben abituati. Se si vuole fare esercizio, dimostrare i teoremi \ref{sum:2}, \ref{sum:3} e \ref{sum:g} è un ottimo modo per iniziare.
 	\\
 	Esiste una formulazione alternativa e più forte del principio di induzione, il ragionamento che c'è dietro è esattamente lo stesso e quindi non ci ripeteremo.
 	\begin{proposition}[Induzione estesa/Induzione forte]
-		Dato un enunciato aperto $P(n)$ con $n\in\NN$, se abbiamo che $P(n)$ vera per ogni $n\le k$ implica $P(k+1)$ vera, e abbiamo che $P(0)$, $P(1)$, $P(2)$\dots $P(k)$ sono veri, allora $P(n)$ è vera per ogni $n\in\NN$.
+		Dato un enunciato aperto $P(n)$ con $n\in\NN$, se abbiamo che $P(k)$ vera per ogni $k\le n$ implica $P(n+1)$ vera, e abbiamo che $P(0)$, $P(1)$, $P(2)$\dots $P(n)$ sono veri, allora $P(n)$ è vera per ogni $n\in\NN$.
 	\end{proposition}
 	Con l'induzione estesa il passo induttivo diventa:\\
-	"supponiamo che la tesi valga per ogni $k\le n$\dots \, allora la tesi vale per $k+1$". Fate solo attenzione a verificare la seconda condizione, se per dimostrare che $P(k)$ è vero avete bisogno che $P(k-1)$ e $P(k-2)$ siano veri, il passo base consiste nel dimostrare che sia $P(0)$ sia $P(1)$ (\textbf{!!!}) sono vere.
+	"supponiamo che la tesi valga per ogni $k\le n$\dots \, allora la tesi vale per $n+1$". Fate solo attenzione a verificare la seconda condizione, se per dimostrare che $P(k)$ è vero avete bisogno che $P(k-1)$ e $P(k-2)$ siano veri, il passo base consiste nel dimostrare che sia $P(0)$ sia $P(1)$ (\textbf{!!!}) sono vere.
 	
 	\subsubsection{Double counting}
 	"Double counting", come il nome suggerisce, è una tecnica che consiste nel contare in due modi una stessa quantità. I vantaggi di questo approccio sono evidenti nei seguenti esempi.
@@ -1236,7 +1290,7 @@
 	\end{array}
 	\]
 	\\
-	Notiamo che abbiamo due modi per calcolare la somma delle celle della tabella sopra, il primo è sommare riga per riga, e il secondo colonna per colonna. Il punto del double counting è che l'espressione che troviamo in un caso \textbf{deve} essere uguale a quella che troviamo nell'altro caso, perchè \textbf{stiamo contando la stessa quantità}. In questo caso la somma di una riga risulta essere:
+	Notiamo che abbiamo due modi per calcolare la somma delle celle della tabella sopra, il primo è sommare riga per riga, e il secondo colonna per colonna. Il punto del double counting è che l'espressione che troviamo in un caso \textbf{deve} essere uguale a quella che troviamo nell'altro caso, perché \textbf{stiamo contando la stessa quantità}. In questo caso la somma di una riga risulta essere:
 	$$1+2+3+4+\dots+n$$
 	Quindi la somma delle righe è:
 	\begin{equation}\notag
@@ -1254,7 +1308,7 @@
 	\begin{example}
 		Vogliamo dimostrare che $$\binom{n}{k}=\binom{n}{n-k}$$ per ogni $n\ge k \in \NN$. Per fare ciò consideriamo un insieme $A$ di $n$ elementi e supponiamo di volerne scegliere $k$ da questo. per il lemma \ref{combinazioni} ci sono due modi per farlo, il primo è scegliere direttamente i $k$ elementi, e questo lo posso fare in
 		$$\binom{n}{k}$$
-		modi. Il secondo è scegliere prima gli $n-k$ elementi che \textbf{non} vogliamo scegliere, e questo determinerà univocamente quali saranno gli elementi scelti. In quanti modi lo posso fare? Beh, sto scegliendo $n-k$ elementi da un insieme di $n$, quindi abbiamo
+		modi. Il secondo è scegliere prima gli $n-k$ elementi che \textbf{non} vogliamo scegliere, e questo determinerà univocamente quali saranno gli elementi scelti. In quanti modi lo posso fare? Beh, stiamo scegliendo $n-k$ elementi da un insieme di $n$, quindi abbiamo
 		$$\binom{n}{n-k}$$
 		modi per farlo. Abbiamo contato la stessa quantità in due modi, quindi queste due espressioni devono essere uguali, da qui la tesi:
 		$$\binom{n}{k}=\binom{n}{n-k}$$
@@ -1266,16 +1320,66 @@
 	"Invariante" è un termine che presenta una definizione molto vaga. Il modo più semplice per spiegarlo è definirlo come una quantità che non varia, oppure che varia ma in maniera controllata; ma il modo più semplice per capirlo è attraverso degli esempi.
 	
 	\begin{example}
-		Suppongo di avere un numero $n$ scritto su una lavagna. Ad ogni mossa, posso permutare\footnote{permutazione è un altro termine per indicare un anagramma (teoremi \ref{anag:1}, \ref{anag:2} e \ref{anag:3}), quindi permutare qualcosa significa scriverne un particolare anagramma.} le cifre della sua rappresentazione decimale. Allora la somma delle cifre del numero dopo ogni mossa non varia, dunque è un'\textbf{invariante}.
+		Supponiamo di avere un numero $n$ scritto su una lavagna. Ad ogni mossa, possiamo permutare\footnote{permutazione è un altro termine per indicare un anagramma (teoremi \ref{anag:1}, \ref{anag:2} e \ref{anag:3}), quindi permutare qualcosa significa scriverne un particolare anagramma.} le cifre della sua rappresentazione decimale. Allora la somma delle cifre del numero dopo ogni mossa non varia, dunque è un'\textbf{invariante}.
 	\end{example}
 	\begin{example}
-		Suppongo di avere il numero $2$ scritto su una lavagna. Ad ogni mossa, posso scegliere se sommare $5$ o $3$ al numero scritto, e sostituire il numero sulla lavagna con il valore, che chiamo $n$,  della somma. Noto che così facendo, la parità di $n$ cambia ad ogni mossa; in particolare, essendo che il numero di partenza era pari, $n$ sarà pari dopo che effettuo un numero pari di mosse, e dispari dopo un numero dispari di mosse. Quindi questa parità varia in modo controllato, dunque è un'\textbf{invariante}.
+		Supponiamo di avere il numero $2$ scritto su una lavagna. Ad ogni mossa, possiamo scegliere se sommare $5$ o $3$ al numero scritto, e sostituire il numero sulla lavagna con il valore, che chiamo $n$,  della somma. Noto che così facendo, la parità di $n$ cambia ad ogni mossa; in particolare, essendo che il numero di partenza era pari, $n$ sarà pari dopo che effettuo un numero pari di mosse, e dispari dopo un numero dispari di mosse. Quindi questa parità varia in modo controllato, dunque è un'\textbf{invariante}.
 	\end{example}
+	Tipicamente in un problema strutturato come un gioco, dove uno o più giocatori modificano o operano su un oggetto dato con delle mosse, il modo migliore per capire se si può "vincere" è considerando delle invarianti.
+	\begin{exercise}
+		Matilde e Marco hanno una pila di $99$ monete, che utilizzano per il seguente gioco: ciascuno dei due, partendo da Matilde, può togliere un numero di monete compreso tra $1$ e $10$. Chi toglie l'ultima moneta vince l'intera pila; quale dei giocatori ha una strategia vincente?
+	\end{exercise}
+	\begin{proof}
+		Sostituire $99$ con un valore più piccolo nel testo del problema può aiutarci a familiarizzare con la sua struttura. Se per esempio abbiamo un numero di monete $N$ tra $1$ e $10$, chiaramente vince Matilde alla prima mossa; per $N=11$ invece, Matilde non può vincere alla prima mossa, e qualsiasi configurazione lei lasci è vincente per il giocatore che segue. Se $N$ è tra $12$ e $21$, Matilde può lasciare $11$ monete a Marco, che si ritroverà nel caso perdente descritto prima, e così via.
+		Dunque sembrerebbe che la vittoria dipenda solamente dalla classe di resto mod. $11$ di $N$, con Matilde che è vincente se $N$ non è divisibile per $11$, e Marco vincente altrimenti.
+		\\ Una caratteristica importante della configurazione finale con $0$ monete è che, chiaramente, il numero ($0$) di monete è divisibile per $11$. Siccome le mosse concesse permettono di rendere il numero di monete divisibile per $11$ se e solo se non lo erano già nella configurazione precedente (possiamo togliere un numero di monete uguale a ciascuna classe di resto$\mod11$ fuorché $0$), Matilde nella prima mossa non potrà lasciare un numero di monete divisibile per $11$, mentre Marco, al turno dopo, sì. Marco può decidere quindi di togliere sempre un numero di monete uguale alla classe di resto$\mod11$ delle monete lasciate da Matilde, lasciando un numero di monete divisibile per $11$ e costringendola a lasciare un numero di monete non divisibile per $11$, finché a un certo punto Marco non lascerà $0$ monete, concludendo il gioco.
+	\end{proof}
 	
+	Gli invarianti stanno alla base della soluzione di alcuni tra i più difficili problemi di matematica (o di informatica) che ci siano, e sono un argomento vastissimo che torna di continuo in tutte le forme alle Olimpiadi. Per questo è fondamentale fare molti esercizi per apprendere questi concetti e interiorizzarli adeguatamente.
+
 	\subsubsection{Pigeonhole}
-	Il pigeonhole, o principio dei cassetti, formalizza un concetto molto semplice e logico: 
+	Il Pigeonhole, o principio dei cassetti, o principio della piccionaia, o principio della scatola di Dirichlet$\dots\,$ formalizza un concetto molto semplice e logico: 
 	\begin{proposition}[Pigeonhole]
-		Se ho $n$ cassetti, e $n+1$ oggetti che voglio disporre all'interno di questi, allora esisterà almeno un cassetto con più di un oggetto al suo interno.
+		Se ci sono $n$ cassetti, e $n+1$ oggetti che si vogliono disporre all'interno di questi, allora esisterà almeno un cassetto con più di un oggetto al suo interno.
+	\end{proposition}
+	Chiaramente la proposizione di sopra regge perché, se ogni cassetto avesse al massimo un oggetto al suo interno, avremmo al massimo $n$ oggetti. \\
+	Facciamo una serie di esempi per aiutare a capire come questo principio sia utile per risolvere problemi:
+	\begin{example}
+		Prese $3$ persone, ce ne saranno sempre almeno $2$ dello stesso sesso.
+	\end{example}
+	\begin{example}
+		Prese $13$ persone, ce ne saranno sempre almeno $2$ nate lo stesso mese.
+	\end{example}
+	\begin{example}
+		Se nessuno ha più di $300000$ capelli sulla testa, e la capitale del Buthan ha $300001$ abitanti, ci sono sicuramente due persone in Buthan con lo stesso numero di capelli.
+	\end{example}
+	\begin{example}
+		Dati $q,s\in\NN$, se mettiamo $qs+1$ oggetti in $s$ cassetti allora almeno un cassetto avrà al suo interno più di $q$ oggetti.
+	\end{example}
+	Facciamo vedere un esempio di problema dimostrabile con questa tecnica:
+	\begin{exercise}
+		Edoardo organizza una festa con $n$ amici, e alcuni di questi si sfidano a giocare a carta, forbice e sasso; ogni coppia di persone si scontra al massimo una volta. Si dimostri che esistono due persone che giocano con lo stesso numero di invitati.
+	\end{exercise}
+	\begin{proof}
+		Innanzitutto, notiamo che ogni persona gioca con minimo $0$ persone e massimo $n-1$ persone, per un numero $n$ di possibilità per il numero di partite di ciascuno. Ma se esiste una persona che gioca con tutte le altre, non può esservi una persona che non gioca con nessuno, quindi $0$ e $n$ si escludono a vicenda. Di conseguenza posso avere solo $n-1$ possibilità per il numero di partite di ciascuno. Ma ci sono $n$ persone, quindi due di queste hanno giocato con lo stesso numero di invitati. 
+	\end{proof}
+	
+	Dalla proposizione sopra segue un'ovvia generalizzazione:
+	\begin{proposition}[Pigeonhole generalizzato]
+		Se ho $n$ cassetti, e $k$ oggetti che voglio disporre all'interno di questi, allora esisterà almeno un cassetto con un numero di oggetti al suo interno maggiore o uguale di $\ceiling{\frac{k}{n}}$ \footnote{questa notazione vuol dire: il più piccolo valore intero maggiore o uguale a $\frac{k}{n}$}, e un cassetto con un numero di oggetti al suo interno minore o uguale \\
+		di $\floor{\frac{k}{n}}$ \footnote{questa notazione vuol dire: il più grande valore intero minore o uguale a$ \frac{k}{n}$}.
 	\end{proposition}
 	
+	\begin{proof}
+		Se tutti i cassetti contenessero un numero di oggetti minore di $\ceiling{\frac{k}{n}}$, avremmo un numero di oggetti complessivo minore o uguale di $\Big(\ceiling{\frac{k}{n}}-1\Big) \cdot n$; ma $\ceiling{\frac{k}{n}}$ è minore di $\frac{k}{n}+1$, quindi $\Big(\ceiling{\frac{k}{n}}-1\Big) \cdot n$ è minore di $k$, assurdo. \\
+		Similmente, se tutti i cassetti contenessero un numero di oggetti maggiore di $\floor{\frac{k}{n}}$, avremmo un numero di oggetti complessivo maggiore o uguale a $\Big(\floor{\frac{k}{n}}+1\Big) \cdot n$; ma $\floor{\frac{k}{n}}$ è maggiore di $\frac{k}{n}-1$, quindi $\Big(\ceiling{\frac{k}{n}}-1\Big) \cdot n$ è maggiore di $k$, assurdo.
+	\end{proof}
+	
+	L'esempio che segue è un'applicazione molto carina di questo principio (la mia preferita personalmente).\footnote{La preferita di Barbara Catino.}
+	\begin{exercise}
+		Enrico ha $77$ giorni per prepararsi per l'ammissione in Normale, e di conseguenza decide di studiare almeno un capitolo al giorno dei $132$ capitoli di cui è composto i \textit{fondamenti di fisica} di Halliday e Resnick (non è necessario che li studi tutti). Si dimostri che esiste una sequenza di giorni consecutivi durante la quale studia esattamente $21$ capitoli.
+	\end{exercise}
+	\begin{proof}
+		Consideriamo la sequenza S formata da $s_1, s_2, ..., s_{77}$, dove $s_i$ è il numero di capitoli studiati fino al giorno i (compreso). Chiaramente la sequenza è strettamente crescente. Per le ipotesi, ogni valore è compreso tra $1$ e $132$. La tesi è equivalente a mostrare che esistono $a,b\in\NN$ tali che $s_a-s_b=21$. Prendiamo in considerazione la sequenza $T$ formata da $s_1+21, s_2+21, ..., s_{77}+21$. Per quanto detto prima, ogni valore è compreso tra $22$ e $153$, e la sequenza è strettamente crescente. $S$ e $T$ contengono in totale $154$ valori, tutti compresi tra $1$ e $153$, quindi per pigeonhole ce ne sono due uguali. Non possono appartenere alla stessa sequenza, poiché le sequenze crescono strettamente, perciò esistono indici $a,b\in\NN$ tali che $s_b+21=s_a $ che implica $21=s_a-s_b$, tesi.
+	\end{proof}
 \end{document}
