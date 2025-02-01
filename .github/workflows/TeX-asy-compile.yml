@@ -11,12 +11,18 @@ jobs:
     steps:
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: setup
+        uses: actions/checkout@v4
       
-      - name: pkg-install
+      - name: install
         run: |
           sudo apt-get --fix-missing update
           sudo apt-get --fix-missing install texlive-full asymptote latexmk
         # sudo apt-get upgrade
       - name: compile
         run: sudo latexmk --pdf TeoriaBase.tex
+
+      - name: release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: TeoriaBase.pdf
