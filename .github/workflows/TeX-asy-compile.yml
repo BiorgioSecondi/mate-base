@@ -1,0 +1,29 @@
+name: LaTeX-compile
+
+# run automaticamente quando si fa push, compare nella lista degli workflow nelle actions della repo
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: setup
+        uses: actions/checkout@v4
+      
+      - name: install
+        run: |
+          sudo apt-get --fix-missing update
+          sudo apt-get --fix-missing install texlive-full asymptote latexmk
+        # sudo apt-get upgrade
+      - name: compile
+        run: sudo latexmk --pdf TeoriaBase.tex
+
+      - name: release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: TeoriaBase.pdf
+          overwrite: true
