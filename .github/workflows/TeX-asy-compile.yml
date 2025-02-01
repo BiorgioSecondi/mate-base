@@ -19,4 +19,4 @@ jobs:
           sudo apt-get --fix-missing install texlive-full asymptote latexmk
         # sudo apt-get upgrade
       - name: compile
-        run: sudo latexmk -pdf latexusage
+        run: sudo latexmk --pdf MateBase.tex
