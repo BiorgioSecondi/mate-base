@@ -28,7 +28,8 @@ questo metodo è utile soprattutto se hai trovato piccole imprecisioni o errori 
 - scrivi un messaggio che indichi brevemente cosa hai cambiato (obbligatorio), se vuoi spiegare meglio metti una descrizione della modifica (opzionale)
 - clicca propose changes, poi create pull request, se vuoi aggiungere qualche nota scrivila nel campo apposito (opzionale), infine conferma
 - hai finito!
-- le modifiche compariranno nel file dopo che uno studente coi permessi di farlo avrà controllato e accettato le tue modifiche
+- in un paio di minuti comparirà un link alla preview del risultato delle tue modifiche (se le modifiche riguardano il PDF e non questo file). se le modifiche contengono errori nel LaTeX, la generazione della preview fallirà
+- le modifiche compariranno nel file ufficiale solo dopo che uno studente coi permessi di farlo avrà controllato e accettato le tue modifiche
 
 ### con editor a scelta in locale e git cli
 consigliato per chi conosce LaTeX e vuole fare modifiche più sostanziose.
@@ -53,7 +54,7 @@ Se il tuo editor non genera il PDF, oppure ha problemi nel farlo o non supporta 
 - `git status`: controlla di stare tracciando i file che vuoi. Se no, usa i comandi precedenti per correggere.
 - `git commit -m "messaggio"`: git salva la serie di modifiche e la tiene pronta per inviarla, con un messaggio che vedrà chi dovrà approvare le modifiche. puoi modificare ancora i file e creare nuovi commit prima di passsare al passaggio successivo. A volte richiede che tu imposti un nome e una mail, ma nel caso ti dirà i comandi per farlo.
 - `git push`: invierà al sito tutti i tuoi commit. per farlo però ti chiederà il tuo username di GitHub e un token, che puoi generare [qui](https://github.com/settings/tokens/new) (metti quello che vuoi come note e durata, sotto la voce select scopes metti `repo` e `workflow`. se qualcosa è andato storto degli errori ti spiegheranno cosa e come sistemare.
-- ora i tuoi cambiamenti saranno in attesa di approvazione, quando saranno approvati compariranno nella versione del file sul sito.
+- ora i tuoi cambiamenti saranno in attesa di approvazione, quando saranno approvati compariranno nella versione ufficiale del file sul sito. nel frattempo puoi vedere in anteprima le tue modifiche al PDF nella tua pull request sul sito (ci mettono un paio di minuti a comparire). se la generazione della preview fallisce, probabilmente c'è qualche errore nel LaTeX che hai modificato. 
 
 per **aggiornare la propria copia locale** all'ultima versione (importante farlo spesso! fatelo sempre prima di iniziare a modificare per evitare problemi) usate `git pull`
 questo potrebbe eliminare eventuali modifiche locali che non avete inviato con `git commit` e `git push`

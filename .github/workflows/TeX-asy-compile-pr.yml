@@ -1,0 +1,40 @@
+name: LaTeX-compile-pr
+
+permissions: write-all
+
+# run automaticamente quando si fa push, compare nella lista degli workflow nelle actions della repo
+on:
+  pull_request_target:
+    paths:
+      - '**.tex'
+      - '**.sty'
+      - .github/workflows/TeX-asy-compile-pr.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest-full
+      
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: setup
+        uses: actions/checkout@v4
+  
+      - name: compile
+        run: latexmk --pdf TeoriaBase.tex
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        id: TeoriaBase
+        with:
+          name: TeoriaBase.pdf
+          path: TeoriaBase.pdf
+          compression-level: 0
+          retention-days: 90
+
+      - name: comment
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            "[QUI](${{ steps.TeoriaBase.outputs.artifact-url }}) il risultato di queste modifiche! :rocket: Il link smetterà di funzionare tra 90 giorni"
