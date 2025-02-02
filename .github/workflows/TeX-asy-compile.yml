@@ -16,8 +16,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
         uses: actions/checkout@v4
-      - name: install
-        run: apt-get install asymptote latexmk
+      #NOTE: apparently asymptote and latexmk are already included in the container
+      #- name: install
+      #  run: apt-get install asymptote latexmk
       - name: compile
         run: latexmk --pdf TeoriaBase.tex
       - name: release
