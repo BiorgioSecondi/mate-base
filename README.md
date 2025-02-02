@@ -44,7 +44,7 @@ per il **setup iniziale**, che dovrai fare una volta sola, vai nella cartella ch
 git creerà una cartella con tutto il necessario chiamata mate-base: entraci con `cd mate-base`
 
 fai le modifiche che vuoi ai file all'interno della cartella, con l'editor che vuoi. Se per mostrarti un'anteprima del risultato il tuo editor genera dei file, non occorre eliminarli.
-Se il tuo editor non genera il PDF, oppure ha problemi nel farlo o non supporta asymptote, ma vuoi vedere il risultato delle tue modifiche, puoi installare `texlive-full` e `asymptote` e poi nel terminale, nella cartella mate-base, fare `latexmk --pdf TeoriaBase.pdf`.
+Se il tuo editor non genera il PDF, oppure ha problemi nel farlo o non supporta asymptote, ma vuoi vedere il risultato delle tue modifiche, puoi installare `texlive-full` e `asymptote` e poi nel terminale, nella cartella mate-base, fare `latexmk --pdf TeoriaBase.tex`.
 
 **quando hai finito di modificare** dal terminale nella cartella mate-base fai i seguenti comandi:
 - `git status`: ti dirà quali file hai modificato, e di questi quali modifiche sono tracciate e quali no.
