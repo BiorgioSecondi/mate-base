@@ -1,5 +1,7 @@
 name: LaTeX-compile
 
+permissions: write-all
+
 # run automaticamente quando si fa push, compare nella lista degli workflow nelle actions della repo
 on:
   push:
