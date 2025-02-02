@@ -14,14 +14,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
         uses: actions/checkout@v4
-      #- name: install
-      #  uses: awalsh128/cache-apt-pkgs-action@latest
-      #  with: 
-      #    packages: texlive-full asymptote latexmk
-      #    version: 1.0
-      
       - name: install
-        run: apt-get --fix-missing install asymptote latexmk
+        run: apt-get install asymptote latexmk
       - name: compile
         run: latexmk --pdf TeoriaBase.tex
       - name: release
