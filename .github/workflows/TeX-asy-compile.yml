@@ -8,8 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: Dockerfile
     steps:
-    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
         uses: actions/checkout@v4
@@ -25,10 +26,7 @@ jobs:
       #    sudo apt-get --fix-missing install texlive-full asymptote latexmk
         # sudo apt-get upgrade
       - name: compile
-        uses: dante-ev/latex-action@2023-A
-        with:
-          root_file: TeoriaBase.tex
-          extra_system_packages: "asymptote"
+        run: sudo latexmk --pdf TeoriaBase.tex
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
