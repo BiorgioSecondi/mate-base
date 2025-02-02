@@ -15,33 +15,26 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: texlive/texlive:latest-full
+      
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
         uses: actions/checkout@v4
-      #NOTE: apparently asymptote and latexmk are already included in the container
-      #- name: install
-      #  run: apt-get install asymptote latexmk
+  
       - name: compile
         run: latexmk --pdf TeoriaBase.tex
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        id: TeoriaBase
+        with:
+          name: TeoriaBase.pdf
+          path: TeoriaBase.pdf
+          compression-level: 0
+          retention-days: 90
+
       - name: comment
         uses: thollander/actions-comment-pull-request@v3
         with:
-          file-path: TeoriaBase.pdf
-        #  message: |
-         #   "Ecco il risultato di queste modifiche!"
-      
-
-      
-      
-    #  - name: upload
-     #   uses: actions/upload-artifact@v4
-      #  id: TeoriaBase
-       # with:
-       #   name: TeoriaBase.pdf
-       #   path: TeoriaBase.pdf
-       ##   compression-level: 0
-        #  retention-days: 90
-#
-#
- #         ${{ steps.TeoriaBase.outputs.artifact-url }} #url
+          message: |
+         #   "[QUI](${{ steps.TeoriaBase.outputs.artifact-url }}) il risultato di queste modifiche!:rocket: Il link smetterà di funzionare tra 90 giorni"
