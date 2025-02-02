@@ -21,5 +21,9 @@ jobs:
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: TeoriaBase.pdf
+          asset_name: TeoriaBase.pdf
+          tag: ${{ github.ref }}
           overwrite: true
+          body: "Questo release contiene sempre l'ultima versione del file TeoriaBase.pdf, mentre il sorgente in questo release non viene aggiornato."
