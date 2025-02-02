@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: Dockerfile
+      image: texlive/texlive:latest-full
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
@@ -20,11 +20,8 @@ jobs:
       #    packages: texlive-full asymptote latexmk
       #    version: 1.0
       
-      #- name: install
-      #  run: |
-      #    sudo apt-get --fix-missing update
-      #    sudo apt-get --fix-missing install texlive-full asymptote latexmk
-        # sudo apt-get upgrade
+      - name: install
+        run: sudo apt-get --fix-missing install asymptote latexmk
       - name: compile
         run: sudo latexmk --pdf TeoriaBase.tex
       - name: release
