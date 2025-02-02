@@ -25,12 +25,12 @@ jobs:
       #    sudo apt-get --fix-missing install texlive-full asymptote latexmk
         # sudo apt-get upgrade
       - name: compile
-        uses: xu-cheng/latex-action@v3
+        uses: dante-ev/latex-action@2023-A
         with:
           root_file: TeoriaBase.tex
           extra_system_packages: "asymptote"
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: main.pdf
+          file: TeoriaBase.pdf
           overwrite: true
