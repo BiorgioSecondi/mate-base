@@ -21,9 +21,9 @@ jobs:
       #    version: 1.0
       
       - name: install
-        run: sudo apt-get --fix-missing install asymptote latexmk
+        run: apt-get --fix-missing install asymptote latexmk
       - name: compile
-        run: sudo latexmk --pdf TeoriaBase.tex
+        run: latexmk --pdf TeoriaBase.tex
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
