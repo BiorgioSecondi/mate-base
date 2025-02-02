@@ -37,4 +37,4 @@ jobs:
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
-         #   "[QUI](${{ steps.TeoriaBase.outputs.artifact-url }}) il risultato di queste modifiche!:rocket: Il link smetterà di funzionare tra 90 giorni"
+            "[QUI](${{ steps.TeoriaBase.outputs.artifact-url }}) il risultato di queste modifiche!:rocket: Il link smetterà di funzionare tra 90 giorni"
