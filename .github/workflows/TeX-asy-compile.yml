@@ -6,7 +6,9 @@ permissions: write-all
 on:
   push:
     paths:
-      - TeoriaBase.tex
+      - '**.tex'
+      - '**.sty'
+      - .github/workflows/TeX-asy-compile.yml
   workflow_dispatch:
 
 jobs:
