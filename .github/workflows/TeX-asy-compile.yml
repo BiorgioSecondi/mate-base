@@ -13,17 +13,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup
         uses: actions/checkout@v4
+      #- name: install
+      #  uses: awalsh128/cache-apt-pkgs-action@latest
+      #  with: 
+      #    packages: texlive-full asymptote latexmk
+      #    version: 1.0
       
-      - name: install
-        run: |
-          sudo apt-get --fix-missing update
-          sudo apt-get --fix-missing install texlive-full asymptote latexmk
+      #- name: install
+      #  run: |
+      #    sudo apt-get --fix-missing update
+      #    sudo apt-get --fix-missing install texlive-full asymptote latexmk
         # sudo apt-get upgrade
       - name: compile
-        run: sudo latexmk --pdf TeoriaBase.tex
-
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: TeoriaBase.tex
+          extra_system_packages: "asymptote"
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: TeoriaBase.pdf
+          file: main.pdf
           overwrite: true
