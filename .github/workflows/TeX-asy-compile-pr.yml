@@ -29,7 +29,7 @@ jobs:
         with:
           message: |
             "Ecco il risultato di queste modifiche!"
-          file-path: TeoriaBase.pdf
+          file-path: /TeoriaBase.pdf
       
 
       
