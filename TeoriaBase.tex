@@ -19,13 +19,13 @@
 
 \begin{document}
 	\title{Teoria di Base}
-	\subtitle{a.k.a.\ guida (in)completa per Archimede e EGMOcamp}
+	\subtitle{a.k.a.\ guida (in)completa per Archimede, Febbraio e EGMOcamp}
 	\date{Novembre 2024}
 
 	
 	\maketitle
 	\section*{Premessa}
-	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento era quello di scrivere un insieme di teoria "quick and dirty" che sarebbe potuta risultare di utile consultazione poco prima di una gara per ripassare ciò che si aveva già studiato, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari) ancora sconosciuti. Una delle intenzioni era anche quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, e perciò il lettore alle prime armi non si deve spaventare di fronte all'apparente mole di teoria, o alle formule lunghe e complicate. Inoltre, come è già stato detto in altre sedi, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
+	Questo documento è una rassegna di teoria utile per risolvere i problemi di Archimede, Febbraio e dell'ammissione all'EGMOcamp. \textbf{Questo non è da intendersi come un "libro di testo" in cui la teoria viene introdotta in modo sistematico}, giustificando e dimostrando ogni lemma, facendo molti esempi e fornendo una lista di esercizi per praticare gli argomenti. L'intento principale è quello di scrivere un insieme di teoria "quick and dirty" che possa risultare di utile consultazione per ripassare poco prima di una gara ciò che si ha già studiato, o per entrare a conoscenza di piccoli fatti di teoria (utili ma assolutamente non necessari) ancora sconosciuti. Un'altra intenzione è quella di dare a chi si approccia per la prima volta a questo mondo una sorta di mappa, per orientarsi e rendersi conto della dimensione delle cose che già sa o che ancora non sa, e perciò il lettore alle prime armi non si deve spaventare di fronte all'apparente mole di teoria, o alle formule lunghe e complicate. Inoltre, come è già stato detto in altre sedi, \textbf{la matematica olimpica si basa sul sapersi arrangiare in situazioni sconosciute}; che senso avrebbe ciò se si potesse studiare la teoria che sta dietro ad ogni possibile problema e spegnere completamente il cervello? \\
 	Sapere la teoria è sempre secondario al saper ragionare, e per quanto \textbf{la teoria esposta qui} si possa considerare "di base" \textbf{non va intesa come "la teoria che è indispensabile sapere per poter fare le olimpiadi della matematica"}. Una cosa del genere non esiste e speriamo continui a non esistere ancora a lungo. Questa è unicamente della teoria che può risultare utile, facilmente sostituibile con una sufficiente dose di astuzia e buona volontà. Questa teoria è da considerarsi invece "di base" nel senso che è quella teoria che uno studente veterano, ormai abituato a risolvere problemi di stile olimpico, dovrebbe conoscere (o almeno saper dimostrare essere vera) a grandi linee; non necessariamente perché l'ha studiata sistematicamente nel passato, anzi, di solito è perché ha risolto \textbf{problemi che richiedevano di dedurre alcune di queste cose da zero}. Incoraggiamo quindi chiunque si sentisse in vena di esercizio, a dimostrare i lemmi e teoremi qui presentati. \\
 	\\
 	\\
@@ -1192,16 +1192,16 @@
 	\begin{center}
 		\setlength{\tabcolsep}{5pt}
 		\begin{tabular}{ccccccccccccccccccc}
-			  &  &  &  &  &  &  &  &   &1 &   &  &  &  &  &  &  &  &  \\
-			  &  &  &  &  &  &  &  &1  &  &1  &  &  &  &  &  &  &  &  \\
-			  &  &  &  &  &  &  &1 &   &2 &   &1 &  &  &  &  &  &  &  \\
-			  &  &  &  &  &  &1 &  &3  &  &3  &  &1 &  &  &  &  &  &  \\
-			  &  &  &  &  &1 &  &4 &   &6 &   &4 &  &1 &  &  &  &  &  \\
-			  &  &  &  &1 &  &5 &  &10 &  &10 &  &5 &  &1 &  &  &  &  \\
-			  &  &  &1 &  &6 &  &15&   &20&   &15&  &6 &  &1 &  &  &  \\
-			  &  &1 &  &7 &  &21&  &35 &  &35 &  &21&  &7 &  &1 &  &  \\
-			  &1 &  &8 &  &28&  &56&   &70&   &56&  &28&  &8 &  &1 &  \\
-			 1&  &9 &  &36&  &84&  &126&  &126&  &84&  &36&  &9 &  &1 \\
+			    &   &   &   &   &   &   &   &   &1  &   &   &   &   &    &   &   &   &    \\
+			    &   &   &   &   &   &   &   &1  &   &1  &   &   &   &    &   &   &   &    \\
+			    &   &   &   &   &   &   &1  &   &2  &   & 1 &   &   &    &   &   &   &    \\
+			    &   &   &   &   &   &1  &   &3  &   &3  &   & 1 &   &    &   &   &   &    \\
+			    &   &   &   &   &1  &   &4  &   &6  &   & 4 &   & 1 &    &   &   &   &    \\
+			    &   &   &   &1  &   &5  &   &10 &   &10 &   & 5 &   & 1  &   &   &   &    \\
+			    &   &   & 1 &   &6  &   &15 &   &20 &   & 15&   & 6 &    & 1 &   &   &    \\
+			    &   & 1 &   &7  &   &21 &   &35 &   &35 &   & 21&   & 7  &   & 1 &   &    \\
+			    & 1 &   & 8 &   &28 &   &56 &   &70 &   & 56&   & 28&    & 8 &   & 1 &    \\
+			  1 &   & 9 &   &36 &   &84 &   &126&   &126&   & 84&   & 36 &   & 9 &   & 1  \\
 		\end{tabular}
 	\end{center}
 
@@ -1348,10 +1348,10 @@
 		Prese $3$ persone, ce ne saranno sempre almeno $2$ dello stesso sesso.
 	\end{example}
 	\begin{example}
-		Prese $13$ persone, ce ne saranno sempre almeno $2$ nate lo stesso mese.
+		Prese $13$ persone, ce ne saranno sempre almeno $2$ nate lo stesso mese, perché i mesi sono $12$.
 	\end{example}
 	\begin{example}
-		Se nessuno ha più di $300000$ capelli sulla testa, e la capitale del Buthan ha $300001$ abitanti, ci sono sicuramente due persone in Buthan con lo stesso numero di capelli.
+		Se nessuno ha più di $300000$ capelli sulla testa, e la capitale del Buthan ha $300002$ abitanti, ci sono sicuramente almeno due persone in Buthan con lo stesso numero di capelli, poiché una persona può avere da $0$ a $300000$ capelli.
 	\end{example}
 	\begin{example}
 		Dati $q,s\in\NN$, se mettiamo $qs+1$ oggetti in $s$ cassetti allora almeno un cassetto avrà al suo interno più di $q$ oggetti.
@@ -1375,7 +1375,7 @@
 		Similmente, se tutti i cassetti contenessero un numero di oggetti maggiore di $\floor{\frac{k}{n}}$, avremmo un numero di oggetti complessivo maggiore o uguale a $\Big(\floor{\frac{k}{n}}+1\Big) \cdot n$; ma $\floor{\frac{k}{n}}$ è maggiore di $\frac{k}{n}-1$, quindi $\Big(\ceiling{\frac{k}{n}}-1\Big) \cdot n$ è maggiore di $k$, assurdo.
 	\end{proof}
 	
-	L'esempio che segue è un'applicazione molto carina di questo principio (la mia preferita personalmente).\footnote{La preferita di Barbara Catino.}
+	L'esempio che segue è un'applicazione molto carina di questo principio.\footnote{La preferita di Barbara Catino.}
 	\begin{exercise}
 		Enrico ha $77$ giorni per prepararsi per l'ammissione in Normale, e di conseguenza decide di studiare almeno un capitolo al giorno dei $132$ capitoli di cui è composto i \textit{fondamenti di fisica} di Halliday e Resnick (non è necessario che li studi tutti). Si dimostri che esiste una sequenza di giorni consecutivi durante la quale studia esattamente $21$ capitoli.
 	\end{exercise}
