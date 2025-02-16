@@ -1,5 +1,5 @@
 \documentclass[11pt]{scrartcl}
-\usepackage[sexy]{evan}
+\usepackage[sexy,href]{evan}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -77,7 +77,7 @@
 		$$d(n)=(\alpha_1+1)(\alpha_2+1)(\alpha_3+1)\dots(\alpha_k+1)$$
 	\end{lemma}
 	
-	La dimostrazione di questo fatto è un esercizio di combinatoria molto istruttivo (fondamentalmente un'applicazione di \ref{C:prod}) ed è quindi fortemente consigliato provare a dimostrarlo da soli.
+	La dimostrazione di questo fatto è un esercizio di combinatoria molto istruttivo (fondamentalmente un'applicazione del \cref{C:prod}) ed è quindi fortemente consigliato provare a dimostrarlo da soli.
 	
 	\begin{definition}
 		Si dice \textit{quadrato perfetto} un numero $n\in\NN$ tale che esista $a\in\NN$ in modo che esso soddisfi $n=a^2$.
@@ -186,7 +186,7 @@
 		Inoltre si può dimostrare che un tale $a^{-1}$ è sempre unico, una volta scelto $a$.
 	\end{corollary}
 	"I primi sono belli" come affermò un noto Ex-Studente del Volta.\footnote{Edoardo Balistri}
-	I precedenti tre risultati, permettono di semplificare grandemente espressioni numeriche e non. Infatti grazie al lemma~\ref{equiv:cong} abbiamo:
+	I precedenti tre risultati, permettono di semplificare grandemente espressioni numeriche e non. Infatti grazie al \cref{equiv:cong} abbiamo:
 	\begin{fact}
 		
 		Se $a \equiv b \pmod{n}$ allora $a-nk \equiv b-0 \equiv b \pmod{n}$ per un arbitrario $k \in \ZZ$.
@@ -201,7 +201,7 @@
 	\begin{theorem}[Wilson]
 		Sia $p\in\PP$, allora vale sempre:
 		$$(p-1)! \equiv -1 \pmod{p}$$
-		per la definizione di $!$ si rimanda a \ref{factorial}.
+		per la definizione di $!$ si rimanda alla \cref{factorial}.
 	\end{theorem}
 	Ma questo ancora non basta, che ne è dei numeri che non sono primi? Come facciamo a semplificare espressioni in modulo arbitrario? \\
 	Spesso in teoria dei numeri accade che i problemi si prestino a risolversi prima per i numeri primi (o per le potenze di numeri primi), e poi siano facilmente generalizzabili "mettendo insieme" i risultati e ottenendo numeri composti. Detta così questa strategia ci dice poco, il prossimo teorema però, ne è un esempio lampante:
@@ -488,7 +488,7 @@
 		Il baricentro taglia le mediane in segmenti in rapporto $2:1$, ovvero usando la notazione della figura abbiamo $AG=2GM$, $CG=2GL$ e $BG=2GN$.
 	\end{lemma}
 	\begin{lemma}[Teorema dei punti medi]
-		Usando la notazione della figura abbiamo $LN || BC$, $MN || AB$ e $ML || AC$. Questo segue facilmente da \ref{talete}.
+		Usando la notazione della figura abbiamo $LN || BC$, $MN || AB$ e $ML || AC$. Questo segue facilmente dal \cref{talete}.
 	\end{lemma}
 	\subsubsection{Circocentro}
 	\begin{center}
@@ -932,7 +932,7 @@
 	Da questo teorema discendono le cosiddette formule di Viète e quelle di Newton-Girard, che sono cruciali per risolvere i problemi di algebra delle olimpiadi di matematica:
 	
 	\begin{theorem}[Viète] 
-		Facendo riferimento alla notazione della definizione~\ref{polinomio}, e chiamando $x_1$, $x_2$, \dots, $x_n$ tutte le radici complesse del polinomio $P$ di grado $n$: 
+		Facendo riferimento alla notazione della \cref{polinomio}, e chiamando $x_1$, $x_2$, \dots, $x_n$ tutte le radici complesse del polinomio $P$ di grado $n$: 
 		$$\sum_{1\le i_1 < i_2 < \cdots < i_k\le n} x_{i_1}x_{i_2}\cdots x_{i_k}=(-1)^k\frac{a_{n-k}}{a_n}$$
 		\\ Ovvero, la somma di tutti i possibili prodotti ottenibili prendendo $k$ radici del polinomio $P(x)$ prese con le rispettive molteplicità è uguale a $-\frac{a_{n-k}}{a_n}$ se $k$ è dispari, e $\frac{a_{n-k}}{a_n}$ se $k$ è pari.
 		
@@ -972,7 +972,7 @@
 		In particolare si ricordano i casi specifici per $n=2$ e per $n=3$:
 		$$(a+b)^2=a^2+2ab+b^2$$
 		$$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$
-		(Se non si ricordasse il significato di quelle espressioni in parentesi, si rimanda alla Definizione~\ref{binomial})
+		(Se non si ricordasse il significato di quelle espressioni in parentesi, si rimanda alla \cref{binomial})
 	\end{theorem}
 	\begin{theorem}
 		La seguente identità vale per ogni $a,b \in \RR$ e per ogni $n \in \NN$:
@@ -1039,7 +1039,7 @@
 		Questo si intende per ricorsione: chiedendoci che valore avesse $x$ abbiamo trovato che $x$ è esattamente uguale al numero che otteniamo elevando \textbf{se stesso} al quadrato e sottraendo $1$.\\
 		Ok, e adesso? Beh semplicemente:
 		$$x^2-x-1=0$$ 
-		Questa è un'equazione di secondo grado molto famosa, e possiamo risolverla con \ref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
+		Questa è un'equazione di secondo grado molto famosa, e possiamo risolverla con il \cref{quadFormula}. La soluzione (tenendo conto che $x$ è positivo) risulta essere:
 		$$\frac{1+\sqrt{5}}{2}$$
 		Che è il famoso \emph{rapporto aureo} e si indica di solito con il simbolo $\varphi$ (la lettera greca Phi, che si legge "fi").
 	\end{example}
@@ -1050,7 +1050,7 @@
 		$$x=\frac{1}{1+\frac{1}{1+\frac{1}{1+\frac{1}{1+\dots}}}}=\frac{1}{1+x}$$
 		Di nuovo $x$ compare nella sua stessa definizione! Come prima risolviamo l'equazione di secondo grado che troviamo in questo modo:
 		$$x=\frac{1}{1+x}\iff x(x+1)=1 \iff x^2+x=1 \iff x^2+x-1=0$$
-		Che svolgendo i calcoli con \ref{quadFormula} scopriamo avere soluzioni $\varphi-1$ e $-\varphi$, quindi dato che $x$ deve essere positivo abbiamo che $x=\varphi-1$. Per una proprietà di $\varphi$ inoltre abbiamo che $\varphi-1=\frac{1}{\varphi}$, quindi $x=\frac{1}{\varphi}$.
+		Che svolgendo i calcoli con il \cref{quadFormula} scopriamo avere soluzioni $\varphi-1$ e $-\varphi$, quindi dato che $x$ deve essere positivo abbiamo che $x=\varphi-1$. Per una proprietà di $\varphi$ inoltre abbiamo che $\varphi-1=\frac{1}{\varphi}$, quindi $x=\frac{1}{\varphi}$.
 	\end{example}
 	\newpage
 	\section{Combinatoria}
@@ -1165,7 +1165,7 @@
 		\label{binomial:identity:2}
 		La seguente identità vale per ogni $n\in\NN$:
 		$$\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\dots+\binom{n}{n-1}+\binom{n}{n}=2^n$$
-		Si noti che questa identità può seguire da~\ref{ident:newton}.
+		Si noti che questa identità può seguire dal \cref{ident:newton}.
 	\end{lemma}
 	\begin{lemma}
 		\label{binomial:identity:3}
@@ -1187,7 +1187,7 @@
 		La seguente identità vale per ogni $m,\,n,\,a \in \NN$:
 		$$\binom{m}{0}\binom{n}{a}+\binom{m}{1}\binom{n}{a-1}+\binom{m}{2}\binom{n}{a-2}+\dots+\binom{m}{a}\binom{n}{0}=\binom{m+n}{a}$$
 	\end{lemma}
-	Esiste un modo molto chiaro per visualizzare i coefficienti binomiali e molte delle identità che abbiamo visto sopra (tutte tranne la \ref{binomial:identity:5}). Questo è il cosiddetto triangolo di Tartaglia, che di solito si fa a scuola quando si parla di potenze di binomi (e in effetti ne possiamo vedere l'applicazione grazie a \ref{ident:newton}). Il triangolo di Tartaglia (gli inglesi lo chiamano triangolo di Pascal) è formato da $n$ righe, ognuna con $n$ numeri. Alla riga $n$ in posizione $k$ è posizionato $\binom{n}{k}$, considerando la prima riga come riga $0$. Grazie a \ref{binomial:identity:1} 
+	Esiste un modo molto chiaro per visualizzare i coefficienti binomiali e molte delle identità che abbiamo visto sopra (tutte tranne quella del \cref{binomial:identity:5}). Questo è il cosiddetto triangolo di Tartaglia, che di solito si fa a scuola quando si parla di potenze di binomi (e in effetti ne possiamo vedere l'applicazione grazie al \cref{ident:newton}). Il triangolo di Tartaglia (gli inglesi lo chiamano triangolo di Pascal) è formato da $n$ righe, ognuna con $n$ numeri. Alla riga $n$ in posizione $k$ è posizionato $\binom{n}{k}$, considerando la prima riga come riga $0$. Grazie al \cref{binomial:identity:1} 
 	notiamo che ogni elemento di indice $k$ (eccetto gli $1$ alle estremità di ogni riga) è ottenuto sommando tra loro i due elementi di indice $k$ e $k-1$ nella riga superiore, riuscite a vedere come le altre $3$ identità siano giustificate da questo magico diagramma?
 	\begin{center}
 		\setlength{\tabcolsep}{5pt}
@@ -1219,7 +1219,7 @@
 		$$P(0) \land (P(k)\implies P(k+1)) \qquad \implies \qquad P(n) $$
 	\end{proposition}
 	Molto bene. Cosa diamine significa? \\
-	Possiamo vederlo intuitivamente come un modo per costruire infinite dimostrazioni del fatto che la proposizione $P$ sia vera. Facciamo un esempio dimostrando il teorema~\ref{sum:1}.
+	Possiamo vederlo intuitivamente come un modo per costruire infinite dimostrazioni del fatto che la proposizione $P$ sia vera. Facciamo un esempio dimostrando il \cref{sum:1}.
 	\begin{proof}[\textbf{Dimostrazione}]
 		Vogliamo dimostrare che il seguente fatto vale per ogni $n\in\NN$:
 		$$1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$
@@ -1264,7 +1264,7 @@
 		\end{itemize}
 		Quindi \textbf{per induzione} abbiamo dimostrato la tesi.
 	\end{proof}
-	Come già detto, questa tecnica è cruciale per un incredibile numero di problemi di combinatoria, di teoria dei numeri e di algebra (anche se non molti di geometria). In generale le parole evidenziate in grassetto nella dimostrazione sopra sono quelle che non dovrebbero mai mancare in una vostra dimostrazione per induzione, quindi cercate di seguire quello schema, almeno finché non vi sarete ben abituati. Se si vuole fare esercizio, dimostrare i teoremi \ref{sum:2}, \ref{sum:3} e \ref{sum:g} è un ottimo modo per iniziare.
+	Come già detto, questa tecnica è cruciale per un incredibile numero di problemi di combinatoria, di teoria dei numeri e di algebra (anche se non molti di geometria). In generale le parole evidenziate in grassetto nella dimostrazione sopra sono quelle che non dovrebbero mai mancare in una vostra dimostrazione per induzione, quindi cercate di seguire quello schema, almeno finché non vi sarete ben abituati. Se si vuole fare esercizio, dimostrare i \cref{sum:2,,sum:3,,sum:g} è un ottimo modo per iniziare.
 	\\
 	Esiste una formulazione alternativa e più forte del principio di induzione, il ragionamento che c'è dietro è esattamente lo stesso e quindi non ci ripeteremo.
 	\begin{proposition}[Induzione estesa/Induzione forte]
@@ -1304,9 +1304,9 @@
 	Da ciò la seguente uguaglianza:$$2(1+2+3+4+\dots+n)=n(n+1) \implies
 	1+2+3+4+\dots+n=\frac{n(n+1)}{2}$$ 
 	\\
-	Il double counting di solito trova più facilmente applicazione nella dimostrazione di identità combinatoriche, per esempio se vogliamo dimostrare la \ref{binomial:identity:3} con un double counting possiamo procedere in questo modo:
+	Il double counting di solito trova più facilmente applicazione nella dimostrazione di identità combinatoriche, per esempio se vogliamo dimostrare il \cref{binomial:identity:3} con un double counting possiamo procedere in questo modo:
 	\begin{example}
-		Vogliamo dimostrare che $$\binom{n}{k}=\binom{n}{n-k}$$ per ogni $n\ge k \in \NN$. Per fare ciò consideriamo un insieme $A$ di $n$ elementi e supponiamo di volerne scegliere $k$ da questo. per il lemma \ref{combinazioni} ci sono due modi per farlo, il primo è scegliere direttamente i $k$ elementi, e questo lo posso fare in
+		Vogliamo dimostrare che $$\binom{n}{k}=\binom{n}{n-k}$$ per ogni $n\ge k \in \NN$. Per fare ciò consideriamo un insieme $A$ di $n$ elementi e supponiamo di volerne scegliere $k$ da questo. Per il \cref{combinazioni} ci sono due modi per farlo, il primo è scegliere direttamente i $k$ elementi, e questo lo posso fare in
 		$$\binom{n}{k}$$
 		modi. Il secondo è scegliere prima gli $n-k$ elementi che \textbf{non} vogliamo scegliere, e questo determinerà univocamente quali saranno gli elementi scelti. In quanti modi lo posso fare? Beh, stiamo scegliendo $n-k$ elementi da un insieme di $n$, quindi abbiamo
 		$$\binom{n}{n-k}$$
@@ -1314,13 +1314,13 @@
 		$$\binom{n}{k}=\binom{n}{n-k}$$
 	\end{example}
 	Quindi di solito per dimostrare identità con double counting dobbiamo "interpretare" ciascun lato dell'identità (nell'esempio prima, un lato corrisponde a scegliere $k$ elementi, e l'altro a scegliere gli $n-k$ elementi da scartare) dal punto di vista combinatorico, per poi concludere invocando il double counting (bisogna sempre scrivere ciò che si sta facendo). \\
-	Se si volesse fare esercizio su questo argomento, dimostrare i lemmi \ref{binomial:identity:1} e \ref{binomial:identity:2} è un ottimo modo per cominciare.
+	Se si volesse fare esercizio su questo argomento, dimostrare i \cref{binomial:identity:1,,binomial:identity:2} è un ottimo modo per cominciare.
 	
 	\subsubsection{Invarianti}
 	"Invariante" è un termine che presenta una definizione molto vaga. Il modo più semplice per spiegarlo è definirlo come una quantità che non varia, oppure che varia ma in maniera controllata; ma il modo più semplice per capirlo è attraverso degli esempi.
 	
 	\begin{example}
-		Supponiamo di avere un numero $n$ scritto su una lavagna. Ad ogni mossa, possiamo permutare\footnote{permutazione è un altro termine per indicare un anagramma (teoremi \ref{anag:1}, \ref{anag:2} e \ref{anag:3}), quindi permutare qualcosa significa scriverne un particolare anagramma.} le cifre della sua rappresentazione decimale. Allora la somma delle cifre del numero dopo ogni mossa non varia, dunque è un'\textbf{invariante}.
+		Supponiamo di avere un numero $n$ scritto su una lavagna. Ad ogni mossa, possiamo permutare\footnote{permutazione è un altro termine per indicare un anagramma (\cref{anag:1,,anag:2,,anag:3}), quindi permutare qualcosa significa scriverne un particolare anagramma.} le cifre della sua rappresentazione decimale. Allora la somma delle cifre del numero dopo ogni mossa non varia, dunque è un'\textbf{invariante}.
 	\end{example}
 	\begin{example}
 		Supponiamo di avere il numero $2$ scritto su una lavagna. Ad ogni mossa, possiamo scegliere se sommare $5$ o $3$ al numero scritto, e sostituire il numero sulla lavagna con il valore, che chiamo $n$,  della somma. Noto che così facendo, la parità di $n$ cambia ad ogni mossa; in particolare, essendo che il numero di partenza era pari, $n$ sarà pari dopo che effettuo un numero pari di mosse, e dispari dopo un numero dispari di mosse. Quindi questa parità varia in modo controllato, dunque è un'\textbf{invariante}.
