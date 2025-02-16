@@ -364,7 +364,6 @@
     \fi
     \date{\today}
   \fi
-  %%fakesection Hyperref
   \ifevanpkg
     \PassOptionsToPackage{svgnames,dvipsnames,table}{xcolor}
     \usepackage{xcolor}
@@ -389,12 +388,6 @@
       % Drop trailing punctuation in bibliography names
       \renewcommand{\finentrypunct}{}
     \fi
-    \ifevanhref
-      \usepackage[colorlinks=true,pdfusetitle]{hyperref}
-      \hypersetup{pdfkeywords={evan.sty},pdfsubject={web.evanchen.cc}}
-      \hypersetup{urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen}
-    \fi
-    \usepackage[nameinlink,italian]{cleveref}
   \fi
 
   %%fakesection New theorem styles
@@ -514,7 +507,13 @@
     }
     \newcommand{\listhack}{$\empty$\vspace{-2em}}
   \fi
-
+  %%fakesection Hyperref
+    \ifevanhref
+      \usepackage[colorlinks=true,pdfusetitle]{hyperref}
+      \hypersetup{pdfkeywords={evan.sty},pdfsubject={web.evanchen.cc}}
+      \hypersetup{urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen}
+    \fi
+  \usepackage[nameinlink,italian]{cleveref}
   %%fakesection Theorem setup
   \ifevanthm
     \theoremstyle{definition}
