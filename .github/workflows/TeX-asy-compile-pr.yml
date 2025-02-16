@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
   
       - name: compile
-        run: latexmk --pdf TeoriaBase.tex
+        run: latexmk -e '$max_repeat=5' --pdf TeoriaBase.tex
 
       - name: upload
         uses: actions/upload-artifact@v4

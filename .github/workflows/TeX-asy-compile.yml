@@ -24,7 +24,7 @@ jobs:
       #- name: install
       #  run: apt-get install asymptote latexmk
       - name: compile
-        run: latexmk --pdf TeoriaBase.tex
+        run: latexmk -e '$max_repeat=5' --pdf TeoriaBase.tex
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
